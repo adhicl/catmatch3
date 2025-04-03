@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIBuilder/gameUI.uss?fileID=7433441132597879392&amp;guid=d331aaf78356c2240bfc1c16f11a2533&amp;type=3#gameUI" />
+    <ui:Label text="This is noto font" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/NotoSansCJK-wght-400-900.ttf.ttc?fileID=12800000&amp;guid=163e24bb0a9f27a49b13fee62ebcd917&amp;type=3#NotoSansCJK-wght-400-900.ttf&quot;);" />
+</ui:UXML>
