@@ -77,8 +77,6 @@ public class Stone : MonoBehaviour, IPuzzleBlock
             //this.gameObject.SetActive(false);
         }
 
-        tmpPoint.gameObject.SetActive(true);
-        tmpPoint.rectTransform.DOLocalMoveY(tmpPoint.rectTransform.localPosition.y + 1f, 0.2f);
         StartCoroutine(HidePuzzle());
     }
 
@@ -109,8 +107,31 @@ public class Stone : MonoBehaviour, IPuzzleBlock
 
     IEnumerator HidePuzzle()
     {
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.1f);
+        _catObject.gameObject.SetActive(false);
+
+        float value = GameController.Instance.levelScore * 100;
+
+        tmpPoint.text = GetValueString(value);
+        tmpPoint.gameObject.SetActive(true);
+        //tmpPoint.rectTransform.DOLocalMoveY(tmpPoint.rectTransform.localPosition.y + 1f, 0.2f);
+        
+        yield return new WaitForSeconds(.1f);
         this.transform.position = new Vector2(10f, 10f);
+    }
+
+    private string GetValueString(float value)
+    {
+        if (value >= 1000)
+        {
+            double shorten = Mathf.Floor(value / 1000);
+            double rest = value % 1000;
+            return $"{shorten}.{rest}K";
+        }
+        else
+        {
+            return value.ToString();
+        }
     }
 
     public void SetBlock(int posX, int posY)

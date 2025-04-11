@@ -3,6 +3,7 @@ using System.Collections;
 using DG.Tweening;
 using Interfaces;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 public class PuzzleController : MonoBehaviour
@@ -32,9 +33,12 @@ public class PuzzleController : MonoBehaviour
     
     private CommonVars.GameMode _gameMode;
     
+    private Vector3 originalPosition;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        originalPosition = this.transform.localPosition;
         InitBlocks();
     }
 
@@ -101,6 +105,13 @@ public class PuzzleController : MonoBehaviour
                                         _puzzleBlocks[i][index].isVerticalBomb)
                                     {
                                         isBomb = true;
+
+                                        GameController.Instance.CreateSmokeObject(
+                                            _puzzleBlocks[i][index].transform.position,
+                                            _puzzleBlocks[i][0].transform.position);
+                                        GameController.Instance.CreateSmokeObject(
+                                            _puzzleBlocks[i][index].transform.position,
+                                            _puzzleBlocks[i][CommonVars.GRID_WIDTH - 1].transform.position);
                                     }
                                     if (totalBlock == 4 && index == curPosX && !onStart)
                                     {
@@ -124,6 +135,13 @@ public class PuzzleController : MonoBehaviour
                                         _puzzleBlocks[i][index].isVerticalBomb)
                                     {
                                         isBomb = true;
+
+                                        GameController.Instance.CreateSmokeObject(
+                                            _puzzleBlocks[i][index].transform.position,
+                                            _puzzleBlocks[i][0].transform.position);
+                                        GameController.Instance.CreateSmokeObject(
+                                            _puzzleBlocks[i][index].transform.position,
+                                            _puzzleBlocks[i][CommonVars.GRID_WIDTH - 1].transform.position);
                                     }
                                     if (totalBlock == 4 && index == nexPosX && !onStart)
                                     {
@@ -149,6 +167,13 @@ public class PuzzleController : MonoBehaviour
                                             _puzzleBlocks[i][index].isVerticalBomb)
                                         {
                                             isBomb = true;
+
+                                            GameController.Instance.CreateSmokeObject(
+                                                _puzzleBlocks[i][index].transform.position,
+                                                _puzzleBlocks[i][0].transform.position);
+                                            GameController.Instance.CreateSmokeObject(
+                                                _puzzleBlocks[i][index].transform.position,
+                                                _puzzleBlocks[i][CommonVars.GRID_WIDTH - 1].transform.position);
                                         }
                                     }
 
@@ -182,6 +207,13 @@ public class PuzzleController : MonoBehaviour
                                     _puzzleBlocks[i][index].isVerticalBomb)
                                 {
                                     isBomb = true;
+
+                                    GameController.Instance.CreateSmokeObject(
+                                        _puzzleBlocks[i][index].transform.position,
+                                        _puzzleBlocks[i][0].transform.position);
+                                    GameController.Instance.CreateSmokeObject(
+                                        _puzzleBlocks[i][index].transform.position,
+                                        _puzzleBlocks[i][CommonVars.GRID_WIDTH - 1].transform.position);
                                 }
                                 if (totalBlock == 4 && index == curPosX && !onStart)
                                 {
@@ -205,6 +237,13 @@ public class PuzzleController : MonoBehaviour
                                     _puzzleBlocks[i][index].isVerticalBomb)
                                 {
                                     isBomb = true;
+
+                                    GameController.Instance.CreateSmokeObject(
+                                        _puzzleBlocks[i][index].transform.position,
+                                        _puzzleBlocks[i][0].transform.position);
+                                    GameController.Instance.CreateSmokeObject(
+                                        _puzzleBlocks[i][index].transform.position,
+                                        _puzzleBlocks[i][CommonVars.GRID_WIDTH - 1].transform.position);
                                 }
                                 if (totalBlock == 4 && index == nexPosX && !onStart)
                                 {
@@ -230,6 +269,13 @@ public class PuzzleController : MonoBehaviour
                                         _puzzleBlocks[i][index].isVerticalBomb)
                                     {
                                         isBomb = true;
+
+                                        GameController.Instance.CreateSmokeObject(
+                                            _puzzleBlocks[i][index].transform.position,
+                                            _puzzleBlocks[i][0].transform.position);
+                                        GameController.Instance.CreateSmokeObject(
+                                            _puzzleBlocks[i][index].transform.position,
+                                            _puzzleBlocks[i][CommonVars.GRID_WIDTH - 1].transform.position);
                                     }
                                 }
                                 if (totalBlock == 4 && index == startBlock + 1 && !onStart)
@@ -289,6 +335,13 @@ public class PuzzleController : MonoBehaviour
                                         _puzzleBlocks[index][i].isVerticalBomb)
                                     {
                                         isBomb = true;
+
+                                        GameController.Instance.CreateSmokeObject(
+                                            _puzzleBlocks[index][i].transform.position,
+                                            _puzzleBlocks[0][i].transform.position);
+                                        GameController.Instance.CreateSmokeObject(
+                                            _puzzleBlocks[index][i].transform.position,
+                                            _puzzleBlocks[CommonVars.GRID_HEIGHT - 1][i].transform.position);
                                     }
                                     if (totalBlock == 4 && index == curPosY && !onStart)
                                     {
@@ -313,6 +366,13 @@ public class PuzzleController : MonoBehaviour
                                         _puzzleBlocks[index][i].isVerticalBomb)
                                     {
                                         isBomb = true;
+
+                                        GameController.Instance.CreateSmokeObject(
+                                            _puzzleBlocks[index][i].transform.position,
+                                            _puzzleBlocks[0][i].transform.position);
+                                        GameController.Instance.CreateSmokeObject(
+                                            _puzzleBlocks[index][i].transform.position,
+                                            _puzzleBlocks[CommonVars.GRID_HEIGHT - 1][i].transform.position);
                                     }
                                     if (totalBlock == 4 && index == nexPosY && !onStart)
                                     {
@@ -339,6 +399,13 @@ public class PuzzleController : MonoBehaviour
                                             _puzzleBlocks[index][i].isVerticalBomb)
                                         {
                                             isBomb = true;
+
+                                            GameController.Instance.CreateSmokeObject(
+                                                _puzzleBlocks[index][i].transform.position,
+                                                _puzzleBlocks[0][i].transform.position);
+                                            GameController.Instance.CreateSmokeObject(
+                                                _puzzleBlocks[index][i].transform.position,
+                                                _puzzleBlocks[CommonVars.GRID_HEIGHT - 1][i].transform.position);
                                         }
                                     }
 
@@ -374,6 +441,13 @@ public class PuzzleController : MonoBehaviour
                                     _puzzleBlocks[index][i].isVerticalBomb)
                                 {
                                     isBomb = true;
+
+                                    GameController.Instance.CreateSmokeObject(
+                                        _puzzleBlocks[index][i].transform.position,
+                                        _puzzleBlocks[0][i].transform.position);
+                                    GameController.Instance.CreateSmokeObject(
+                                        _puzzleBlocks[index][i].transform.position,
+                                        _puzzleBlocks[CommonVars.GRID_HEIGHT - 1][i].transform.position);
                                 }
                                 if (totalBlock == 4 && index == curPosY && !onStart)
                                 {
@@ -397,6 +471,13 @@ public class PuzzleController : MonoBehaviour
                                     _puzzleBlocks[index][i].isVerticalBomb)
                                 {
                                     isBomb = true;
+
+                                    GameController.Instance.CreateSmokeObject(
+                                        _puzzleBlocks[index][i].transform.position,
+                                        _puzzleBlocks[0][i].transform.position);
+                                    GameController.Instance.CreateSmokeObject(
+                                        _puzzleBlocks[index][i].transform.position,
+                                        _puzzleBlocks[CommonVars.GRID_HEIGHT - 1][i].transform.position);
                                 }
                                 if (totalBlock == 4 && index == nexPosY && !onStart)
                                 {
@@ -423,6 +504,13 @@ public class PuzzleController : MonoBehaviour
                                         _puzzleBlocks[index][i].isVerticalBomb)
                                     {
                                         isBomb = true;
+
+                                        GameController.Instance.CreateSmokeObject(
+                                            _puzzleBlocks[index][i].transform.position,
+                                            _puzzleBlocks[0][i].transform.position);
+                                        GameController.Instance.CreateSmokeObject(
+                                            _puzzleBlocks[index][i].transform.position,
+                                            _puzzleBlocks[CommonVars.GRID_HEIGHT - 1][i].transform.position);
                                     }
                                 }
 
@@ -500,6 +588,8 @@ public class PuzzleController : MonoBehaviour
             SoundController.Instance.PlayRandomKittenSFX();
             GameController.Instance.AddStoneBreak(totalDestroyed);
             GameController.Instance.UpdateScore(totalScore);
+
+            DoStartShaking();
         }
     }
 
@@ -597,7 +687,7 @@ public class PuzzleController : MonoBehaviour
             else if (nexStone.isColorBomb)
             {
                 int colorPicked = _blocks[curPosY][curPosX];
-                ClearBombColor(curPosX, curPosY, nexPosX, nexPosY, colorPicked);
+                ClearBombColor(nexPosX, nexPosY, curPosX, curPosY, colorPicked);
                 canDestroy = true;
             }
             else if (CanSwitchStoneBlock(curPosX, curPosY, nexPosX, nexPosY))
@@ -609,7 +699,7 @@ public class PuzzleController : MonoBehaviour
             {
                 CleanMatchedBlocks();
                 DestroyedBlocks();
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.3f);
                 
                 float duration = MovedDestroyedStoneBlocks();
                 yield return new WaitForSeconds(duration);
@@ -618,7 +708,7 @@ public class PuzzleController : MonoBehaviour
                 {
                     CleanMatchedBlocks();
                     DestroyedBlocks();
-                    yield return new WaitForSeconds(0.2f);
+                    yield return new WaitForSeconds(0.3f);
                 
                     duration = MovedDestroyedStoneBlocks();
                     yield return new WaitForSeconds(duration);
@@ -663,6 +753,8 @@ public class PuzzleController : MonoBehaviour
                 if (_blocks[i][j] == colorPicked)
                 {
                     destroyedBlock[i, j] = CommonVars.MARK_DESTROYED;
+                    GameController.Instance.CreateTrailObject(_puzzleBlocks[curPosY][curPosX].transform.position,
+                        _puzzleBlocks[i][j].transform.position);
                 }
             }
         }
@@ -788,6 +880,44 @@ public class PuzzleController : MonoBehaviour
         }
 
         return longestTime;
+    }
+
+    private void Update()
+    {
+        if (isShaking)
+        {
+            ShakePuzzle(Time.deltaTime);
+        }
+    }
+
+    private void DoStartShaking()
+    {
+        isShaking = true;
+        shakeTimer = 0f;
+        seed = Random.value;
+    }
+
+    public float shakeSpeed = 1f;
+    public float shakeFactor = 1f;
+    private float shakeTime = 1f;
+    private float shakeTimer = 0f;
+    private bool isShaking = false;
+    private float seed = 0;
+    private void ShakePuzzle(float deltaTime)
+    {
+        // Use Perlin Noise here for a quasi-random shake. Multiply or Add extra values for noise speed variations.
+        // Many different ways to produc these offset values. This is just one variation.
+        var xOffset = Mathf.PerlinNoise(Time.time * shakeSpeed, seed) - 0.5f;
+        var yOffset = Mathf.PerlinNoise ( seed, Time.time * shakeSpeed ) - 0.5f;
+
+        transform.position = originalPosition + new Vector3 ( xOffset, yOffset, 0 ) * shakeFactor;
+        shakeTimer += deltaTime * 4f;
+        if ( shakeTimer > shakeTime )
+        {
+            shakeTimer = 0;
+            isShaking = false;
+            transform.position = originalPosition;
+        }
     }
 
     #endregion
