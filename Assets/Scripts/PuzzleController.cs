@@ -31,8 +31,6 @@ public class PuzzleController : MonoBehaviour
     private int[,] destroyedBlock;
     private int[,] filledBlock;
     
-    private CommonVars.GameMode _gameMode;
-    
     private Vector3 originalPosition;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,11 +40,73 @@ public class PuzzleController : MonoBehaviour
         InitBlocks();
     }
 
+    private void Update()
+    {
+        if (isShaking)
+        {
+            ShakePuzzle(Time.deltaTime);
+        }
+    }
+    
+    #region shaking
+
+    private void DoStartShaking()
+    {
+        isShaking = true;
+        shakeTimer = 0f;
+        seed = Random.value;
+    }
+
+    [Header("Shaking")]
+    public float shakeSpeed = 1f;
+    public float shakeFactor = 1f;
+    private float shakeTime = 1f;
+    private float shakeTimer = 0f;
+    private bool isShaking = false;
+    private float seed = 0;
+    private void ShakePuzzle(float deltaTime)
+    {
+        // Use Perlin Noise here for a quasi-random shake. Multiply or Add extra values for noise speed variations.
+        // Many different ways to produc these offset values. This is just one variation.
+        var xOffset = Mathf.PerlinNoise(Time.time * shakeSpeed, seed) - 0.5f;
+        var yOffset = Mathf.PerlinNoise ( seed, Time.time * shakeSpeed ) - 0.5f;
+
+        transform.position = originalPosition + new Vector3 ( xOffset, yOffset, 0 ) * shakeFactor;
+        shakeTimer += deltaTime * 4f;
+        if ( shakeTimer > shakeTime )
+        {
+            shakeTimer = 0;
+            isShaking = false;
+            transform.position = originalPosition;
+        }
+    }
+
+    #endregion
+
+    private void DebugBlocks(int[][] block)
+    {
+        string allStr = "";
+        string destoryStr = "";
+        for (int i = 0; i < CommonVars.GRID_HEIGHT; i++)
+        {
+            string line = "";
+            string destroyLine = "";
+            for (int j = 0; j < CommonVars.GRID_WIDTH; j++)
+            {
+                line += line.Length == 0 ? block[i][j].ToString() : "," + block[i][j].ToString();
+                destroyLine += destroyLine.Length == 0 ? destroyedBlock[i,j].ToString() : "," + destroyedBlock[i,j].ToString();
+            }
+            allStr += line + "\n";
+            destoryStr += destroyLine + "\n";
+        }
+
+        Debug.Log(allStr+"\n \n"+destoryStr);
+    }
+
     #region block_creation
     private void InitBlocks()
     {
         CreateBlocks();
-        _gameMode = CommonVars.GameMode.Play;
         while (CheckBlock(_blocks, true))
         {
             CleanMatchedBlocks(true);
@@ -662,9 +722,9 @@ public class PuzzleController : MonoBehaviour
     
     public IEnumerator SequenceSwitchBlock(int curPosX,int curPosY,int nexPosX,int nexPosY)
     {
-        if (_gameMode == CommonVars.GameMode.Play)
+        if (GameController.Instance._gameMode == CommonVars.GameMode.Play)
         {
-            _gameMode = CommonVars.GameMode.Pause;
+            GameController.Instance._gameMode = CommonVars.GameMode.Pause;
         
             Stone curStone = _puzzleBlocks[curPosY][curPosX];
             Stone nexStone = _puzzleBlocks[nexPosY][nexPosX];
@@ -721,7 +781,7 @@ public class PuzzleController : MonoBehaviour
                 yield return new WaitForSeconds(.3f);
             }
             
-            _gameMode = CommonVars.GameMode.Play;
+            GameController.Instance._gameMode = CommonVars.GameMode.Play;
         }
     }
 
@@ -742,6 +802,22 @@ public class PuzzleController : MonoBehaviour
         }
     }
 
+    private void SwitchBlock(int curPosX, int curPosY, int nexPosX, int nexPosY)
+    {
+        (_blocks[curPosY][curPosX], _blocks[nexPosY][nexPosX]) =
+            (_blocks[nexPosY][nexPosX], _blocks[curPosY][curPosX]);
+
+        (_puzzleBlocks[curPosY][curPosX], _puzzleBlocks[nexPosY][nexPosX]) =
+            (_puzzleBlocks[nexPosY][nexPosX], _puzzleBlocks[curPosY][curPosX]);
+        
+        _puzzleBlocks[curPosY][curPosX].SetBlock(curPosX, curPosY);
+        _puzzleBlocks[nexPosY][nexPosX].SetBlock(nexPosX, nexPosY);
+    }
+    
+    #endregion
+    
+    #region clear_stone
+
     private void ClearBombColor(int curPosX, int curPosY, int nextPosX, int nextPosY, int colorPicked)
     {
         SwitchBlock(curPosX, curPosY, nextPosX, nextPosY);
@@ -760,39 +836,6 @@ public class PuzzleController : MonoBehaviour
         }
         destroyedBlock[curPosY, curPosX] = CommonVars.MARK_DESTROYED;
         destroyedBlock[nextPosY, nextPosX] = CommonVars.MARK_DESTROYED;
-    }
-
-    private void DebugBlocks(int[][] block)
-    {
-        string allStr = "";
-        string destoryStr = "";
-        for (int i = 0; i < CommonVars.GRID_HEIGHT; i++)
-        {
-            string line = "";
-            string destroyLine = "";
-            for (int j = 0; j < CommonVars.GRID_WIDTH; j++)
-            {
-                line += line.Length == 0 ? block[i][j].ToString() : "," + block[i][j].ToString();
-                destroyLine += destroyLine.Length == 0 ? destroyedBlock[i,j].ToString() : "," + destroyedBlock[i,j].ToString();
-            }
-            allStr += line + "\n";
-            destoryStr += destroyLine + "\n";
-        }
-
-        Debug.Log(allStr+"\n \n"+destoryStr);
-    }
-
-
-    private void SwitchBlock(int curPosX, int curPosY, int nexPosX, int nexPosY)
-    {
-        (_blocks[curPosY][curPosX], _blocks[nexPosY][nexPosX]) =
-            (_blocks[nexPosY][nexPosX], _blocks[curPosY][curPosX]);
-
-        (_puzzleBlocks[curPosY][curPosX], _puzzleBlocks[nexPosY][nexPosX]) =
-            (_puzzleBlocks[nexPosY][nexPosX], _puzzleBlocks[curPosY][curPosX]);
-        
-        _puzzleBlocks[curPosY][curPosX].SetBlock(curPosX, curPosY);
-        _puzzleBlocks[nexPosY][nexPosX].SetBlock(nexPosX, nexPosY);
     }
 
     private void DestroyedBlocks()
@@ -881,44 +924,120 @@ public class PuzzleController : MonoBehaviour
 
         return longestTime;
     }
+    
+    #endregion
+    
+    #region auto clear bomb
 
-    private void Update()
+    public void DoStartFinish()
     {
-        if (isShaking)
+        Debug.Log("Do Start Finish");
+        StartCoroutine(CleanUpBombs());
+    }
+
+    private IEnumerator CleanUpBombs()
+    {
+        while (ExplodeAllBombs())
         {
-            ShakePuzzle(Time.deltaTime);
+            CleanMatchedBlocks();
+            DestroyedBlocks();
+            yield return new WaitForSeconds(0.3f);
+                
+            float duration = MovedDestroyedStoneBlocks();
+            yield return new WaitForSeconds(duration);
+                
+            while (CheckBlock(_blocks))
+            {
+                CleanMatchedBlocks();
+                DestroyedBlocks();
+                yield return new WaitForSeconds(0.3f);
+                
+                duration = MovedDestroyedStoneBlocks();
+                yield return new WaitForSeconds(duration);
+            }
         }
+        
+        GameController.Instance.ChangeSceneResult();
     }
 
-    private void DoStartShaking()
+    private bool ExplodeAllBombs()
     {
-        isShaking = true;
-        shakeTimer = 0f;
-        seed = Random.value;
-    }
-
-    public float shakeSpeed = 1f;
-    public float shakeFactor = 1f;
-    private float shakeTime = 1f;
-    private float shakeTimer = 0f;
-    private bool isShaking = false;
-    private float seed = 0;
-    private void ShakePuzzle(float deltaTime)
-    {
-        // Use Perlin Noise here for a quasi-random shake. Multiply or Add extra values for noise speed variations.
-        // Many different ways to produc these offset values. This is just one variation.
-        var xOffset = Mathf.PerlinNoise(Time.time * shakeSpeed, seed) - 0.5f;
-        var yOffset = Mathf.PerlinNoise ( seed, Time.time * shakeSpeed ) - 0.5f;
-
-        transform.position = originalPosition + new Vector3 ( xOffset, yOffset, 0 ) * shakeFactor;
-        shakeTimer += deltaTime * 4f;
-        if ( shakeTimer > shakeTime )
+        bool hasBomb = false;
+        for (int i = 0; i < CommonVars.GRID_HEIGHT; i++)
         {
-            shakeTimer = 0;
-            isShaking = false;
-            transform.position = originalPosition;
+            for (int j = 0; j < CommonVars.GRID_WIDTH; j++)
+            {
+                Stone stone = _puzzleBlocks[i][j];
+                if (stone.isColorBomb)
+                {
+                    RandomCleanBomb(i,j);
+                    hasBomb = true;
+                }
+                else if (stone.isHorizontalBomb)
+                {
+                    CleanHorizontalBomb(i, j);
+                    hasBomb = true;
+                }
+                else if (stone.isVerticalBomb)
+                {
+                    CleanVerticalBomb(i, j);
+                    hasBomb = true;
+                }
+            }
         }
+
+        return hasBomb;
     }
 
+    private void RandomCleanBomb(int posX, int posY)
+    {
+        int colorPicked = Random.Range(1, 6);
+                    
+        destroyedBlock = new int[CommonVars.GRID_HEIGHT,CommonVars.GRID_WIDTH] ;
+        for (int i = 0; i < CommonVars.GRID_HEIGHT; i++)
+        {
+            for (int j = 0; j < CommonVars.GRID_WIDTH; j++)
+            {
+                if (_blocks[i][j] == colorPicked)
+                {
+                    destroyedBlock[i, j] = CommonVars.MARK_DESTROYED;
+                    GameController.Instance.CreateTrailObject(_puzzleBlocks[posX][posY].transform.position,
+                        _puzzleBlocks[i][j].transform.position);
+                }
+            }
+        }
+        destroyedBlock[posX, posY] = CommonVars.MARK_DESTROYED;
+    }
+
+    private void CleanHorizontalBomb(int posX, int posY)
+    {
+        for (int index = 0; index < CommonVars.GRID_WIDTH; index++)
+        {
+            destroyedBlock[posX, index] = CommonVars.MARK_DESTROYED;
+        }
+
+        GameController.Instance.CreateSmokeObject(
+            _puzzleBlocks[posX][posY].transform.position,
+            _puzzleBlocks[posX][0].transform.position);
+        GameController.Instance.CreateSmokeObject(
+            _puzzleBlocks[posX][posY].transform.position,
+            _puzzleBlocks[posX][CommonVars.GRID_WIDTH - 1].transform.position);
+    }
+
+    private void CleanVerticalBomb(int posX, int posY)
+    {
+        for (int index = 0; index < CommonVars.GRID_HEIGHT; index++)
+        {
+            destroyedBlock[index, posY] = CommonVars.MARK_DESTROYED;
+        }
+        
+        GameController.Instance.CreateSmokeObject(
+            _puzzleBlocks[posX][posY].transform.position,
+            _puzzleBlocks[0][posY].transform.position);
+        GameController.Instance.CreateSmokeObject(
+            _puzzleBlocks[posX][posY].transform.position,
+            _puzzleBlocks[CommonVars.GRID_HEIGHT - 1][posY].transform.position);
+    }
+    
     #endregion
 }

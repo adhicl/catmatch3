@@ -1,5 +1,6 @@
 using System;
 using UnityEditor;
+using UnityEngine;
 
 public static class CommonVars
 {
@@ -18,7 +19,31 @@ public static class CommonVars
     {
         Menu,
         Play,
-        Pause
+        Pause,
+        Start,
+        Finish
     };
+
+    public static string GetValueString(float value)
+    {
+        if (value >= 1000)
+        {
+            double shorten = Mathf.Floor(value / 1000);
+            double rest = value % 1000;
+            return $"{shorten}.{rest}K";
+        }
+        else
+        {
+            return value.ToString();
+        }
+    }
+
+    public static String FloatToTimeString(float time)
+    {
+        float hour = time / 60;
+        float minute = time % 60;
+        
+        return hour.ToString("00")+":"+minute.ToString("00");
+    }
 
 }

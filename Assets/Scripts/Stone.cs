@@ -34,10 +34,13 @@ public class Stone : MonoBehaviour, IPuzzleBlock
         _firstLocalPosition = tmpPoint.rectTransform.localPosition;
     }
 
+    private void Start()
+    {
+        mainCamera ??= Camera.main;
+    }
 
     public void InitCat(int catNumber, int posX, int posY, bool horiBomb = false, bool vertiBomb = false, bool colorBomb = false)
     {
-        mainCamera ??= Camera.main;
         isHorizontalBomb = horiBomb;
         isVerticalBomb = vertiBomb;
         isColorBomb = colorBomb;
@@ -143,8 +146,11 @@ public class Stone : MonoBehaviour, IPuzzleBlock
     private Vector2 _touchPosition;
     private void OnMouseDown()
     {
-        _moved = true;
-        _touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        if (GameController.Instance._gameMode == CommonVars.GameMode.Play)
+        {
+            _moved = true;
+            _touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        }
     }
 
     private void OnMouseDrag()
