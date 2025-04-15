@@ -115,11 +115,11 @@ public class UIController : MonoBehaviour
 
     public void PauseButtonListener()
     {
-        if (GameController.Instance._gameMode == CommonVars.GameMode.Play ||
-            GameController.Instance._gameMode == CommonVars.GameMode.Pause)
-        {
+        //if (GameController.Instance._gameMode == CommonVars.GameMode.Play ||
+        //    GameController.Instance._gameMode == CommonVars.GameMode.Pause)
+        //{
             GameController.Instance.PauseGame();
-        }
+        //}
     }
 
     public void StartAnimateLevelText()

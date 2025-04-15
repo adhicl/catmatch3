@@ -32,6 +32,8 @@ public class PuzzleController : MonoBehaviour
     private int[,] filledBlock;
     
     private Vector3 originalPosition;
+
+    private bool isLocked = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -129,7 +131,7 @@ public class PuzzleController : MonoBehaviour
             _blocks[i] = new int[CommonVars.GRID_WIDTH];
             for (j = 0; j < CommonVars.GRID_WIDTH; j++)
             {
-                _blocks[i][j] = Random.Range(1, 6);
+                _blocks[i][j] = Random.Range(1, 5);
             }
         }
     }
@@ -645,7 +647,7 @@ public class PuzzleController : MonoBehaviour
 
         if (!onStart)
         {
-            SoundController.Instance.PlayRandomKittenSFX();
+            SoundController.Instance.PlayRandomPopSFX();
             GameController.Instance.AddStoneBreak(totalDestroyed);
             GameController.Instance.UpdateScore(totalScore);
 
@@ -685,7 +687,7 @@ public class PuzzleController : MonoBehaviour
             {
                 if (_blocks[i][j] == 0)
                 {
-                    _blocks[i][j] = Random.Range(1, 6);
+                    _blocks[i][j] = Random.Range(1, 5);
                 }
             }
         }
@@ -722,9 +724,9 @@ public class PuzzleController : MonoBehaviour
     
     public IEnumerator SequenceSwitchBlock(int curPosX,int curPosY,int nexPosX,int nexPosY)
     {
-        if (GameController.Instance._gameMode == CommonVars.GameMode.Play)
+        if (!isLocked)
         {
-            GameController.Instance._gameMode = CommonVars.GameMode.Pause;
+            isLocked = true;
         
             Stone curStone = _puzzleBlocks[curPosY][curPosX];
             Stone nexStone = _puzzleBlocks[nexPosY][nexPosX];
@@ -780,8 +782,8 @@ public class PuzzleController : MonoBehaviour
                 nexStone.gameObject.transform.DOLocalMove(nexPosition, 0.2f);
                 yield return new WaitForSeconds(.3f);
             }
-            
-            GameController.Instance._gameMode = CommonVars.GameMode.Play;
+
+            isLocked = false;
         }
     }
 
@@ -903,7 +905,7 @@ public class PuzzleController : MonoBehaviour
                     if (!isFound)
                     {
                         //if not found then create new one
-                        _blocks[i][j] = Random.Range(1, 6);
+                        _blocks[i][j] = Random.Range(1, 5);
                     
                         Stone newStone = _puzzleBlocks[i][j];
                         newStone.InitCat(_blocks[i][j], j, i);
@@ -937,6 +939,11 @@ public class PuzzleController : MonoBehaviour
 
     private IEnumerator CleanUpBombs()
     {
+        while (isLocked)
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
+        
         while (ExplodeAllBombs())
         {
             CleanMatchedBlocks();
@@ -991,7 +998,7 @@ public class PuzzleController : MonoBehaviour
 
     private void RandomCleanBomb(int posX, int posY)
     {
-        int colorPicked = Random.Range(1, 6);
+        int colorPicked = Random.Range(1, 5);
                     
         destroyedBlock = new int[CommonVars.GRID_HEIGHT,CommonVars.GRID_WIDTH] ;
         for (int i = 0; i < CommonVars.GRID_HEIGHT; i++)

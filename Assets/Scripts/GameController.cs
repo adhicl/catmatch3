@@ -51,6 +51,8 @@ public class GameController : MonoBehaviour
         levelScore = 1;
         maxUpgradeScore = 20f;
         curUpgradeScore = 0f;
+
+        ChangeLevelScore();
         
         BackFromMenu();
     }
@@ -98,8 +100,10 @@ public class GameController : MonoBehaviour
     private IEnumerator CountDown()
     {
         yield return new WaitForSeconds(0.1f);
+        SoundController.Instance.PlayRandomKittenSFX();
         UIController.Instance.StartAnimateReady();
         yield return new WaitForSeconds(1f);
+        SoundController.Instance.PlayRandomKittenSFX();
         UIController.Instance.StartAnimateGo();
         _gameMode = CommonVars.GameMode.Play;
     }
@@ -117,6 +121,7 @@ public class GameController : MonoBehaviour
     private IEnumerator FinishGame()
     {
         _gameMode = CommonVars.GameMode.Finish;
+        SoundController.Instance.PlayRandomKittenSFX();
         UIController.Instance.StartAnimateFinish();
         yield return new WaitForSeconds(1f);
         PuzzleController.Instance.DoStartFinish();
@@ -144,10 +149,12 @@ public class GameController : MonoBehaviour
         if (curUpgradeScore >= maxUpgradeScore)
         {
             //Debug.Log("Upgrading level "+levelScore);
-            curUpgradeScore -= maxUpgradeScore;
             levelScore++;
             ChangeLevelScore();
             
+            curUpgradeScore = Mathf.Floor(maxUpgradeScore / 2);
+            
+            SoundController.Instance.PlayRandomKittenSFX();
             UIController.Instance.StartAnimateLevelUp();
             UIController.Instance.StartAnimateLevelText();
         }
@@ -157,16 +164,16 @@ public class GameController : MonoBehaviour
     {
         switch (levelScore)
         {
-            case 1: maxUpgradeScore = 20; break;
-            case 2: maxUpgradeScore = 40; break;
-            case 3: maxUpgradeScore = 50; break;
-            case 4: maxUpgradeScore = 70; break;
-            case 5: maxUpgradeScore = 90; break;
-            case 6: maxUpgradeScore = 110; break;
-            case 7: maxUpgradeScore = 130; break;
-            case 8: maxUpgradeScore = 150; break;
-            case 9: maxUpgradeScore = 175; break;
-            case 10: maxUpgradeScore = 200; break;
+            case 1: maxUpgradeScore = 10; break;
+            case 2: maxUpgradeScore = 20; break;
+            case 3: maxUpgradeScore = 40; break;
+            case 4: maxUpgradeScore = 50; break;
+            case 5: maxUpgradeScore = 70; break;
+            case 6: maxUpgradeScore = 90; break;
+            case 7: maxUpgradeScore = 110; break;
+            case 8: maxUpgradeScore = 130; break;
+            case 9: maxUpgradeScore = 150; break;
+            case 10: maxUpgradeScore = 175; break;
             default: maxUpgradeScore = 200; break;
         }
     }

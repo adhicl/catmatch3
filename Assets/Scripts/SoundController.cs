@@ -24,6 +24,7 @@ public class SoundController : MonoBehaviour
     [SerializeField] AudioSource _audioSource;
     
     public AudioClip[] kittenClips;
+    public AudioClip[] popClips;
     public AudioClip[] bonusClips;
 
     private int clipNum = 0;
@@ -31,6 +32,11 @@ public class SoundController : MonoBehaviour
     {
         int rnd = Random.Range(0, kittenClips.Length);
         _audioSource.PlayOneShot(kittenClips[rnd]);
+    }
+    public void PlayRandomPopSFX()
+    {
+        int rnd = Random.Range(0, popClips.Length);
+        _audioSource.PlayOneShot(popClips[rnd]);
     }
 
     public void PlayBonusClip()

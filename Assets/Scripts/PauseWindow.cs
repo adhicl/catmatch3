@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseWindow : MonoBehaviour
@@ -32,12 +33,11 @@ public class PauseWindow : MonoBehaviour
 
     public void HomeButtonListener()
     {
-        
     }
 
     public void RestartButtonListener()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ContinueButtonListener()
