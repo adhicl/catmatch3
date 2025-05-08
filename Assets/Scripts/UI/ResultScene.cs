@@ -1,0 +1,299 @@
+using System;
+using System.Collections;
+using DG.Tweening;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class ResultScene : MonoBehaviour
+{
+    public GameSetting gameSetting;
+    
+    [SerializeField] private ScrollRect scrollRect;
+    
+    [SerializeField] private Button btnLeaderboard;
+    [SerializeField] private Button btnNext;
+
+    [SerializeField] private TextMeshProUGUI lblScore;
+    [SerializeField] private TextMeshProUGUI txtScore;
+    
+    [SerializeField] private TextMeshProUGUI lblHighScore;
+    [SerializeField] private GameObject newRibbonTransform;
+    [SerializeField] private TextMeshProUGUI txtHighScore;
+
+    [SerializeField] private GameObject[] objRewards;
+    [SerializeField] private TextMeshProUGUI[] lblRewards;
+    [SerializeField] private TextMeshProUGUI[] txtRewards;
+    [SerializeField] private Image[] goalRewards;
+    [SerializeField] private Slider[] slideRewards;
+
+    [SerializeField] private GameObject objUnlock;
+    [SerializeField] private Image imgUnlockCat;
+    [SerializeField] private GameObject lblUnlock;
+    [SerializeField] private Button btnNextUnlock;
+
+    [SerializeField] private ParticleSystem confettiL;
+    [SerializeField] private ParticleSystem confettiR;
+
+    [SerializeField] private AudioSource bgmMusic;
+
+    private void Start()
+    {
+        InitUI();
+        ChangeBGM();
+        StartCoroutine(AnimateScore());
+    }
+
+    private void ChangeBGM()
+    {
+        bgmMusic.volume = gameSetting.isMusicOn?0.4f:0f;
+    }
+
+    private void InitUI()
+    {
+        lblScore.gameObject.SetActive(false);
+        lblHighScore.gameObject.SetActive(false);
+        newRibbonTransform.gameObject.SetActive(false);
+
+        foreach (var t in objRewards)
+        {
+            t.SetActive(false);
+        }
+        
+        btnNext.gameObject.SetActive(false);
+        btnLeaderboard.gameObject.SetActive(false);
+        
+        //unlock 
+        objUnlock.SetActive(false);
+        lblUnlock.gameObject.SetActive(false);
+        btnNextUnlock.gameObject.SetActive(false);
+        imgUnlockCat.gameObject.SetActive(false);
+        
+        //on click listener
+        btnNext.onClick.AddListener(GoToTitle);
+        btnLeaderboard.onClick.AddListener(GoToLeaderboard);
+        btnNextUnlock.onClick.AddListener(GoToNextUnlock);
+    }
+
+    private void Update()
+    {
+        if (isDisplayScore)
+        {
+            _timeScore += Time.deltaTime;
+            txtScore.text = Mathf.Lerp(_displayScore, (float) gameSetting.curScore, _timeScore).ToString("N0");
+            if (_timeScore >= 1f) isDisplayScore = false;
+        }
+        
+        if (isDisplayReward)
+        {
+            _timeReward += Time.deltaTime;
+            _displayReward = Mathf.Lerp(_startReward, (float)_targetRewards[_posReward], _timeReward);
+            
+            txtRewards[_posReward].text =
+                _displayReward.ToString("N0") + " / " + _maxRewards[_posReward].ToString("N0");
+            slideRewards[_posReward].value = (float) _displayReward / _maxRewards[_posReward];
+            if (_timeReward >= 1f)
+            {
+                _timeReward = 0f;
+
+                if (_displayReward >= _maxRewards[_posReward])
+                {
+                    Sequence mySequence = DOTween.Sequence();
+                    mySequence.Append(goalRewards[_posReward].transform.DOScale(2f, 0.2f));
+                    mySequence.Append(goalRewards[_posReward].transform.DOScale(1f, 0.2f));
+                    hasRewardUnlock = true;
+                
+                    int unlockType = _posReward + 1;
+                    if (unlockType == (int)CommonVars.UnlockType.totalScore)
+                    {
+                        gameSetting.countAccumulatedClear++;
+                    }
+                    else if (unlockType == (int)CommonVars.UnlockType.highScore)
+                    {
+                        gameSetting.countHighscore++;
+                    }
+                    else if (unlockType == (int)CommonVars.UnlockType.dailyBonus)
+                    {
+                        gameSetting.countFinishDaily++;
+                    }
+                    
+                    SoundController.Instance.PlayChestClip();
+                }
+                
+                isDisplayReward = false;
+            }
+        }
+    }
+
+    private bool isDisplayScore = false;
+    private float _displayScore = 0f;
+    private float _timeScore = 0f;
+    
+    private bool isDisplayReward = false;
+    private float _startReward = 0f;
+    private float _displayReward = 0f;
+    private float _timeReward = 0f;
+    private int _posReward = 0;
+
+    private string[] _rewards = {"Accumulated Point", "High Score", "Daily Play"};
+    private float[] _targetRewards = {265000, 200000, 5};
+    private float[] _maxRewards = {500000, 200000, 7};
+
+    private bool hasRewardUnlock = false;
+    private IEnumerator AnimateScore()
+    {
+        hasRewardUnlock = false;
+        
+        PlayConfettiVFX();
+
+        lblHighScore.gameObject.SetActive(true);
+        txtHighScore.text = gameSetting.curHighScore.ToString("N0");
+        
+        lblScore.gameObject.SetActive(true);
+        isDisplayScore = true;
+        
+        yield return new WaitForSeconds(1f);
+
+        float prevHighscore = gameSetting.curHighScore;
+        if (gameSetting.curScore > gameSetting.curHighScore)
+        {
+            newRibbonTransform.SetActive(true);
+            gameSetting.curHighScore = gameSetting.curScore;
+            txtHighScore.text = gameSetting.curHighScore.ToString("N0");
+        
+            Sequence mySequence = DOTween.Sequence();
+            mySequence.Append(txtHighScore.transform.DOScale(1.3f, 0.2f));
+            mySequence.Append(txtHighScore.transform.DOScale(1f, 0.2f));
+
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        int totalRewardAdd = 3;
+        for (int i = 0; i < totalRewardAdd; i++)
+        {
+            _posReward = i;
+
+            objRewards[i].SetActive(true);
+            int unlockType = (i + 1);
+            if (unlockType == (int) CommonVars.UnlockType.totalScore)
+            {
+                _startReward = _displayReward = gameSetting.curAccumulatedScore;
+                gameSetting.curAccumulatedScore += (float) gameSetting.curScore;
+                _targetRewards[i] = gameSetting.curAccumulatedScore;
+
+                int count = gameSetting.countAccumulatedClear;
+                if (count >= CommonVars.AccumulatedScore.Length) count = CommonVars.AccumulatedScore.Length - 1;
+                _maxRewards[i] = CommonVars.AccumulatedScore[count];
+            }
+            else if (unlockType == (int) CommonVars.UnlockType.highScore)
+            {
+                _startReward = _displayReward = prevHighscore;
+                _targetRewards[i] = gameSetting.curHighScore;
+                
+                int count = gameSetting.countHighscore;
+                if (count >= CommonVars.HighScoreTarget.Length) count = CommonVars.HighScoreTarget.Length - 1;
+                _maxRewards[i] = CommonVars.HighScoreTarget[count];
+            }
+            else if (unlockType == (int) CommonVars.UnlockType.dailyBonus)
+            {
+                _startReward = _displayReward = gameSetting.dailyLoginBonus;
+                //will check if day change
+
+                _targetRewards[i] = 1;
+                _maxRewards[i] = 7;
+            }
+            
+            lblRewards[i].text = _rewards[i];
+            goalRewards[i].sprite = StoneFactory.Instance.GetCatSprite(i + 3);
+            txtRewards[i].text = _displayReward.ToString("N0")+" / "+_maxRewards[i].ToString("N0");
+            slideRewards[i].value = (float) _displayReward / _maxRewards[i];
+            
+            isDisplayReward = true;
+            _timeReward = 0f;
+            
+            Canvas.ForceUpdateCanvases();
+            scrollRect.content.GetComponent<VerticalLayoutGroup>().CalculateLayoutInputVertical() ;
+            scrollRect.content.GetComponent<ContentSizeFitter>().SetLayoutVertical() ;
+            scrollRect.verticalNormalizedPosition = 0;
+            
+            SoundController.Instance.PlayFillClip();
+            
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        if (hasRewardUnlock)
+        {
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(AnimateUnlock());
+        }
+        else
+        {
+            StartCoroutine(AnimateButton());
+        }
+    }
+
+    private IEnumerator AnimateButton()
+    {
+        btnLeaderboard.gameObject.SetActive(true);
+        btnNext.gameObject.SetActive(true);
+        
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    private IEnumerator AnimateUnlock()
+    {
+        objUnlock.SetActive(true);
+        SoundController.Instance.PlayUnlockClip();
+
+        lblUnlock.gameObject.SetActive(false);
+        btnNextUnlock.gameObject.SetActive(false);
+        imgUnlockCat.gameObject.SetActive(false);
+
+        Vector3 firstPosition = imgUnlockCat.transform.position;
+
+        imgUnlockCat.sprite = StoneFactory.Instance.GetCatSprite(4);
+        
+        imgUnlockCat.gameObject.SetActive(true);
+        imgUnlockCat.transform.position = firstPosition + new Vector3(0f, 100f, 0f);
+        imgUnlockCat.transform.DOMoveY(firstPosition.y, 0.5f).SetEase(Ease.OutBounce);
+
+        yield return new WaitForSeconds(0.5f);
+
+        PlayConfettiVFX();
+        lblUnlock.gameObject.SetActive(true);
+        
+        Sequence mySequence = DOTween.Sequence();
+        mySequence.Append(lblUnlock.transform.DOScale(1.4f, 0.2f));
+        mySequence.Append(lblUnlock.transform.DOScale(1f, 0.2f));
+        
+        btnNextUnlock.gameObject.SetActive(true);
+    }
+
+    private void PlayConfettiVFX()
+    {
+        confettiL.Play();
+        confettiR.Play();
+    }
+
+    private void GoToTitle()
+    {
+        SoundController.Instance.PlayButtonClip();
+        SceneManager.LoadSceneAsync("TitleScene");
+    }
+
+    private void GoToLeaderboard()
+    {
+        SoundController.Instance.PlayButtonClip();
+    }
+
+    private void GoToNextUnlock()
+    {
+        SoundController.Instance.PlayButtonClip();
+        
+        objUnlock.SetActive(false);
+        hasRewardUnlock = false;
+        StartCoroutine(AnimateButton());
+    }
+}

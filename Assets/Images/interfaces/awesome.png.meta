@@ -1,0 +1,1109 @@
+fileFormatVersion: 2
+guid: 6a2e2ea04af06f04ba51363159fa419d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Awesome_00000
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 1727
+        width: 3
+        height: 3
+      alignment: 9
+      pivot: {x: 180, y: -46.666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3161884ff14398b4992d9f767365758e
+      internalID: 212292650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00001
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1727
+        width: 853
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5041032, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b57edddb29f815c4aa523e742dee8225
+      internalID: -239764875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00002
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 1904
+        width: 867
+        height: 144
+      alignment: 9
+      pivot: {x: 0.49365628, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ca6219ced177a4b88e97b36e9f3d20
+      internalID: 15060305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00003
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1583
+        width: 857
+        height: 144
+      alignment: 9
+      pivot: {x: 0.4982497, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e50fe920480c7d547b7c5431de73463c
+      internalID: 1324426340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00004
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 1185
+        width: 853
+        height: 144
+      alignment: 9
+      pivot: {x: 0.50058615, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60aa56c5931c1c4b8f4fb49ee600e1b
+      internalID: -1990745746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00005
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 1472
+        width: 854
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b29a65b63bf51249876ffa663f44d35
+      internalID: 1325335405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00006
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1295
+        width: 855
+        height: 144
+      alignment: 9
+      pivot: {x: 0.49941522, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49ffed0d116d3a44aa1326853a3ad613
+      internalID: 1446051420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00007
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1439
+        width: 855
+        height: 144
+      alignment: 9
+      pivot: {x: 0.49941522, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f456be99a48704f9ca78ad0a2fbbfc
+      internalID: 91034908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00008
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 1616
+        width: 854
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ac6fa789ed8dbb479ab56635dec2e45
+      internalID: -125758987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00009
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 1760
+        width: 854
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10e0ad2577079c14b96281ad3ff9cc9f
+      internalID: 1717012582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00010
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1151
+        width: 854
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4311b30ec87d46e4ca1ceb6898f55f53
+      internalID: -462543651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00011
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 1329
+        width: 854
+        height: 143
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5034965}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 116fff72222c60641b31a48a6c12e5d0
+      internalID: 1744127644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00012
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1044
+        width: 853
+        height: 141
+      alignment: 9
+      pivot: {x: 0.49941385, y: 0.5106383}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e271035480397f4a93a6c50e96eacee
+      internalID: -1912285242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00013
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1877
+        width: 868
+        height: 171
+      alignment: 9
+      pivot: {x: 0.5080645, y: 0.42105263}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6676cc281f8e44041b0e9499ffcb4170
+      internalID: -1860507387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00014
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1009
+        width: 755
+        height: 142
+      alignment: 9
+      pivot: {x: 0.4344371, y: 0.5070422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00174fe8f877bbc478b3ead3223fdd51
+      internalID: 1897025110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00015
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 865
+        width: 594
+        height: 144
+      alignment: 9
+      pivot: {x: 0.28114477, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6860cfa55f719a4185ea147476c8414
+      internalID: 1877158106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00016
+      rect:
+        serializedVersion: 2
+        x: 1561
+        y: 872
+        width: 487
+        height: 144
+      alignment: 9
+      pivot: {x: 0.1211499, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abcfdd5d79a99b04c8ef0ff62ab3a55e
+      internalID: 2073732331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00017
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 900
+        width: 397
+        height: 144
+      alignment: 9
+      pivot: {x: -0.075566754, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69c7d6f59a8addb4d9a44b6b1d5f3f8f
+      internalID: -1135300849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00018
+      rect:
+        serializedVersion: 2
+        x: 1761
+        y: 1904
+        width: 287
+        height: 144
+      alignment: 9
+      pivot: {x: -0.48432055, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 890c9de593c0e304c9a3fa0d89e287a2
+      internalID: -1031918779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00019
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 1189
+        width: 137
+        height: 144
+      alignment: 9
+      pivot: {x: -2.2043796, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7540de36de9069846a944e62c29327f5
+      internalID: -1880979996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Awesome_00020
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 1727
+        width: 3
+        height: 3
+      alignment: 9
+      pivot: {x: 180, y: -46.666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30432e9618a2edd49a4a08fa3312ff5b
+      internalID: 803749672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00000
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 1727
+        width: 3
+        height: 3
+      alignment: 9
+      pivot: {x: 180, y: -46.666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ab1e4edcab5374090e408f97e8cd4f
+      internalID: 575220232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00001
+      rect:
+        serializedVersion: 2
+        x: 1542
+        y: 0
+        width: 506
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.48333332}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58a9e90f050685248bf5489a8b24a8b6
+      internalID: -2134382951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00002
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 505
+        height: 184
+      alignment: 9
+      pivot: {x: 0.4950495, y: 0.4728261}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 267813d708aab6d4289ffa8c8493ea5a
+      internalID: 386946488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00003
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 527
+        width: 499
+        height: 174
+      alignment: 9
+      pivot: {x: 0.501002, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffac6a6eff5cace4f99020228230b4f1
+      internalID: -1418039281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00004
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 0
+        width: 500
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c61ffa7fde8f394eabfbc42807f15ad
+      internalID: -1942561659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00005
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 180
+        width: 500
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78371b020cbe39f4caadc1c0bdc619ac
+      internalID: 640634124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00006
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 184
+        width: 500
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73864565f04c89f4d89f7fe5232c9d2b
+      internalID: 397831959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00007
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 0
+        width: 500
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b897a1c3ab432a940b9d675c39b6cef0
+      internalID: -174300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00008
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 0
+        width: 500
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 657480af02f9693428de19285890f674
+      internalID: 828885265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00009
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 0
+        width: 500
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c789586a1cd7e641b143075b3e9c7c5
+      internalID: -522725449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00010
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 0
+        width: 500
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77b58da546ac3294781e528d4c67e3b1
+      internalID: -1484435696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00011
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 0
+        width: 500
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7555cf2ef952a74085f352d27c0568c
+      internalID: 608521755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00012
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 490
+        width: 500
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce01988a5dea45f4eb3ae37b6506e0ae
+      internalID: -1743899655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00013
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 354
+        width: 500
+        height: 173
+      alignment: 9
+      pivot: {x: 0.5, y: 0.50289017}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0e22125edc18df4cb3ea8e1ea2e802c
+      internalID: 115849987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00014
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 701
+        width: 499
+        height: 171
+      alignment: 9
+      pivot: {x: 0.498998, y: 0.50877196}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 459ec7f9322cfc94786fc4d589449415
+      internalID: -250663020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00015
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 664
+        width: 512
+        height: 201
+      alignment: 9
+      pivot: {x: 0.51171875, y: 0.43283582}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f133beb0e4521c645a0cc92e225544b1
+      internalID: -1420106034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00016
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 174
+        width: 383
+        height: 172
+      alignment: 9
+      pivot: {x: 0.34725848, y: 0.50581396}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4af145e602c2d1d488bc27f4b8dbd7ac
+      internalID: 777961463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00017
+      rect:
+        serializedVersion: 2
+        x: 1726
+        y: 1016
+        width: 322
+        height: 173
+      alignment: 9
+      pivot: {x: 0.22360249, y: 0.50289017}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e8aa39496305ef47bc1b63059a2eb3a
+      internalID: 960969129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00018
+      rect:
+        serializedVersion: 2
+        x: 1826
+        y: 1732
+        width: 222
+        height: 172
+      alignment: 9
+      pivot: {x: -0.12162162, y: 0.50581396}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d649930531df1ac4a86acee7c56969d2
+      internalID: -524205404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00019
+      rect:
+        serializedVersion: 2
+        x: 1924
+        y: 1539
+        width: 124
+        height: 193
+      alignment: 9
+      pivot: {x: -1.0725807, y: 0.44559586}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6ff25236a1df844cafd8cf51100f35c
+      internalID: -1127887208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great_00020
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 1727
+        width: 3
+        height: 3
+      alignment: 9
+      pivot: {x: 180, y: -46.666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15f1ac89f6bda2b499cc1468d1722f29
+      internalID: -1002508758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 67addcaf0771f894582ab7209caff416
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Awesome_00000: 212292650
+      Awesome_00001: -239764875
+      Awesome_00002: 15060305
+      Awesome_00003: 1324426340
+      Awesome_00004: -1990745746
+      Awesome_00005: 1325335405
+      Awesome_00006: 1446051420
+      Awesome_00007: 91034908
+      Awesome_00008: -125758987
+      Awesome_00009: 1717012582
+      Awesome_00010: -462543651
+      Awesome_00011: 1744127644
+      Awesome_00012: -1912285242
+      Awesome_00013: -1860507387
+      Awesome_00014: 1897025110
+      Awesome_00015: 1877158106
+      Awesome_00016: 2073732331
+      Awesome_00017: -1135300849
+      Awesome_00018: -1031918779
+      Awesome_00019: -1880979996
+      Awesome_00020: 803749672
+      Great_00000: 575220232
+      Great_00001: -2134382951
+      Great_00002: 386946488
+      Great_00003: -1418039281
+      Great_00004: -1942561659
+      Great_00005: 640634124
+      Great_00006: 397831959
+      Great_00007: -174300002
+      Great_00008: 828885265
+      Great_00009: -522725449
+      Great_00010: -1484435696
+      Great_00011: 608521755
+      Great_00012: -1743899655
+      Great_00013: 115849987
+      Great_00014: -250663020
+      Great_00015: -1420106034
+      Great_00016: 777961463
+      Great_00017: 960969129
+      Great_00018: -524205404
+      Great_00019: -1127887208
+      Great_00020: -1002508758
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

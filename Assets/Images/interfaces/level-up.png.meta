@@ -1,0 +1,626 @@
+fileFormatVersion: 2
+guid: a288b32defd3096429be41f10088dfb7
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Level_Up_00000
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2045
+        width: 3
+        height: 3
+      alignment: 9
+      pivot: {x: 180, y: -46.666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d265114854782734194860f1ea02849b
+      internalID: -1103212793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00001
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 645
+        width: 736
+        height: 214
+      alignment: 9
+      pivot: {x: 0.51766306, y: 0.42056075}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 048718cea0a814f4396d8464502f55ee
+      internalID: -330608488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00002
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 859
+        width: 747
+        height: 207
+      alignment: 9
+      pivot: {x: 0.5113788, y: 0.4347826}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 744df5466aeaa2446af3b8671cd9aedc
+      internalID: 1079043058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00003
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 1641
+        width: 737
+        height: 186
+      alignment: 9
+      pivot: {x: 0.5183175, y: 0.48387095}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f23196407b61936459b864b9b6f35f0b
+      internalID: 81170294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00004
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 875
+        width: 735
+        height: 191
+      alignment: 9
+      pivot: {x: 0.5197279, y: 0.4712042}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89f9fbc7ee82cad4fa7c3ec3d8a01402
+      internalID: -1251458256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00005
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1446
+        width: 737
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5183175, y: 0.47368422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe7ec6a7e16135c4dbfcb3603e466fb0
+      internalID: 1988299191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00006
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 1446
+        width: 737
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5183175, y: 0.47368422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7a7acf49f80d6345815d460103de891
+      internalID: 464164291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00007
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1256
+        width: 737
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5183175, y: 0.47368422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00adde1f2b11cbd4e8930d4ba5587a4d
+      internalID: 1010689006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00008
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1256
+        width: 737
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5183175, y: 0.47368422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 148221ed851dd2048ab0787f8fa9808d
+      internalID: 502970141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00009
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1256
+        width: 737
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5183175, y: 0.47368422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4ef57c976cfe544b92e218532415326
+      internalID: -1868771884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00010
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 1066
+        width: 738
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5189702, y: 0.47368422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 931338175008b0a47ad2546a2751643c
+      internalID: 402097001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00011
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 1256
+        width: 737
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5183175, y: 0.47368422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99e9f5b467f6ecf498ddfdbc5b74dbb5
+      internalID: 398845107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00012
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1066
+        width: 737
+        height: 190
+      alignment: 9
+      pivot: {x: 0.5183175, y: 0.47368422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d1a326967c1a434fb2956857e4cf891
+      internalID: -279949293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00013
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 649
+        width: 747
+        height: 210
+      alignment: 9
+      pivot: {x: 0.52476573, y: 0.42857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c31448b9c4dcf8443a43185e3e6c1e45
+      internalID: 1856750820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00014
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1636
+        width: 665
+        height: 191
+      alignment: 9
+      pivot: {x: 0.46616542, y: 0.4712042}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee27c29cb845c87479c630c1e6c354d8
+      internalID: 878157688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00015
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 1859
+        width: 569
+        height: 189
+      alignment: 9
+      pivot: {x: 0.37609842, y: 0.47619048}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b4e9d4dc751a344382e592e7738b6fc
+      internalID: 1517152021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00016
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 1861
+        width: 467
+        height: 187
+      alignment: 9
+      pivot: {x: 0.23982869, y: 0.48128343}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1340f53f7fb30e428b7c8b3f52eec45
+      internalID: -746246215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00017
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1827
+        width: 356
+        height: 221
+      alignment: 9
+      pivot: {x: 0.0028089888, y: 0.40723982}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6a3251ac46104d40956348f13b17de4
+      internalID: 1700338138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00018
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 1838
+        width: 288
+        height: 210
+      alignment: 9
+      pivot: {x: -0.22916667, y: 0.42857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 814591e7788c1f74e88c0951dd3d9e2c
+      internalID: 1851772356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00019
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1839
+        width: 176
+        height: 209
+      alignment: 9
+      pivot: {x: -1.0852273, y: 0.42105263}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae259521ff4a5bc41a1aeb92e722f0cd
+      internalID: -912522490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level_Up_00020
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2045
+        width: 3
+        height: 3
+      alignment: 9
+      pivot: {x: 180, y: -46.666668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fe72503cfc632a47b1118ca5584947f
+      internalID: -1360991712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 01af857ea99e29f408235a211d180560
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Level_Up_00000: -1103212793
+      Level_Up_00001: -330608488
+      Level_Up_00002: 1079043058
+      Level_Up_00003: 81170294
+      Level_Up_00004: -1251458256
+      Level_Up_00005: 1988299191
+      Level_Up_00006: 464164291
+      Level_Up_00007: 1010689006
+      Level_Up_00008: 502970141
+      Level_Up_00009: -1868771884
+      Level_Up_00010: 402097001
+      Level_Up_00011: 398845107
+      Level_Up_00012: -279949293
+      Level_Up_00013: 1856750820
+      Level_Up_00014: 878157688
+      Level_Up_00015: 1517152021
+      Level_Up_00016: -746246215
+      Level_Up_00017: 1700338138
+      Level_Up_00018: 1851772356
+      Level_Up_00019: -912522490
+      Level_Up_00020: -1360991712
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

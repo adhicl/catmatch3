@@ -1,11 +1,32 @@
 version: 2
 tpsheetFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
+- Assets/Images/interfaces/awesome.tpsheet
+- Assets/Images/interfaces/finish-go.tpsheet
+- Assets/Images/interfaces/interface.tpsheet
+- Assets/Images/interfaces/level-up.tpsheet
+- Assets/Images/interfaces/marvelous.tpsheet
+- Assets/Images/interfaces/super-ready.tpsheet
+- Assets/Images/interfaces/text_popup.tpsheet
 - Assets/Images/sprites/cats.tpsheet
 textureFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.png
+- Assets/Images/interfaces/awesome.png
+- Assets/Images/interfaces/finish-go.png
+- Assets/Images/interfaces/interface.png
+- Assets/Images/interfaces/level-up.png
+- Assets/Images/interfaces/marvelous.png
+- Assets/Images/interfaces/super-ready.png
+- Assets/Images/interfaces/text_popup.png
 - Assets/Images/sprites/cats.png
 normalmapFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
+- 
+- 
+- 
+- 
+- 
+- 
+- 
 - 
 enableDebugOutput: 0
