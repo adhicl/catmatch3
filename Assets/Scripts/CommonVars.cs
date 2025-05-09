@@ -9,7 +9,7 @@ public static class CommonVars
     public const int GRID_HEIGHT = 7;
     public const float THRESHOLD_MOVE = .5f;
 
-    public const int MARK_FILLED = -1;
+    public const int MARK_FILLED = 0;
     public const int MARK_DESTROYED = -1;
     public const int MARK_HORIZONTAL_BOMB = -2;
     public const int MARK_VERTICAL_BOMB = -3;

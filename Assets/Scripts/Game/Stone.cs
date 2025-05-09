@@ -12,7 +12,7 @@ public class Stone : MonoBehaviour, IPuzzleBlock
     [SerializeField] TextMeshProUGUI tmpPoint;
 
     private GameObject _catObject;
-    //private Animator _animator;
+    private Animator _animator;
 
     public int _catType;
 
@@ -37,8 +37,6 @@ public class Stone : MonoBehaviour, IPuzzleBlock
     {
         mainCamera ??= Camera.main;
     }
-    
-    private Vector2 initialSize = new Vector2(0.6f, 0.6f);
 
     public void InitCat(int catNumber, int posX, int posY, bool horiBomb = false, bool vertiBomb = false,
         bool colorBomb = false)
@@ -80,6 +78,7 @@ public class Stone : MonoBehaviour, IPuzzleBlock
         this.transform.localScale = Vector3.one;
         
         _catObject = stone.gameObject;
+        _animator = stone.GetComponent<Animator>();
         
         SetBlock(posX, posY);
     }
@@ -110,7 +109,7 @@ public class Stone : MonoBehaviour, IPuzzleBlock
 
         StartCoroutine(HidePuzzle());
     }
-
+    
     public void PlayUpgrade(bool horiBomb = false, bool vertiBomb = false, bool colorBomb = false)
     {
         isHorizontalBomb = horiBomb;
