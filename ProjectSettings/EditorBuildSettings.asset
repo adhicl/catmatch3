@@ -17,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TitleScene.unity
     guid: e2a3b57562416984199126552aad7e81
-  - enabled: 0
-    path: Assets/Scenes/TitleNoAnimationScene.unity
-    guid: 6ec80bbe9e1e3a3418013e9b5430bce5
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 2266b6208b17cd142a471a9ea8afebb0, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: e1557e0fec9892d46a315040c5369354, type: 2}
