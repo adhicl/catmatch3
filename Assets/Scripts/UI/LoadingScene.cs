@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
@@ -10,6 +13,8 @@ using UnityEngine.UI;
 
 public class LoadingScene : MonoBehaviour
 {
+    public GameSetting gameSetting;
+    
     private AsyncOperationHandle m_SceneHandle;
 
     public AssetReference[] locations;
@@ -19,14 +24,10 @@ public class LoadingScene : MonoBehaviour
     void Start()
     {
         CommonVars.StartGame = true;
-        StoneFactory.Instance.Ready.AddListener(GoToNextLevel);
-        //m_SceneHandle = Addressables.DownloadDependenciesAsync("GameScene", true);
-        //m_SceneHandle.Completed += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        //m_SceneHandle.Completed -= OnSceneLoaded;
+        StoneFactory.Instance.Ready.AddListener(StoneFactory_Ready);
+        
+        gameSetting.LoadData();
+        UnityServiceController.Instance.dUserSignedIn += OnUserSignedIn;
     }
 
     private void OnSceneLoaded(AsyncOperationHandle obj)
@@ -37,16 +38,24 @@ public class LoadingScene : MonoBehaviour
         }
     }
 
+    private void StoneFactory_Ready()
+    {
+        Debug.Log("Sign up anonymously");
+        UnityServiceController.Instance.SignUpAnonymouslyAsync();
+    }
+
+    private void OnUserSignedIn()
+    {
+        GoToNextLevel();
+    }
+
     private void GoToNextLevel()
     {
         SceneManager.LoadSceneAsync("GameScene");
-        //Addressables.LoadSceneAsync("GameScene", UnityEngine.SceneManagement.LoadSceneMode.Single, true);
     }
 
     private void Update()
     {
         m_LoadingSlider.value = StoneFactory.Instance.GetLoadPercentage();
-        // We don't need to check for this value every single frame, and certainly not after the scene has been loaded
-        //m_LoadingSlider.value = m_SceneHandle.PercentComplete;
     }
 }

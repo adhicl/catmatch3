@@ -884,7 +884,7 @@ public class PuzzleController : MonoBehaviour
         }
         
         yield return new WaitForSeconds(1f);
-        GameController.Instance.ChangeSceneResult();
+        GameController.Instance.CheckSwitchScene();
     }
 
     private bool ExplodeAllBombs()

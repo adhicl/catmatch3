@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Newtonsoft.Json;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,15 +14,25 @@ public class TitleScene : MonoBehaviour
     public GameSetting gameSetting;
     [SerializeField] private GameObject objTitle;
     
+    [Header("Main Menu")]
     [SerializeField] private GameObject objHighscore;
     [SerializeField] private TextMeshProUGUI txtHighscore;
     
     [SerializeField] private Button btnPlay;
     [SerializeField] private Button btnShop;
     [SerializeField] private Button btnLeaderboard;
-    
-    [SerializeField] CustomWindow customWindow;
 
+    [Header("Leaderboard")]
+    [SerializeField] private GameObject objLeaderboard;
+    [SerializeField] private LeaderboardPanel[] panelsLeaderboard;
+    [SerializeField] private Button btnNextLeaderboard;
+    
+    [Header("Custom board")]
+    [SerializeField] CustomWindow customWindow;
+    
+    [Header("Loading")] [SerializeField] private GameObject objLoading;
+
+    [Header("Data")]
     [SerializeField] private AudioSource bgmMusic;
 
     public bool animateStart = true;
@@ -33,10 +46,14 @@ public class TitleScene : MonoBehaviour
         btnLeaderboard.gameObject.SetActive(false);
         customWindow.gameObject.SetActive(false);
         
+        objLeaderboard.gameObject.SetActive(false);
+        ShowLoading(false);
+        
         //listener
         btnPlay.onClick.AddListener(GoToPlay);
         btnShop.onClick.AddListener(GoToShop);
         btnLeaderboard.onClick.AddListener(GoToLeaderboard);
+        btnNextLeaderboard.onClick.AddListener(CloseLeaderboard);
         
         if (CommonVars.AnimateStart)
         {
@@ -49,6 +66,13 @@ public class TitleScene : MonoBehaviour
         }
         
         ChangeBGM();
+
+        UnityServiceController.Instance.dLeaderboardResult += ShowLeaderboard;
+    }
+
+    private void OnDestroy()
+    {
+        UnityServiceController.Instance.dLeaderboardResult -= ShowLeaderboard;
     }
 
     private void ChangeBGM()
@@ -95,6 +119,7 @@ public class TitleScene : MonoBehaviour
     private void GoToPlay()
     {
         SoundController.Instance.PlayButtonClip();
+        gameSetting.curScore = 0;
         SceneManager.LoadSceneAsync("GameScene");
     }
 
@@ -108,5 +133,40 @@ public class TitleScene : MonoBehaviour
     private void GoToLeaderboard()
     {
         SoundController.Instance.PlayButtonClip();
+        
+        //zShowLeaderboard();
+        ShowLoading(true);
+        UnityServiceController.Instance.GetPaginatedScores();
+    }
+
+    private void ShowLeaderboard(string result)
+    {
+        ShowLoading(false);
+        objLeaderboard.SetActive(true);
+        foreach (var leaderboard in panelsLeaderboard)
+        {
+            leaderboard.gameObject.SetActive(false);
+        }
+
+        int num = 0;
+        var jsonResult = JsonConvert.DeserializeObject<CommonVars.LeaderboardResult>(result);
+        //Debug.Log(jsonResult.results.Length);
+        foreach (var fill in jsonResult.results)
+        {
+            panelsLeaderboard[num].SetPanel(fill.rank, fill.playerName, fill.score);
+            panelsLeaderboard[num].gameObject.SetActive(true);
+            num++;
+        }
+    }
+
+    private void CloseLeaderboard()
+    {
+        SoundController.Instance.PlayButtonClip();
+        objLeaderboard.gameObject.SetActive(false);
+    }
+
+    private void ShowLoading(bool show)
+    {
+        objLoading.gameObject.SetActive(show);
     }
 }

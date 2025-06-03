@@ -34,13 +34,12 @@ MonoBehaviour:
   - Sprite_Cat4
   - Sprite_Cat5
   - Sprite_Cat6
-  hasShowTutorial: 0
+  hasShowTutorial: 1
   isSoundOn: 1
   isMusicOn: 1
-  curScore: 89300
-  curHighScore: 89300
-  isNewHighScore: 1
-  curAccumulatedScore: 89300
+  curScore: 8200
+  curHighScore: 8200
+  curAccumulatedScore: 8200
   dailyLoginBonus: 0
   countAccumulatedClear: 0
   countHighscore: 0
@@ -66,3 +65,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: acb8d2fe6e058b449831b8b82474e2df, type: 2}
   - {fileID: 11400000, guid: 41f17b9ba76a7bb478d1aac78df7b2d5, type: 2}
   - {fileID: 11400000, guid: 1a4539a8d6f15c94f9e4526c48dfc9b9, type: 2}
+  curPlayerId: E5XTHa6GTXRgjO873Mh8ryhYgmAh
+  curPlayerName: adhicl#9404

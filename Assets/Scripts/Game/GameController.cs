@@ -144,7 +144,21 @@ public class GameController : MonoBehaviour
         gameSetting.curScore = scorePlay;
     }
 
-    public void ChangeSceneResult()
+    public void CheckSwitchScene()
+    {
+        Debug.Log("Check Switch Scene '" + gameSetting.curPlayerName + "'");
+        if (gameSetting.curPlayerName.ToString() == "")
+        {
+            SoundController.Instance.PlayBonusClip();
+            UIController.Instance.ShowEnterPlayerName();
+        }
+        else
+        {
+            ChangeSceneResult();
+        }
+    }
+
+    private void ChangeSceneResult()
     {
         UpdateSettingBeforeMoving();
         

@@ -75,4 +75,17 @@ public static class CommonVars
         // return hour.ToString("00")+":"+minute.ToString("00");
     }
 
+    public class NewLeaderboardResult
+    {
+        public string playerId;
+        public string playerName;
+        public int rank;
+        public float score;
+    }
+
+    public class LeaderboardResult
+    {
+        public NewLeaderboardResult[] results;
+    }
+
 }

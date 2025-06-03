@@ -1,9 +1,9 @@
-using System;
 using System.Collections;
 using DG.Tweening;
+using Newtonsoft.Json;
 using TMPro;
+using UI;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,8 +14,10 @@ public class ResultScene : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect;
     
     [SerializeField] private Button btnLeaderboard;
-    [SerializeField] private Button btnNext;
+    [SerializeField] private Button btnRetry;
+    [SerializeField] private Button btnHome;
 
+    [Header("Score")]
     [SerializeField] private TextMeshProUGUI lblScore;
     [SerializeField] private TextMeshProUGUI txtScore;
     
@@ -23,21 +25,36 @@ public class ResultScene : MonoBehaviour
     [SerializeField] private GameObject newRibbonTransform;
     [SerializeField] private TextMeshProUGUI txtHighScore;
 
+    [Header("Reward")]
     [SerializeField] private GameObject[] objRewards;
     [SerializeField] private TextMeshProUGUI[] lblRewards;
     [SerializeField] private TextMeshProUGUI[] txtRewards;
     [SerializeField] private Image[] goalRewards;
     [SerializeField] private Slider[] slideRewards;
 
+    [Header("Rank")] 
+    [SerializeField] private GameObject objRank;
+    [SerializeField] private TextMeshProUGUI txtRank;
+    [SerializeField] private Button btnRank;
+
+    [Header("Leaderboard")]
+    [SerializeField] private GameObject objLeaderboard;
+    [SerializeField] private LeaderboardPanel[] panelsLeaderboard;
+    [SerializeField] private Button btnNextLeaderboard;
+
+    [Header("Unlock")]
     [SerializeField] private GameObject objUnlock;
     [SerializeField] private Image imgUnlockCat;
     [SerializeField] private GameObject lblUnlock;
     [SerializeField] private Button btnNextUnlock;
 
+    [Header("VFX")]
     [SerializeField] private ParticleSystem confettiL;
     [SerializeField] private ParticleSystem confettiR;
-
     [SerializeField] private AudioSource bgmMusic;
+
+    [Header("Loading")] [SerializeField] private GameObject objLoading;
+
 
     private void Start()
     {
@@ -62,7 +79,8 @@ public class ResultScene : MonoBehaviour
             t.SetActive(false);
         }
         
-        btnNext.gameObject.SetActive(false);
+        btnHome.gameObject.SetActive(false);
+        btnRetry.gameObject.SetActive(false);
         btnLeaderboard.gameObject.SetActive(false);
         
         //unlock 
@@ -70,11 +88,32 @@ public class ResultScene : MonoBehaviour
         lblUnlock.gameObject.SetActive(false);
         btnNextUnlock.gameObject.SetActive(false);
         imgUnlockCat.gameObject.SetActive(false);
+
+        //rank
+        objRank.gameObject.SetActive(false);
+        
+        //leaderboard
+        objLeaderboard.SetActive(false);
+        
+        //loading
+        objLoading.gameObject.SetActive(false);
         
         //on click listener
-        btnNext.onClick.AddListener(GoToTitle);
+        btnHome.onClick.AddListener(GoToTitle);
         btnLeaderboard.onClick.AddListener(GoToLeaderboard);
+        btnRetry.onClick.AddListener(RetryGame);
         btnNextUnlock.onClick.AddListener(GoToNextUnlock);
+        btnRank.onClick.AddListener(ShowLeaderboardNext);
+        btnNextLeaderboard.onClick.AddListener(ContinueToReward);
+
+        UnityServiceController.Instance.dLeaderboardResult += ShowLeaderboard;
+        UnityServiceController.Instance.dLeaderboardSentResult += ShowRank;
+    }
+
+    private void OnDestroy()
+    {
+        UnityServiceController.Instance.dLeaderboardResult -= ShowLeaderboard;
+        UnityServiceController.Instance.dLeaderboardSentResult -= ShowRank;
     }
 
     private void Update()
@@ -144,6 +183,7 @@ public class ResultScene : MonoBehaviour
     private bool hasRewardUnlock = false;
     private IEnumerator AnimateScore()
     {
+        bool hasNewHighScore = false;
         hasRewardUnlock = false;
         
         PlayConfettiVFX();
@@ -167,6 +207,8 @@ public class ResultScene : MonoBehaviour
             mySequence.Append(txtHighScore.transform.DOScale(1.3f, 0.2f));
             mySequence.Append(txtHighScore.transform.DOScale(1f, 0.2f));
 
+            hasNewHighScore = true;
+            
             yield return new WaitForSeconds(0.5f);
         }
 
@@ -223,6 +265,21 @@ public class ResultScene : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }
 
+        hasNewHighScore = true;
+        if (hasNewHighScore)
+        {
+            //update high score to leaderboard
+            UnityServiceController.Instance.AddScore(gameSetting.curHighScore);
+            ShowLoading(true);
+        }
+        else
+        {
+            StartCoroutine(AnimateReward());
+        }
+    }
+
+    private IEnumerator AnimateReward()
+    {
         if (hasRewardUnlock)
         {
             yield return new WaitForSeconds(0.5f);
@@ -237,9 +294,10 @@ public class ResultScene : MonoBehaviour
     private IEnumerator AnimateButton()
     {
         btnLeaderboard.gameObject.SetActive(true);
-        btnNext.gameObject.SetActive(true);
+        btnRetry.gameObject.SetActive(true);
+        btnHome.gameObject.SetActive(true);
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0f);
     }
 
     private IEnumerator AnimateUnlock()
@@ -271,6 +329,11 @@ public class ResultScene : MonoBehaviour
         btnNextUnlock.gameObject.SetActive(true);
     }
 
+    private void ShowLoading(bool show)
+    {
+        objLoading.gameObject.SetActive(show);
+    }
+
     private void PlayConfettiVFX()
     {
         confettiL.Play();
@@ -286,6 +349,21 @@ public class ResultScene : MonoBehaviour
     private void GoToLeaderboard()
     {
         SoundController.Instance.PlayButtonClip();
+        
+        //zShowLeaderboard();
+        ShowLoading(true);
+        UnityServiceController.Instance.GetPaginatedScores();
+    }
+
+    private void ShowLeaderboardNext()
+    {
+        SoundController.Instance.PlayButtonClip();
+        
+        objRank.gameObject.SetActive(false);
+        //zShowLeaderboard();
+        ShowLoading(true);
+        UnityServiceController.Instance.GetPaginatedScores();
+        
     }
 
     private void GoToNextUnlock()
@@ -295,5 +373,52 @@ public class ResultScene : MonoBehaviour
         objUnlock.SetActive(false);
         hasRewardUnlock = false;
         StartCoroutine(AnimateButton());
+    }
+
+    private void ShowLeaderboard(string result)
+    {
+        ShowLoading(false);
+        objLeaderboard.SetActive(true);
+        foreach (var leaderboard in panelsLeaderboard)
+        {
+            leaderboard.gameObject.SetActive(false);
+        }
+
+        int num = 0;
+        var jsonResult = JsonConvert.DeserializeObject<CommonVars.LeaderboardResult>(result);
+        //Debug.Log(jsonResult.results.Length);
+        foreach (var fill in jsonResult.results)
+        {
+            panelsLeaderboard[num].SetPanel(fill.rank, fill.playerName, fill.score);
+            panelsLeaderboard[num].gameObject.SetActive(true);
+            num++;
+        }
+    }
+
+    private void ShowRank(string result)
+    {
+        SoundController.Instance.PlayUnlockClip();
+        PlayConfettiVFX();
+        ShowLoading(false);
+
+        var jsonResult = JsonConvert.DeserializeObject<CommonVars.NewLeaderboardResult>(result);
+        //Debug.Log(jsonResult.playerName);
+        //Debug.Log(jsonResult.rank);
+        objRank.SetActive(true);
+        txtRank.text = (jsonResult.rank + 1).ToString();
+    }
+
+    private void ContinueToReward()
+    {
+        SoundController.Instance.PlayButtonClip();
+        objLeaderboard.gameObject.SetActive(false);
+        StartCoroutine(AnimateReward());
+    }
+
+    private void RetryGame()
+    {
+        SoundController.Instance.PlayButtonClip();
+        gameSetting.curScore = 0f;
+        SceneManager.LoadSceneAsync("GameScene");
     }
 }

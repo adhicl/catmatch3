@@ -25,6 +25,7 @@ public class UIController : MonoBehaviour
 
     #endregion
     
+    [Header("Gameplay")]
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI timeLeftText;
     [SerializeField] RectTransform levelImage;
@@ -32,14 +33,22 @@ public class UIController : MonoBehaviour
     [SerializeField] Slider filledBarUpgrade;
     // [SerializeField] RectTransform fillBarEmpty;
 
+    [Header("Tutorial")]
     [SerializeField] private GameObject objStart;
     [SerializeField] private Transform startInfoPnl;
     [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private Button playButton;
 
+    [Header("Pause")]
     [SerializeField] Button pauseButton;
     [SerializeField] private GameObject pauseWindow;
     
+    [Header("EnterName")]
+    [SerializeField] private GameObject objEnterName;
+    [SerializeField] private TMP_InputField inputEnterName;
+    [SerializeField] private Button btnEnterName;
+    
+    [Header("VFX Message")]
     [SerializeField] GameObject ReadyMsg;
     [SerializeField] GameObject GoMsg;
     [SerializeField] GameObject LevelUpMsg;
@@ -63,10 +72,14 @@ public class UIController : MonoBehaviour
         SuperMsg.SetActive(false);
         MarvelousMsg.SetActive(false);
         objStart.gameObject.SetActive(false);
+        objEnterName.gameObject.SetActive(false);
 
         pauseWindow.SetActive(false);
         pauseButton.onClick.AddListener(PauseButtonListener);
         playButton.onClick.AddListener(PlayButtonListener);
+        
+        btnEnterName.onClick.AddListener(EnterNameButtonListener);
+        inputEnterName.onValueChanged.AddListener(InputEnterNameListener);
 
         timePlaySound = 5;
 
@@ -261,5 +274,27 @@ public class UIController : MonoBehaviour
         highScoreText.text = GameController.Instance.gameSetting.curHighScore.ToString("N0");
         
         startInfoPnl.transform.DOLocalMoveX(0f, 0.5f).SetEase(Ease.OutBounce);
+    }
+
+    public void ShowEnterPlayerName()
+    {
+        objEnterName.gameObject.SetActive(true);
+        inputEnterName.text = "";
+        btnEnterName.interactable = false;
+    }
+
+    private void InputEnterNameListener(string inputName)
+    {
+        string playerName = inputName.Trim();
+        if (playerName.Length > 3) btnEnterName.interactable = true;
+    }
+
+    private void EnterNameButtonListener()
+    {
+        GameController.Instance.gameSetting.curPlayerName = inputEnterName.text.Trim();
+        SoundController.Instance.PlayButtonClip();
+        objEnterName.gameObject.SetActive(true);
+        UnityServiceController.Instance.RenamePlayer(inputEnterName.text.Trim());
+        GameController.Instance.CheckSwitchScene();
     }
 }

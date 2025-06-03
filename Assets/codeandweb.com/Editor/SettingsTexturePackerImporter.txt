@@ -4,6 +4,7 @@ tpsheetFileNames:
 - Assets/Images/interfaces/awesome.tpsheet
 - Assets/Images/interfaces/finish-go.tpsheet
 - Assets/Images/interfaces/interface.tpsheet
+- Assets/Images/interfaces/levelup.tpsheet
 - Assets/Images/interfaces/level-up.tpsheet
 - Assets/Images/interfaces/marvelous.tpsheet
 - Assets/Images/interfaces/super-ready.tpsheet
@@ -14,6 +15,7 @@ textureFileNames:
 - Assets/Images/interfaces/awesome.png
 - Assets/Images/interfaces/finish-go.png
 - Assets/Images/interfaces/interface.png
+- Assets/Images/interfaces/levelup.png
 - Assets/Images/interfaces/level-up.png
 - Assets/Images/interfaces/marvelous.png
 - Assets/Images/interfaces/super-ready.png
@@ -21,6 +23,7 @@ textureFileNames:
 - Assets/Images/sprites/cats.png
 normalmapFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
+- 
 - 
 - 
 - 
