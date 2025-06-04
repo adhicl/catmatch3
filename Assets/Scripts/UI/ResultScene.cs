@@ -264,8 +264,10 @@ public class ResultScene : MonoBehaviour
             
             yield return new WaitForSeconds(1.5f);
         }
+        
+        gameSetting.SaveData();
 
-        hasNewHighScore = true;
+        //hasNewHighScore = true;
         if (hasNewHighScore)
         {
             //update high score to leaderboard
@@ -327,6 +329,8 @@ public class ResultScene : MonoBehaviour
         mySequence.Append(lblUnlock.transform.DOScale(1f, 0.2f));
         
         btnNextUnlock.gameObject.SetActive(true);
+        
+        gameSetting.SaveData();
     }
 
     private void ShowLoading(bool show)
@@ -419,6 +423,8 @@ public class ResultScene : MonoBehaviour
     {
         SoundController.Instance.PlayButtonClip();
         gameSetting.curScore = 0f;
+        
+        gameSetting.SaveData();
         SceneManager.LoadSceneAsync("GameScene");
     }
 }

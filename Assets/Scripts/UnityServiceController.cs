@@ -55,12 +55,14 @@ public class UnityServiceController : MonoBehaviour
 
         AuthenticationService.Instance.SignedIn += UserSignedIn;
         
+        #if UNITY_EDITOR
         //if start from game scene
         if (SceneManager.GetActiveScene().name != "LoadingScene")
         {
             gameSetting.Reset();
             SignUpAnonymouslyAsync();
         }
+        #endif
     }
 
     private void UserSignedIn()
@@ -90,6 +92,7 @@ public class UnityServiceController : MonoBehaviour
     
     public async void SignUpAnonymouslyAsync()
     {
+        /*
         // Check if a cached player already exists by checking if the session token exists
         if (!AuthenticationService.Instance.SessionTokenExists)
         {
@@ -101,7 +104,7 @@ public class UnityServiceController : MonoBehaviour
             if (dUserSignedIn != null) dUserSignedIn.Invoke();
             return;
         }
-        
+        //*/
         try
         {
             await AuthenticationService.Instance.SignInAnonymouslyAsync();

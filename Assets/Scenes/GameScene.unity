@@ -4025,6 +4025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e20ea50f68149b2b8008a1071b62707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSetting: {fileID: 11400000, guid: 7bfb272bcf415754b87c50edd9e83c70, type: 2}
   scoreText: {fileID: 777710782}
   timeLeftText: {fileID: 788092323}
   levelImage: {fileID: 1890393737}

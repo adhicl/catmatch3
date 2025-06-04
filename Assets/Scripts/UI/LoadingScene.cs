@@ -51,7 +51,14 @@ public class LoadingScene : MonoBehaviour
 
     private void GoToNextLevel()
     {
-        SceneManager.LoadSceneAsync("GameScene");
+        if (gameSetting.hasShowTutorial)
+        {
+            SceneManager.LoadSceneAsync("TitleScene");
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync("GameScene");
+        }
     }
 
     private void Update()

@@ -141,6 +141,7 @@ public class GameController : MonoBehaviour
 
     private void UpdateSettingBeforeMoving()
     {
+        gameSetting.SaveData();
         gameSetting.curScore = scorePlay;
     }
 
@@ -237,5 +238,11 @@ public class GameController : MonoBehaviour
     public void ChangeBGM()
     {
         gameBGM.volume = gameSetting.isMusicOn?0.4f:0f;
+        UpdateSaveData();
+    }
+
+    public void UpdateSaveData()
+    {
+        gameSetting.SaveData();
     }
 }

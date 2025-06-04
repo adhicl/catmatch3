@@ -22,6 +22,8 @@ public class TitleScene : MonoBehaviour
     [SerializeField] private Button btnShop;
     [SerializeField] private Button btnLeaderboard;
 
+    [SerializeField] private Button btnReset;
+
     [Header("Leaderboard")]
     [SerializeField] private GameObject objLeaderboard;
     [SerializeField] private LeaderboardPanel[] panelsLeaderboard;
@@ -68,6 +70,8 @@ public class TitleScene : MonoBehaviour
         ChangeBGM();
 
         UnityServiceController.Instance.dLeaderboardResult += ShowLeaderboard;
+        
+        btnReset.onClick.AddListener(ResetSaveData);
     }
 
     private void OnDestroy()
@@ -168,5 +172,11 @@ public class TitleScene : MonoBehaviour
     private void ShowLoading(bool show)
     {
         objLoading.gameObject.SetActive(show);
+    }
+
+    private void ResetSaveData()
+    {
+        gameSetting.Reset();
+        gameSetting.SaveData();
     }
 }

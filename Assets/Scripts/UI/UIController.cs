@@ -24,6 +24,8 @@ public class UIController : MonoBehaviour
     }
 
     #endregion
+
+    public GameSetting gameSetting;
     
     [Header("Gameplay")]
     [SerializeField] TextMeshProUGUI scoreText;
@@ -83,9 +85,13 @@ public class UIController : MonoBehaviour
 
         timePlaySound = 5;
 
-        if (CommonVars.StartGame)
+        if (CommonVars.StartGame && !gameSetting.hasShowTutorial)
         {
             StartAnimateSlideStart();
+        }
+        else
+        {
+            GameController.Instance.BackFromMenu();
         }
     }
 
@@ -261,7 +267,9 @@ public class UIController : MonoBehaviour
     {
         SoundController.Instance.PlayButtonClip();
         objStart.gameObject.SetActive(false);
+        
         CommonVars.StartGame = false;
+        gameSetting.hasShowTutorial = true;
         GameController.Instance.BackFromMenu();
     }
 

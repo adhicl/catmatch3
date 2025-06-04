@@ -43,6 +43,7 @@ public class PauseWindow : MonoBehaviour
         SoundController.Instance.PlayButtonClip();
         UpdateSoundMusicSprite();
         GameController.Instance.ChangeBGM();
+        GameController.Instance.UpdateSaveData();
     }
 
     private void SoundButtonListener()
@@ -50,6 +51,7 @@ public class PauseWindow : MonoBehaviour
         GameController.Instance.gameSetting.isSoundOn = !GameController.Instance.gameSetting.isSoundOn;
         SoundController.Instance.PlayButtonClip();
         UpdateSoundMusicSprite();
+        GameController.Instance.UpdateSaveData();
     }
 
     private void HomeButtonListener()

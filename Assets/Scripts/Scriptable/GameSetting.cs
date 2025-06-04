@@ -8,7 +8,7 @@ public class GameSetting : ScriptableObject
     public string[] pickTypes;
     public string[] spriteTypes;
 
-    public bool hasShowTutorial;
+    public bool hasShowTutorial = false;
 
     public bool isSoundOn;
     public bool isMusicOn;
@@ -87,7 +87,7 @@ public class GameSetting : ScriptableObject
         
         isSoundOn = PlayerPrefs.GetInt("isSoundOn", 1) == 1 ? true : false;
         isMusicOn = PlayerPrefs.GetInt("isMusicOn", 1) == 1 ? true : false;
-        hasShowTutorial = PlayerPrefs.GetInt("hasShowTutorial", 1) == 1 ? true : false;
+        hasShowTutorial = PlayerPrefs.GetInt("hasShowTutorial", 0) == 1 ? true : false;
         
         string pickTypeString = PlayerPrefs.GetString("pickTypes", string.Empty);
         if (pickTypeString == string.Empty)
