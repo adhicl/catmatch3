@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Text;
 using System.Threading.Tasks;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
 using Newtonsoft.Json;
 using Unity.Services.Analytics;
 using Unity.Services.Authentication;
@@ -109,6 +111,10 @@ public class UnityServiceController : MonoBehaviour
         {
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
             Debug.Log("Sign in anonymously succeeded!");
+
+#if  UNITY_ANDROID
+            StartPlayGoogle();
+#endif
         }
         catch (AuthenticationException ex)
         {
@@ -149,4 +155,81 @@ public class UnityServiceController : MonoBehaviour
         Debug.Log(JsonConvert.SerializeObject(scoresResponse));
         if (dLeaderboardResult != null) dLeaderboardResult.Invoke(JsonConvert.SerializeObject(scoresResponse));
     }
+
+    private string googlePlayToken;
+    private void StartPlayGoogle()
+    {
+        PlayGamesPlatform.Activate();
+        PlayGamesPlatform.Instance.Authenticate((success) =>
+        {
+            if (success == SignInStatus.Success)
+            {
+                Debug.Log("Login with Google Play games successful.");
+
+                PlayGamesPlatform.Instance.RequestServerSideAccess(true, code =>
+                {
+                    Debug.Log("Authorization code: " + code);
+                    googlePlayToken = code;
+                    SignInWithGooglePlayGamesAsync(googlePlayToken);
+                    // This token serves as an example to be used for SignInWithGooglePlayGames
+                });
+            }
+            else
+            {
+                string Error = "Failed to retrieve Google play games authorization code";
+                Debug.Log("Login Unsuccessful "+Error);
+            }
+        });
+    }
+    
+    private async void SignInWithGooglePlayGamesAsync(string authCode)
+    {
+        try
+        {
+            await AuthenticationService.Instance.SignInWithGooglePlayGamesAsync(authCode);
+            Debug.LogError("Sign in google play with "+AuthenticationService.Instance.PlayerName);
+            Debug.Log("SignIn is successful.");
+            LinkWithGooglePlayGamesAsync(authCode);
+        }
+        catch (AuthenticationException ex)
+        {
+            // Compare error code to AuthenticationErrorCodes
+            // Notify the player with the proper error message
+            Debug.LogException(ex);
+        }
+        catch (RequestFailedException ex)
+        {
+            // Compare error code to CommonErrorCodes
+            // Notify the player with the proper error message
+            Debug.LogException(ex);
+        }
+    }
+    
+    private async void LinkWithGooglePlayGamesAsync(string authCode)
+    {
+        try
+        {
+            await AuthenticationService.Instance.LinkWithGooglePlayGamesAsync(authCode);
+            Debug.Log("Link is successful.");
+        }
+        catch (AuthenticationException ex) when (ex.ErrorCode == AuthenticationErrorCodes.AccountAlreadyLinked)
+        {
+            // Prompt the player with an error message.
+            Debug.LogError("This user is already linked with another account. Log in instead.");
+        }
+
+        catch (AuthenticationException ex)
+        {
+            // Compare error code to AuthenticationErrorCodes
+            // Notify the player with the proper error message
+            Debug.LogException(ex);
+        }
+        catch (RequestFailedException ex)
+        {
+            // Compare error code to CommonErrorCodes
+            // Notify the player with the proper error message
+            Debug.LogException(ex);
+        }
+    }
+    
 }
