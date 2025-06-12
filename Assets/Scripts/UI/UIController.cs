@@ -30,6 +30,7 @@ public class UIController : MonoBehaviour
     [Header("Gameplay")]
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI timeLeftText;
+    [SerializeField] Image timeLeftImage;
     [SerializeField] RectTransform levelImage;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] Slider filledBarUpgrade;
@@ -39,6 +40,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject objStart;
     [SerializeField] private Transform startInfoPnl;
     [SerializeField] private TextMeshProUGUI highScoreText;
+    [SerializeField] private GameObject[] tutorPages;
     [SerializeField] private Button playButton;
 
     [Header("Pause")]
@@ -58,12 +60,13 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject MarvelousMsg;
     [SerializeField] GameObject SuperMsg;
     [SerializeField] GameObject GreatMsg;
-    [SerializeField] GameObject AwesomeMsg;
 
     private bool _animateScore = false;
     private double currentScore = 0;
     private double targetScore = 0;
     private double speedScore = 0;
+    
+    private int _tutorPageIndex = 0;
 
     private void Start()
     {
@@ -84,6 +87,8 @@ public class UIController : MonoBehaviour
         inputEnterName.onValueChanged.AddListener(InputEnterNameListener);
 
         timePlaySound = 5;
+        
+        scoreText.text = currentScore.ToString("N0");
 
         if (CommonVars.StartGame && !gameSetting.hasShowTutorial)
         {
@@ -120,10 +125,10 @@ public class UIController : MonoBehaviour
                 (GameController.Instance.timePlayLeft < 1f && timePlaySound == 1))
             {
                 timePlaySound--;
-                //
-                // Sequence mySequence = DOTween.Sequence();
-                // mySequence.Append(timeLeftText.transform.DOScale(Vector3.one * 1.3f, 0.2f));
-                // mySequence.Append(timeLeftText.transform.DOScale(Vector3.one, 0.2f));
+                
+                Sequence mySequence = DOTween.Sequence();
+                mySequence.Append(timeLeftImage.transform.DOScale(Vector3.one * 1.3f, 0.2f));
+                mySequence.Append(timeLeftImage.transform.DOScale(Vector3.one, 0.2f));
                 
                 SoundController.Instance.PlayCountdownClip();
             }
@@ -149,7 +154,7 @@ public class UIController : MonoBehaviour
         speedScore = (targetScore - currentScore) * 2d;
         
         Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(scoreText.transform.DOScale(Vector3.one * 1.5f, 0.2f));
+        mySequence.Append(scoreText.transform.DOScale(Vector3.one * 1.2f, 0.2f));
         mySequence.Append(scoreText.transform.DOScale(Vector3.one, 0.2f));
         //mySequence.Play();
     }
@@ -191,18 +196,18 @@ public class UIController : MonoBehaviour
     public void StartAnimateReady()
     {
         ReadyMsg.SetActive(true);
-        ReadyMsg.GetComponent<Animator>().Play(0);
+        
         Sequence mySequence = DOTween.Sequence();
-        mySequence.AppendInterval(1f);
+        mySequence.Append(ReadyMsg.transform.DOShakeScale(.5f, .5f));
         mySequence.onComplete = () => { ReadyMsg.SetActive(false); };
     }
 
     public void StartAnimateGo()
     {
         GoMsg.SetActive(true);
-        GoMsg.GetComponent<Animator>().Play(0);
+        
         Sequence mySequence = DOTween.Sequence();
-        mySequence.AppendInterval(1f);
+        mySequence.Append(GoMsg.transform.DOShakeScale(.5f, .5f));
         mySequence.onComplete = () => { GoMsg.SetActive(false); };
     }
 
@@ -212,29 +217,24 @@ public class UIController : MonoBehaviour
         switch (numClip)
         {
             case 0:
-                AwesomeMsg.SetActive(true);
-                AwesomeMsg.GetComponent<Animator>().Play(0);
+                GreatMsg.SetActive(true);
+                
                 mySequence.AppendInterval(1f);
-                mySequence.onComplete = () => { AwesomeMsg.SetActive(false); };
+                mySequence.Append(GreatMsg.transform.DOShakeScale(.5f, .5f));
+                mySequence.onComplete = () => { GreatMsg.SetActive(false); };
                 break;
             case 1:
                 break;
-            case 3:
-                SuperMsg.SetActive(true);
-                SuperMsg.GetComponent<Animator>().Play(0);
-                mySequence.AppendInterval(1f);
-                mySequence.onComplete = () => { SuperMsg.SetActive(false); };
-                break;
             case 2:
-                GreatMsg.SetActive(true);
-                GreatMsg.GetComponent<Animator>().Play(0);
-                mySequence.AppendInterval(1f);
-                mySequence.onComplete = () => { GreatMsg.SetActive(false); };
+                SuperMsg.SetActive(true);
+                
+                mySequence.Append(SuperMsg.transform.DOShakeScale(.5f, .5f));
+                mySequence.onComplete = () => { SuperMsg.SetActive(false); };
                 break;
             default:
                 MarvelousMsg.SetActive(true);
-                MarvelousMsg.GetComponent<Animator>().Play(0);
-                mySequence.AppendInterval(1f);
+                
+                mySequence.Append(MarvelousMsg.transform.DOShakeScale(.5f, .5f));
                 mySequence.onComplete = () => { MarvelousMsg.SetActive(false); };
                 break;
         }
@@ -243,18 +243,18 @@ public class UIController : MonoBehaviour
     public void StartAnimateLevelUp()
     {
         LevelUpMsg.SetActive(true);
-        LevelUpMsg.GetComponent<Animator>().Play(0);
+        
         Sequence mySequence = DOTween.Sequence();
-        mySequence.AppendInterval(1f);
+        mySequence.Append(LevelUpMsg.transform.DOShakeScale(.5f, .5f));
         mySequence.onComplete = () => { LevelUpMsg.SetActive(false); };
     }
 
     public void StartAnimateFinish()
     {
         FinishMsg.SetActive(true);
-        FinishMsg.GetComponent<Animator>().Play(0);
+        
         Sequence mySequence = DOTween.Sequence();
-        mySequence.AppendInterval(1f);
+        mySequence.Append(FinishMsg.transform.DOShakeScale(.5f, .5f));
         mySequence.onComplete = () => { FinishMsg.SetActive(false); };
     }
 
@@ -266,22 +266,51 @@ public class UIController : MonoBehaviour
     private void PlayButtonListener()
     {
         SoundController.Instance.PlayButtonClip();
-        objStart.gameObject.SetActive(false);
+
+        _tutorPageIndex++;
+        Debug.Log("tutorl "+_tutorPageIndex);
         
-        CommonVars.StartGame = false;
-        gameSetting.hasShowTutorial = true;
-        GameController.Instance.BackFromMenu();
+        if (_tutorPageIndex >= tutorPages.Length)
+        {
+            objStart.gameObject.SetActive(false);
+        
+            CommonVars.StartGame = false;
+            gameSetting.hasShowTutorial = true;
+            GameController.Instance.BackFromMenu();
+        }
+        else
+        {
+            ShowTutorialPage();
+        }
     }
 
     private void StartAnimateSlideStart()
     {
         objStart.SetActive(true);
+
+        _tutorPageIndex = 0;
         
         startInfoPnl.localPosition += new Vector3(-1500f, 0f, 0f);
         
         highScoreText.text = GameController.Instance.gameSetting.curHighScore.ToString("N0");
-        
-        startInfoPnl.transform.DOLocalMoveX(0f, 0.5f).SetEase(Ease.OutBounce);
+
+        HideTutorialPages();
+        Sequence mySequence = DOTween.Sequence();
+        mySequence.Append(startInfoPnl.transform.DOLocalMoveX(0f, 0.5f).SetEase(Ease.OutBounce));
+        mySequence.onComplete = () => ShowTutorialPage();
+    }
+
+    private void HideTutorialPages()
+    {
+        foreach (var page in tutorPages)
+        {
+            page.SetActive(false);
+        }
+    }
+    private void ShowTutorialPage()
+    {
+        HideTutorialPages();
+        tutorPages[_tutorPageIndex].SetActive(true);
     }
 
     public void ShowEnterPlayerName()

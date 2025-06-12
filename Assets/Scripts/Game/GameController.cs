@@ -147,7 +147,7 @@ public class GameController : MonoBehaviour
 
     public void CheckSwitchScene()
     {
-        Debug.Log("Check Switch Scene '" + gameSetting.curPlayerName + "'");
+        //Debug.Log("Check Switch Scene '" + gameSetting.curPlayerName + "'");
         if (gameSetting.curPlayerName.ToString() == "")
         {
             SoundController.Instance.PlayBonusClip();

@@ -51,7 +51,7 @@ public class UnityServiceController : MonoBehaviour
     private async void Start()
     {
         await UnityServices.InitializeAsync();
-        Debug.Log("Unity service initialized");
+        //Debug.Log("Unity service initialized");
 
         AuthenticationService.Instance.SignedIn += UserSignedIn;
         
@@ -68,7 +68,7 @@ public class UnityServiceController : MonoBehaviour
     private void UserSignedIn()
     {
         // Shows how to get the playerID
-        Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId} {gameSetting.curPlayerId}");
+        //Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId} {gameSetting.curPlayerId}");
 
         if (gameSetting.curPlayerId != AuthenticationService.Instance.PlayerId)
         {
@@ -78,7 +78,7 @@ public class UnityServiceController : MonoBehaviour
         
         //turn on user analytic now
         AnalyticsService.Instance.StartDataCollection();
-        Debug.Log("Unity analytic start");
+        //Debug.Log("Unity analytic start");
 
         if (dUserSignedIn != null) dUserSignedIn.Invoke();
     }
@@ -135,7 +135,7 @@ public class UnityServiceController : MonoBehaviour
     public async void AddScore(float score)
     {
         var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(Leaderboard_id, score);
-        Debug.Log(JsonConvert.SerializeObject(scoreResponse));
+        //Debug.Log(JsonConvert.SerializeObject(scoreResponse));
         if (dLeaderboardSentResult != null) dLeaderboardSentResult.Invoke(JsonConvert.SerializeObject(scoreResponse));
     }
 
