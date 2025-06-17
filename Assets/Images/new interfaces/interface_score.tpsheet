@@ -1,0 +1,22 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:d6150af31c521cea8f47bd26114a2062:a6d1c441cfb135dd9fb5ac4ce8564255:33ee9e6c726fd88f43142177b413048b$
+#
+:format=40300
+:texture=interface_score.png
+:size=2048x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+cat_marker;1;1822;249;225; 0.4979919678714859;0.5022222222222222; 0;0;0;0
+curtain_cat;1340;1122;684;925; 0.5;0.5005405405405405; 0;0;0;0
+high_score;1;860;990;260; 0.4919191919191919;0.5307692307692308; 0;0;0;0
+leaderboard;252;1665;343;382; 0.5014577259475219;0.5; 0;0;0;0
+main_menu;597;1665;344;382; 0.5;0.5; 0;0;0;0
+new_high_score;943;1764;395;283; 0.5012658227848101;0.49823321554770317; 0;0;0;0
+your_score;993;912;1017;208; 0.5004916420845624;0.46153846153846156; 0;0;0;0

@@ -52,6 +52,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_InputField inputEnterName;
     [SerializeField] private Button btnEnterName;
     
+    [Header("Close Curtain")]
+    [SerializeField] private GameObject obCloseCurtain;
+    [SerializeField] private Transform tCloseCurtain;
+
     [Header("VFX Message")]
     [SerializeField] GameObject ReadyMsg;
     [SerializeField] GameObject GoMsg;
@@ -60,6 +64,7 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject MarvelousMsg;
     [SerializeField] GameObject SuperMsg;
     [SerializeField] GameObject GreatMsg;
+   
 
     private bool _animateScore = false;
     private double currentScore = 0;
@@ -78,6 +83,7 @@ public class UIController : MonoBehaviour
         MarvelousMsg.SetActive(false);
         objStart.gameObject.SetActive(false);
         objEnterName.gameObject.SetActive(false);
+        obCloseCurtain.SetActive(false);
 
         pauseWindow.SetActive(false);
         pauseButton.onClick.AddListener(PauseButtonListener);
@@ -258,6 +264,14 @@ public class UIController : MonoBehaviour
         mySequence.onComplete = () => { FinishMsg.SetActive(false); };
     }
 
+    public void StartAnimateCurtainClose()
+    {
+        obCloseCurtain.SetActive(true);
+        
+        tCloseCurtain.localPosition = new Vector3(0f, 1900f, 0f);
+        tCloseCurtain.DOLocalMoveY(0f, 1f).SetEase(Ease.OutElastic);
+    }
+
     public void ShowPauseWindow()
     {
         pauseWindow.SetActive(true);
@@ -268,7 +282,7 @@ public class UIController : MonoBehaviour
         SoundController.Instance.PlayButtonClip();
 
         _tutorPageIndex++;
-        Debug.Log("tutorl "+_tutorPageIndex);
+        //Debug.Log("tutorl "+_tutorPageIndex);
         
         if (_tutorPageIndex >= tutorPages.Length)
         {
