@@ -1,0 +1,22 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:c8f89908e3d0538f35ace7eb0a141337:96ec3144175c8fac4e68fa74ebe0a91c:b3198d8653b1a109d6fc46aae51336c7$
+#
+:format=40300
+:texture=interface_message.png
+:size=1024x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+finish;1;1781;732;266; 0.5;0.5037593984962406; 0;0;0;0
+go;1;1483;510;296; 0.47843137254901963;0.5405405405405406; 0;0;0;0
+great;1;1226;712;255; 0.5042134831460674;0.5254901960784314; 0;0;0;0
+level_up;1;913;1012;311; 0.5;0.585209003215434; 0;0;0;0
+marvelous;1;682;1018;229; 0.5;0.5065502183406114; 0;0;0;0
+ready;1;369;762;311; 0.5;0.585209003215434; 0;0;0;0
+super;1;64;729;303; 0.50480109739369;0.6006600660066006; 0;0;0;0

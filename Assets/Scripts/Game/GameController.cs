@@ -147,7 +147,7 @@ public class GameController : MonoBehaviour
 
     public void CheckSwitchScene()
     {
-        Debug.Log("Check Switch Scene '" + gameSetting.curPlayerName + "'");
+        //Debug.Log("Check Switch Scene '" + gameSetting.curPlayerName + "'");
         if (gameSetting.curPlayerName.ToString() == "")
         {
             SoundController.Instance.PlayBonusClip();
@@ -155,15 +155,18 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            ChangeSceneResult();
+            StartCoroutine(ChangeSceneResult());
         }
     }
 
-    private void ChangeSceneResult()
+    private IEnumerator ChangeSceneResult()
     {
-        UpdateSettingBeforeMoving();
+        UIController.Instance.StartAnimateCurtainClose();
         
-        SceneManager.LoadScene("ResultScene");
+        UpdateSettingBeforeMoving();
+
+        yield return new WaitForSeconds(1.2f);
+        SceneManager.LoadSceneAsync("ResultScene");
     }
     
     #endregion

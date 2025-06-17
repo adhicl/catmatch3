@@ -75,6 +75,8 @@ public class Stone : MonoBehaviour, IPuzzleBlock
         stone.SetParent(this.transform);
         stone.localPosition = Vector3.zero;
         stone.gameObject.SetActive(true);
+        stone.transform.localScale = Vector3.one;
+        
         this.transform.localScale = Vector3.one;
         
         _catObject = stone.gameObject;
@@ -141,6 +143,7 @@ public class Stone : MonoBehaviour, IPuzzleBlock
             Transform stone = StoneFactory.Instance.GetHorizontal();
             stone.SetParent(this.transform);
             stone.localPosition = Vector3.zero;
+            stone.localScale = Vector3.one;
             stone.gameObject.SetActive(true);
             _catObject = stone.gameObject;
 
@@ -151,6 +154,7 @@ public class Stone : MonoBehaviour, IPuzzleBlock
             Transform stone = StoneFactory.Instance.GetVertical();
             stone.SetParent(this.transform);
             stone.localPosition = Vector3.zero;
+            stone.localScale = Vector3.one;
             stone.gameObject.SetActive(true);
             _catObject = stone.gameObject;
 
@@ -161,6 +165,7 @@ public class Stone : MonoBehaviour, IPuzzleBlock
             Transform stone = StoneFactory.Instance.GetBomb();
             stone.SetParent(this.transform);
             stone.localPosition = Vector3.zero;
+            stone.localScale = Vector3.one;
             stone.gameObject.SetActive(true);
             _catObject = stone.gameObject;
         }
@@ -250,6 +255,8 @@ public class Stone : MonoBehaviour, IPuzzleBlock
     {
         _moved = false;
         _touchPosition = this.transform.position;
+        
+        _catObject.transform.localScale = Vector3.one;
         this.transform.DOShakeScale(0.4f, CommonVars.shakeStrength);
     }
 }

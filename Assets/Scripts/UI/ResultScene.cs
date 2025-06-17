@@ -18,14 +18,15 @@ public class ResultScene : MonoBehaviour
     [SerializeField] private Button btnHome;
 
     [Header("Score")]
-    [SerializeField] private TextMeshProUGUI lblScore;
+    [SerializeField] private GameObject lblScore;
     [SerializeField] private TextMeshProUGUI txtScore;
     
-    [SerializeField] private TextMeshProUGUI lblHighScore;
+    [SerializeField] private GameObject lblHighScore;
     [SerializeField] private GameObject newRibbonTransform;
     [SerializeField] private TextMeshProUGUI txtHighScore;
 
-    [Header("Reward")]
+    [Header("Reward")] 
+    [SerializeField] private GameObject obRewardHolder;
     [SerializeField] private GameObject[] objRewards;
     [SerializeField] private TextMeshProUGUI[] lblRewards;
     [SerializeField] private TextMeshProUGUI[] txtRewards;
@@ -74,6 +75,7 @@ public class ResultScene : MonoBehaviour
         lblHighScore.gameObject.SetActive(false);
         newRibbonTransform.gameObject.SetActive(false);
 
+        obRewardHolder.SetActive(false);
         foreach (var t in objRewards)
         {
             t.SetActive(false);
@@ -176,7 +178,7 @@ public class ResultScene : MonoBehaviour
     private float _timeReward = 0f;
     private int _posReward = 0;
 
-    private string[] _rewards = {"Accumulated Point", "High Score", "Daily Play"};
+    private string[] _rewards = {"Accumulated Points", "High Score", "Daily Play"};
     private float[] _targetRewards = {265000, 200000, 5};
     private float[] _maxRewards = {500000, 200000, 7};
 
@@ -187,15 +189,15 @@ public class ResultScene : MonoBehaviour
         hasRewardUnlock = false;
         
         PlayConfettiVFX();
-
-        lblHighScore.gameObject.SetActive(true);
-        txtHighScore.text = gameSetting.curHighScore.ToString("N0");
         
         lblScore.gameObject.SetActive(true);
         isDisplayScore = true;
         
         yield return new WaitForSeconds(1f);
 
+        lblHighScore.gameObject.SetActive(true);
+        txtHighScore.text = gameSetting.curHighScore.ToString("N0");
+        
         float prevHighscore = gameSetting.curHighScore;
         if (gameSetting.curScore > gameSetting.curHighScore)
         {
@@ -211,7 +213,11 @@ public class ResultScene : MonoBehaviour
             
             yield return new WaitForSeconds(0.5f);
         }
-
+            
+        yield return new WaitForSeconds(0.5f);
+        
+        /*
+        obRewardHolder.SetActive(true);
         int totalRewardAdd = 3;
         for (int i = 0; i < totalRewardAdd; i++)
         {
@@ -264,6 +270,8 @@ public class ResultScene : MonoBehaviour
             
             yield return new WaitForSeconds(1.5f);
         }
+        
+        //*/
         
         gameSetting.SaveData();
 

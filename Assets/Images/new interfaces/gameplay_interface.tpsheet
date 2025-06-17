@@ -1,0 +1,28 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:164dc63fb7f78a0e10ddd4fe82c997ee:335246f91f114ee0e93893f85108d299:1cd750978746ba488624ec91d8879f66$
+#
+:format=40300
+:texture=gameplay_interface.png
+:size=2048x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+cursor;1;1729;268;318; 0.48134328358208955;0.5031446540880503; 0;0;0;0
+level_bar_frame;1;373;1667;453; 0.47450509898020393;0.48785871964679917; 0;0;0;0
+level_bar_green;1;1088;1098;73; 0.592896174863388;1.7945205479452055; 0;0;0;0
+levle_cat_frame;1150;1207;511;456; 0.5009784735812133;0.4736842105263158; 0;0;0;0
+main_menu;271;1665;342;382; 0.5;0.5; 0;0;0;0
+music_off;615;1665;342;382; 0.5;0.5; 0;0;0;0
+music_on;959;1665;342;382; 0.5;0.5; 0;0;0;0
+pause;1303;1665;342;382; 0.5;0.5; 0;0;0;0
+restart;1647;1665;342;382; 0.5;0.5; 0;0;0;0
+score_frame;1;828;1208;258; 0.5;0.5; 0;0;0;0
+sound_off;1;1281;342;382; 0.5;0.5; 0;0;0;0
+sound_on;345;1281;342;382; 0.5;0.5; 0;0;0;0
+timer;689;1163;459;500; 0.4989106753812636;0.504; 0;0;0;0

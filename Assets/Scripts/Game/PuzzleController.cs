@@ -913,7 +913,7 @@ public class PuzzleController : MonoBehaviour
                 }
             }
         }
-        Debug.Log("TOtal bomb left:"+numBomb);
+        //Debug.Log("TOtal bomb left:"+numBomb);
         return hasBomb;
     }
 
