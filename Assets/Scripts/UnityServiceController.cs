@@ -159,6 +159,7 @@ public class UnityServiceController : MonoBehaviour
     private string googlePlayToken;
     private void StartPlayGoogle()
     {
+#if  UNITY_ANDROID
         PlayGamesPlatform.Activate();
         PlayGamesPlatform.Instance.Authenticate((success) =>
         {
@@ -179,7 +180,8 @@ public class UnityServiceController : MonoBehaviour
                 string Error = "Failed to retrieve Google play games authorization code";
                 Debug.Log("Login Unsuccessful "+Error);
             }
-        });
+        });   
+#endif
     }
     
     private async void SignInWithGooglePlayGamesAsync(string authCode)
