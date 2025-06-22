@@ -10,6 +10,7 @@ tpsheetFileNames:
 - Assets/Images/interfaces/super-ready.tpsheet
 - Assets/Images/interfaces/text_popup.tpsheet
 - Assets/Images/new interfaces/gameplay_interface.tpsheet
+- Assets/Images/new interfaces/interface_cat_pick.tpsheet
 - Assets/Images/new interfaces/interface_message.tpsheet
 - Assets/Images/new interfaces/interface_score.tpsheet
 - Assets/Images/sprites/cats.tpsheet
@@ -26,6 +27,7 @@ textureFileNames:
 - Assets/Images/interfaces/super-ready.png
 - Assets/Images/interfaces/text_popup.png
 - Assets/Images/new interfaces/gameplay_interface.png
+- Assets/Images/new interfaces/interface_cat_pick.png
 - Assets/Images/new interfaces/interface_message.png
 - Assets/Images/new interfaces/interface_score.png
 - Assets/Images/sprites/cats.png
@@ -33,6 +35,7 @@ textureFileNames:
 - Assets/Images/sprites/cats/new_cat_01.png
 normalmapFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
+- 
 - 
 - 
 - 

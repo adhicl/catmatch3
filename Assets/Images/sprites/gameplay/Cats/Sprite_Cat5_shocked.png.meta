@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 18501c1384c6d5f429eeaeb3afda0d6e
+guid: 255bdf82b7273f8448e807a6612ca772
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8153165529998707871
-    second: Cat6_0_0
+      213: -545519642990367285
+    second: lemon_shocked_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,17 +122,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cat6_0_0
+      name: lemon_shocked_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 11
-        width: 128
-        height: 112
+        x: 36
+        y: 51
+        width: 192
+        height: 151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 163b775d5232ade80800000000000000
-      internalID: -8153165529998707871
+      spriteID: bcdaf8566cced68f0800000000000000
+      internalID: -545519642990367285
       vertices: []
       indices: 
       edges: []
@@ -161,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cat6_0_0: -8153165529998707871
+      lemon_shocked_0: -545519642990367285
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

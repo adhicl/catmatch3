@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b7ecce1fb6e6d9346b116f6ef5b8b86f
+guid: 83313fc8f81761b4293317f24604b2fb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3763919142742361322
-    second: fire_shocked_0
+      213: -7552401482471691766
+    second: Cat3_0_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,17 +122,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fire_shocked_0
+      name: Cat3_0_0
       rect:
         serializedVersion: 2
-        x: 37
-        y: 52
-        width: 179
-        height: 160
+        x: 0
+        y: 11
+        width: 128
+        height: 112
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 61b7c855b7fd3cbc0800000000000000
-      internalID: -3763919142742361322
+      spriteID: a0a2424bdda703790800000000000000
+      internalID: -7552401482471691766
       vertices: []
       indices: 
       edges: []
@@ -161,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fire_shocked_0: -3763919142742361322
+      Cat3_0_0: -7552401482471691766
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

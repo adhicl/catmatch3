@@ -46,6 +46,7 @@ public class UnityServiceController : MonoBehaviour
     public delegate void mJSONReturn(string result);
 
     public mJSONReturn dLeaderboardResult;
+    public mJSONReturn dLeaderboardRankResult;
     public mJSONReturn dLeaderboardSentResult;
     
     private async void Start()
@@ -87,7 +88,7 @@ public class UnityServiceController : MonoBehaviour
     {
         string playerName = await AuthenticationService.Instance.GetPlayerNameAsync();
         gameSetting.curPlayerName = playerName;
-        Debug.Log($"GetPlayerName: '{playerName}'");
+        //Debug.Log($"GetPlayerName: '{playerName}'");
     }
     
     public async void SignUpAnonymouslyAsync()
@@ -122,10 +123,10 @@ public class UnityServiceController : MonoBehaviour
 
     public async void RenamePlayer(string newPlayerName)
     {
-        Debug.Log(@"Rename player $newPlayerName");
+        //Debug.Log(@"Rename player $newPlayerName");
         await AuthenticationService.Instance.UpdatePlayerNameAsync(newPlayerName);
         
-        Debug.Log("Get player name "+AuthenticationService.Instance.PlayerName);
+        //Debug.Log("Get player name "+AuthenticationService.Instance.PlayerName);
         gameSetting.curPlayerName = AuthenticationService.Instance.PlayerName;
         
         GetPlayerName();
@@ -141,12 +142,15 @@ public class UnityServiceController : MonoBehaviour
 
     public async void GetPaginatedScores()
     {
+        var curScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(Leaderboard_id);
+        if (dLeaderboardRankResult != null) dLeaderboardRankResult.Invoke(JsonConvert.SerializeObject(curScore));
+        
         var rangeLimit = 20;
         var scoresResponse = await LeaderboardsService.Instance.GetPlayerRangeAsync(
             Leaderboard_id,
             new GetPlayerRangeOptions{ RangeLimit = rangeLimit }
         );
-        Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+        //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
         if (dLeaderboardResult != null) dLeaderboardResult.Invoke(JsonConvert.SerializeObject(scoresResponse));
     }
 }

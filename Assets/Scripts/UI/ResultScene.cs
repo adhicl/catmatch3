@@ -12,6 +12,8 @@ public class ResultScene : MonoBehaviour
     public GameSetting gameSetting;
     
     [SerializeField] private ScrollRect scrollRect;
+
+    [SerializeField] private GameObject objCurtainClose;
     
     [SerializeField] private Button btnLeaderboard;
     [SerializeField] private Button btnRetry;
@@ -42,6 +44,7 @@ public class ResultScene : MonoBehaviour
     [SerializeField] private GameObject objLeaderboard;
     [SerializeField] private LeaderboardPanel[] panelsLeaderboard;
     [SerializeField] private Button btnNextLeaderboard;
+    [SerializeField] private LeaderboardPanel playerRank;
 
     [Header("Unlock")]
     [SerializeField] private GameObject objUnlock;
@@ -109,12 +112,14 @@ public class ResultScene : MonoBehaviour
         btnNextLeaderboard.onClick.AddListener(ContinueToReward);
 
         UnityServiceController.Instance.dLeaderboardResult += ShowLeaderboard;
+        UnityServiceController.Instance.dLeaderboardRankResult += ShowLeaderboardRank;
         UnityServiceController.Instance.dLeaderboardSentResult += ShowRank;
     }
 
     private void OnDestroy()
     {
         UnityServiceController.Instance.dLeaderboardResult -= ShowLeaderboard;
+        UnityServiceController.Instance.dLeaderboardRankResult -= ShowLeaderboardRank;
         UnityServiceController.Instance.dLeaderboardSentResult -= ShowRank;
     }
 
@@ -185,10 +190,17 @@ public class ResultScene : MonoBehaviour
     private bool hasRewardUnlock = false;
     private IEnumerator AnimateScore()
     {
+        objCurtainClose.SetActive(true);
+        Sequence curtainSequence = DOTween.Sequence();
+        curtainSequence.Append(objCurtainClose.transform.DOLocalMoveY(1900f, .5f));
+        curtainSequence.onComplete = () => { objCurtainClose.SetActive(false); };
+        yield return new WaitForSeconds(0.5f);
+        
         bool hasNewHighScore = false;
         hasRewardUnlock = false;
         
         PlayConfettiVFX();
+        SoundController.Instance.PlayFillClip();
         
         lblScore.gameObject.SetActive(true);
         isDisplayScore = true;
@@ -199,6 +211,8 @@ public class ResultScene : MonoBehaviour
         txtHighScore.text = gameSetting.curHighScore.ToString("N0");
         
         float prevHighscore = gameSetting.curHighScore;
+        
+        SoundController.Instance.PlayFillClip();
         if (gameSetting.curScore > gameSetting.curHighScore)
         {
             newRibbonTransform.SetActive(true);
@@ -387,6 +401,12 @@ public class ResultScene : MonoBehaviour
         StartCoroutine(AnimateButton());
     }
 
+    private void ShowLeaderboardRank(string rank)
+    {
+        var jsonResult = JsonConvert.DeserializeObject<CommonVars.NewLeaderboardResult>(rank);
+        playerRank.SetPanel(jsonResult.rank, jsonResult.playerName, jsonResult.score);
+    }
+
     private void ShowLeaderboard(string result)
     {
         ShowLoading(false);
@@ -401,7 +421,7 @@ public class ResultScene : MonoBehaviour
         //Debug.Log(jsonResult.results.Length);
         foreach (var fill in jsonResult.results)
         {
-            panelsLeaderboard[num].SetPanel(fill.rank, fill.playerName, fill.score);
+            panelsLeaderboard[num].SetPanel(fill.rank, fill.playerName, fill.score, num);
             panelsLeaderboard[num].gameObject.SetActive(true);
             num++;
         }
