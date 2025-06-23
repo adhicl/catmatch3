@@ -69,12 +69,16 @@ public class UnityServiceController : MonoBehaviour
     private void UserSignedIn()
     {
         // Shows how to get the playerID
-        //Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId} {gameSetting.curPlayerId}");
+        Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId} {gameSetting.curPlayerId}");
 
         if (gameSetting.curPlayerId != AuthenticationService.Instance.PlayerId)
         {
             gameSetting.curPlayerId = AuthenticationService.Instance.PlayerId;
             gameSetting.curPlayerName = "";
+        }
+        else
+        {
+            GetPlayerHighScore();
         }
         
         //turn on user analytic now
@@ -138,6 +142,15 @@ public class UnityServiceController : MonoBehaviour
         var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(Leaderboard_id, score);
         //Debug.Log(JsonConvert.SerializeObject(scoreResponse));
         if (dLeaderboardSentResult != null) dLeaderboardSentResult.Invoke(JsonConvert.SerializeObject(scoreResponse));
+    }
+
+    private async void GetPlayerHighScore()
+    {
+        var curScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(Leaderboard_id);
+        gameSetting.curPlayerName = curScore.PlayerName;
+        gameSetting.curHighScore = (float) curScore.Score;
+
+        Debug.Log("Get Player Data");
     }
 
     public async void GetPaginatedScores()

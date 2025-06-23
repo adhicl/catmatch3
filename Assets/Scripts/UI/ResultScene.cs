@@ -192,9 +192,9 @@ public class ResultScene : MonoBehaviour
     {
         objCurtainClose.SetActive(true);
         Sequence curtainSequence = DOTween.Sequence();
-        curtainSequence.Append(objCurtainClose.transform.DOLocalMoveY(1900f, .5f));
+        curtainSequence.Append(objCurtainClose.transform.DOLocalMoveY(1900f, 1f));
         curtainSequence.onComplete = () => { objCurtainClose.SetActive(false); };
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         
         bool hasNewHighScore = false;
         hasRewardUnlock = false;

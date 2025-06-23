@@ -269,7 +269,7 @@ public class UIController : MonoBehaviour
         obCloseCurtain.SetActive(true);
         
         tCloseCurtain.localPosition = new Vector3(0f, 1900f, 0f);
-        tCloseCurtain.DOLocalMoveY(0f, 1f).SetEase(Ease.OutElastic);
+        tCloseCurtain.DOLocalMoveY(0f, 1f);
     }
 
     public void ShowPauseWindow()
