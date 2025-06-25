@@ -226,6 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191f5798a75bd42589f98898505e981f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  appKey: 2274ef185
+  bannerAdUnitId: sdd56cqn2daqmm8u
+  interstitialAdUnitId: 10j4rug4ad6rzahl
 --- !u!114 &144620212
 MonoBehaviour:
   m_ObjectHideFlags: 0

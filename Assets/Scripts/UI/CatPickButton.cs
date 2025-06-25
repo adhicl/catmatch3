@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class CatPickButton : MonoBehaviour
 {
     public Image imgCat;
-    public GameObject objCheck;
+    public Image objCheck;
+    
+    public Sprite spriteCheck;
+    public Sprite spriteUncheck;
     
     public Sprite spriteDisable;
     public UnlockCat unlockCat;
@@ -19,6 +22,6 @@ public class CatPickButton : MonoBehaviour
 
     public void ShowCheck(bool showCheck)
     {
-        objCheck.SetActive(showCheck);
+        objCheck.sprite = showCheck?spriteCheck:spriteUncheck;
     }
 }

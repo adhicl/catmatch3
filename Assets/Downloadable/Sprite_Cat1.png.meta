@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 94b4cf01b776d2843a05acf47ad56809
+guid: 57a98175c84c4f94d9981d086c4fe194
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2916243794546043138
-    second: cream_idle_0
+      213: 4104505485786816848
+    second: Sprite_Cat1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,17 +122,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cream_idle_0
+      name: Sprite_Cat1_0
       rect:
         serializedVersion: 2
-        x: 51
-        y: 51
-        width: 180
-        height: 161
+        x: 8
+        y: 27
+        width: 241
+        height: 202
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 209aa5cb744987820800000000000000
-      internalID: 2916243794546043138
+      spriteID: 05127f22ef126f830800000000000000
+      internalID: 4104505485786816848
       vertices: []
       indices: 
       edges: []
@@ -161,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cream_idle_0: 2916243794546043138
+      Sprite_Cat1_0: 4104505485786816848
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

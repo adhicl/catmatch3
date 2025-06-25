@@ -1,0 +1,23 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:62c3966fe7e86152a9d8fd1acbddfe5e:f904a5036a9005d2fc035dd757131d6e:c637da201a4b5dbb05798a49e1ec26ad$
+#
+:format=40300
+:texture=interface_cat_pick.png
+:size=2048x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+back_button;599;1665;342;382; 0.5;0.5; 0;0;0;0
+check_off;193;1846;201;201; 0.4975124378109453;0.5024875621890548; 0;0;0;0
+check_on;396;1846;201;201; 0.4975124378109453;0.5024875621890548; 0;0;0;0
+new_cat_text;1;957;1513;577; 0.5003304692663583;0.5025996533795494; 0;0;0;0
+new_ranking_text;1;681;1516;274; 0.5;0.5; 0;0;0;0
+pick_cat_star;1;1863;190;184; 0.5;0.5; 0;0;0;0
+pick_your_cat_text;943;1536;928;511; 0.5;0.4990215264187867; 0;0;0;0
+shelf;1;167;1887;512; 0.5002649708532061;0.5; 0;0;0;0

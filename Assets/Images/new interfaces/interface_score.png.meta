@@ -184,7 +184,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 860
+        y: 557
         width: 990
         height: 260
       alignment: 9
@@ -272,7 +272,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 993
-        y: 912
+        y: 609
         width: 1017
         height: 208
       alignment: 9
@@ -285,6 +285,72 @@ TextureImporter:
       bones: []
       spriteID: 3e95abce54e092043990484b810bdc8b
       internalID: -2039983187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: orange_button_off
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 819
+        width: 707
+        height: 301
+      alignment: 9
+      pivot: {x: 0.4992928, y: 0.45847178}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34b36720fd4fc864c8afb92fb9fece1d
+      internalID: 141695967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: orange_button_on
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 819
+        width: 707
+        height: 301
+      alignment: 9
+      pivot: {x: 0.4992928, y: 0.45847178}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c050aac4b99b6a4fa296d8f8bfacd60
+      internalID: -462179619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: red_flag
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 151
+        width: 1726
+        height: 404
+      alignment: 9
+      pivot: {x: 0.4994206, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41b6fb6a352dc1f4e969a591d20f70f4
+      internalID: -531400356
       vertices: []
       indices: 
       edges: []
@@ -309,6 +375,9 @@ TextureImporter:
       leaderboard: 2105613781
       main_menu: 686768719
       new_high_score: 42326414
+      orange_button_off: 141695967
+      orange_button_on: -462179619
+      red_flag: -531400356
       your_score: -2039983187
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

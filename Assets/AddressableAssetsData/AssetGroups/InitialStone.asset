@@ -15,28 +15,8 @@ MonoBehaviour:
   m_GroupName: InitialStone
   m_GUID: ffce0fc4f93e3cc4c8f2962b668a9f2b
   m_SerializeEntries:
-  - m_GUID: 0034598a02ca54b4796c36a1e2f67290
-    m_Address: Sprite_Cat4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 041d2941f6f8e6d4093e05d877b00e99
-    m_Address: Sprite_Cat8
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0e42e6c80eb3d664e90d8f354f5123a8
-    m_Address: Sprite_Cat6
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 18501c1384c6d5f429eeaeb3afda0d6e
-    m_Address: Sprite_Cat11
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 255bdf82b7273f8448e807a6612ca772
-    m_Address: Sprite_Cat5_shocked
+  - m_GUID: 1beb2207f93b91f45b325f717191fd88
+    m_Address: Sprite_Cat5
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -45,8 +25,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 37618f96ef02dbb488a0cae63df910ff
-    m_Address: Sprite_Cat5
+  - m_GUID: 2b27b7201bf49a9429fdf4abeeb9a449
+    m_Address: Sprite_Cat6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57a98175c84c4f94d9981d086c4fe194
+    m_Address: Sprite_Cat1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68758e9ac28376c43949a282fa89b4b9
+    m_Address: Sprite_Cat2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6fceb4076de623f45a72ad70733c0d10
+    m_Address: Sprite_Cat3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -55,18 +50,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7544bddb87fce6745964a1c316e7a3ac
-    m_Address: Sprite_Cat2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7fa1fee2e998f62459135b3de9d5cb08
     m_Address: Bomb
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 83313fc8f81761b4293317f24604b2fb
-    m_Address: Sprite_Cat10
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -75,18 +60,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 94b4cf01b776d2843a05acf47ad56809
-    m_Address: Sprite_Cat1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9f54f823aa4a7ab45a97c647d36108da
-    m_Address: Sprite_Cat9
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a263f85adf57ede45933c70ff14b99d2
-    m_Address: Sprite_Cat3_shocked
+  - m_GUID: 971b330cb25ff2c4db3ae49f506f0b25
+    m_Address: Sprite_Cat4
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -95,28 +70,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b0bb49f120d50204e9e664e7ab93121c
-    m_Address: Sprite_Cat1_shocked
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b7ecce1fb6e6d9346b116f6ef5b8b86f
-    m_Address: Sprite_Cat4_shocked
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c73824f3e89dfc64289418ac0f6a9c17
-    m_Address: Sprite_Cat3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cab8b6d6267262a47bccfa6e36badbf1
     m_Address: Vertical
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d4d3ccec3eae7c1479f3b894b09babef
-    m_Address: Sprite_Cat7
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -127,11 +82,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: db14d711262d91c48890a9e033e4096c
     m_Address: Cat4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: de6165b10507b3e45a7295ef3fcb91f8
-    m_Address: Sprite_Cat2_shocked
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

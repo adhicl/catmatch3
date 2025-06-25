@@ -34,11 +34,11 @@ MonoBehaviour:
   - Sprite_Cat4
   - Sprite_Cat5
   - Sprite_Cat6
-  hasShowTutorial: 0
+  hasShowTutorial: 1
   isSoundOn: 1
   isMusicOn: 1
   curScore: 0
-  curHighScore: 0
+  curHighScore: 108300
   curAccumulatedScore: 0
   dailyLoginBonus: 0
   countAccumulatedClear: 0
@@ -51,19 +51,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 908c00a4b5d21c4409bd8fe01359955e, type: 2}
   - {fileID: 11400000, guid: 4358ca9963ec204479ad0f08149e6ed3, type: 2}
   - {fileID: 11400000, guid: 9817fb81359f8fd42a6f61f251d54c9f, type: 2}
-  - {fileID: 11400000, guid: 08d689ed96d454f488ed873e61cbc11d, type: 2}
-  - {fileID: 11400000, guid: 018a847bb43fe454aa70d1f8f924350d, type: 2}
-  - {fileID: 11400000, guid: 5e2eaee84c17bb942bc98c2978a79d7e, type: 2}
-  - {fileID: 11400000, guid: 6e0828b8708b62643aea3a2f71cb7e5f, type: 2}
-  - {fileID: 11400000, guid: bf5796e4ae3058747a19b54e308f0aca, type: 2}
-  - {fileID: 11400000, guid: 008b0502fa6d35141a5e1d14461ad4de, type: 2}
-  - {fileID: 11400000, guid: 62345e19106c860438d48cf83b668c04, type: 2}
-  - {fileID: 11400000, guid: 1391c8933924095459b336f5ad74ea2f, type: 2}
-  - {fileID: 11400000, guid: f9b7113813497db4d8ee1bec009860bc, type: 2}
-  - {fileID: 11400000, guid: 35410a726c33dab44af7ea56c088b6cb, type: 2}
-  - {fileID: 11400000, guid: 5507cbc3bc2dd264dbeaf3cb2609a44f, type: 2}
-  - {fileID: 11400000, guid: acb8d2fe6e058b449831b8b82474e2df, type: 2}
-  - {fileID: 11400000, guid: 41f17b9ba76a7bb478d1aac78df7b2d5, type: 2}
-  - {fileID: 11400000, guid: 1a4539a8d6f15c94f9e4526c48dfc9b9, type: 2}
   curPlayerId: E5XTHa6GTXRgjO873Mh8ryhYgmAh
-  curPlayerName: 
+  curPlayerName: adhi#2620

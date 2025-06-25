@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7544bddb87fce6745964a1c316e7a3ac
+guid: 68758e9ac28376c43949a282fa89b4b9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1448154592617765035
-    second: grey_idle_0
+      213: 748345164188565979
+    second: Sprite_Cat2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,17 +122,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grey_idle_0
+      name: Sprite_Cat2_0
       rect:
         serializedVersion: 2
-        x: 36
-        y: 51
-        width: 192
-        height: 151
+        x: 8
+        y: 27
+        width: 241
+        height: 202
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba815d8ede0e81410800000000000000
-      internalID: 1448154592617765035
+      spriteID: bd147d046f7a26a00800000000000000
+      internalID: 748345164188565979
       vertices: []
       indices: 
       edges: []
@@ -161,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      grey_idle_0: 1448154592617765035
+      Sprite_Cat2_0: 748345164188565979
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
