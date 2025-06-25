@@ -1,0 +1,21 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:9a5b18a6e180ff8ae08d1c03d9f9cd8f:4d87252b73ad48bb950d02f02592ad14:15075b548633f1dc8626ede0b3457764$
+#
+:format=40300
+:texture=mainmenu-cat.png
+:size=512x1024
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+cat1_back-512;0;207;337;345; 0.5252225519287834;0.6115942028985507; 0;0;0;0
+cat1_front-512;189;587;252;250; 0.2261904761904762;0.752; 0;0;0;0
+cat1_torso-512;195;837;139;187; 0.15827338129496402;0.1925133689839572; 0;0;0;0
+cat2_hand-512;0;940;82;84; 1.3780487804878048;0.20238095238095233; 0;0;0;0
+cat2_tail-512l;82;934;113;90; -0.09734513274336283;1.1888888888888889; 0;0;0;0
+cat2_torso-512;0;552;189;285; 0.5079365079365079;0.49473684210526314; 0;0;0;0

@@ -1,0 +1,23 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:b82c6eeacc7e4c50a0523b004ee13287:8b1886813f7f05fa1226f4fd7c95058c:55320d4d498ea39bab59f67337a458a4$
+#
+:format=40300
+:texture=loading-circle.png
+:size=512x1024
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+loading-circle00;0;768;256;256; 0.5;0.5; 0;0;0;0
+loading-circle01;256;768;256;256; 0.5;0.5; 0;0;0;0
+loading-circle02;0;512;256;256; 0.5;0.5; 0;0;0;0
+loading-circle03;256;512;256;256; 0.5;0.5; 0;0;0;0
+loading-circle04;0;256;256;256; 0.5;0.5; 0;0;0;0
+loading-circle05;256;256;256;256; 0.5;0.5; 0;0;0;0
+loading-circle06;0;0;256;256; 0.5;0.5; 0;0;0;0
+loading-circle07;256;0;256;256; 0.5;0.5; 0;0;0;0
