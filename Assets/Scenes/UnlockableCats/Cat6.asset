@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cat6
   m_EditorClassIdentifier: 
   id: 6
-  hasUnlocked: 0
+  hasUnlocked: 1
   catObject: Cat6
   catSprite: Sprite_Cat6
   unlockType: 1

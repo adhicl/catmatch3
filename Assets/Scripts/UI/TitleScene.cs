@@ -28,6 +28,7 @@ public class TitleScene : MonoBehaviour
     [SerializeField] private GameObject objLeaderboard;
     [SerializeField] private LeaderboardPanel[] panelsLeaderboard;
     [SerializeField] private Button btnNextLeaderboard;
+    [SerializeField] private LeaderboardPanel rankPanel;
     
     [Header("Custom board")]
     [SerializeField] CustomWindow customWindow;
@@ -70,6 +71,7 @@ public class TitleScene : MonoBehaviour
         ChangeBGM();
 
         UnityServiceController.Instance.dLeaderboardResult += ShowLeaderboard;
+        UnityServiceController.Instance.dLeaderboardRankResult += ShowLeaderboardRank;
         
         btnReset.onClick.AddListener(ResetSaveData);
     }
@@ -143,6 +145,12 @@ public class TitleScene : MonoBehaviour
         UnityServiceController.Instance.GetPaginatedScores();
     }
 
+    private void ShowLeaderboardRank(string rank)
+    {
+        var jsonResult = JsonConvert.DeserializeObject<CommonVars.NewLeaderboardResult>(rank);
+        rankPanel.SetPanel(jsonResult.rank, jsonResult.playerName, jsonResult.score);
+    }
+
     private void ShowLeaderboard(string result)
     {
         ShowLoading(false);
@@ -157,7 +165,7 @@ public class TitleScene : MonoBehaviour
         //Debug.Log(jsonResult.results.Length);
         foreach (var fill in jsonResult.results)
         {
-            panelsLeaderboard[num].SetPanel(fill.rank, fill.playerName, fill.score);
+            panelsLeaderboard[num].SetPanel(fill.rank, fill.playerName, fill.score, num);
             panelsLeaderboard[num].gameObject.SetActive(true);
             num++;
         }

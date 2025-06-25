@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using Game.Ads;
 using Newtonsoft.Json;
 using TMPro;
 using UI;
@@ -12,6 +13,8 @@ public class ResultScene : MonoBehaviour
     public GameSetting gameSetting;
     
     [SerializeField] private ScrollRect scrollRect;
+
+    [SerializeField] private GameObject objCurtainClose;
     
     [SerializeField] private Button btnLeaderboard;
     [SerializeField] private Button btnRetry;
@@ -42,6 +45,7 @@ public class ResultScene : MonoBehaviour
     [SerializeField] private GameObject objLeaderboard;
     [SerializeField] private LeaderboardPanel[] panelsLeaderboard;
     [SerializeField] private Button btnNextLeaderboard;
+    [SerializeField] private LeaderboardPanel playerRank;
 
     [Header("Unlock")]
     [SerializeField] private GameObject objUnlock;
@@ -55,7 +59,6 @@ public class ResultScene : MonoBehaviour
     [SerializeField] private AudioSource bgmMusic;
 
     [Header("Loading")] [SerializeField] private GameObject objLoading;
-
 
     private void Start()
     {
@@ -109,13 +112,16 @@ public class ResultScene : MonoBehaviour
         btnNextLeaderboard.onClick.AddListener(ContinueToReward);
 
         UnityServiceController.Instance.dLeaderboardResult += ShowLeaderboard;
+        UnityServiceController.Instance.dLeaderboardRankResult += ShowLeaderboardRank;
         UnityServiceController.Instance.dLeaderboardSentResult += ShowRank;
     }
 
     private void OnDestroy()
     {
         UnityServiceController.Instance.dLeaderboardResult -= ShowLeaderboard;
+        UnityServiceController.Instance.dLeaderboardRankResult -= ShowLeaderboardRank;
         UnityServiceController.Instance.dLeaderboardSentResult -= ShowRank;
+        InterstitialAdController.Instance.dShowInterstitialAdFinish -= ContinueLoadToGame;
     }
 
     private void Update()
@@ -185,10 +191,17 @@ public class ResultScene : MonoBehaviour
     private bool hasRewardUnlock = false;
     private IEnumerator AnimateScore()
     {
+        objCurtainClose.SetActive(true);
+        Sequence curtainSequence = DOTween.Sequence();
+        curtainSequence.Append(objCurtainClose.transform.DOLocalMoveY(1900f, 1f));
+        curtainSequence.onComplete = () => { objCurtainClose.SetActive(false); };
+        yield return new WaitForSeconds(1f);
+        
         bool hasNewHighScore = false;
         hasRewardUnlock = false;
         
         PlayConfettiVFX();
+        SoundController.Instance.PlayFillClip();
         
         lblScore.gameObject.SetActive(true);
         isDisplayScore = true;
@@ -199,6 +212,8 @@ public class ResultScene : MonoBehaviour
         txtHighScore.text = gameSetting.curHighScore.ToString("N0");
         
         float prevHighscore = gameSetting.curHighScore;
+        
+        SoundController.Instance.PlayFillClip();
         if (gameSetting.curScore > gameSetting.curHighScore)
         {
             newRibbonTransform.SetActive(true);
@@ -355,7 +370,18 @@ public class ResultScene : MonoBehaviour
     private void GoToTitle()
     {
         SoundController.Instance.PlayButtonClip();
-        SceneManager.LoadSceneAsync("TitleScene");
+        
+        gameSetting.curScore = 0f;
+        
+        gameSetting.SaveData();
+
+        if (CommonVars.resultWithoutAd == 0)
+        {
+            InterstitialAdController.Instance.dShowInterstitialAdFinish += ContinueLoadToTitle;
+            InterstitialAdController.Instance.ShowInterstitialAd();
+        }
+        
+        AddResultWithoutAd();
     }
 
     private void GoToLeaderboard()
@@ -387,6 +413,12 @@ public class ResultScene : MonoBehaviour
         StartCoroutine(AnimateButton());
     }
 
+    private void ShowLeaderboardRank(string rank)
+    {
+        var jsonResult = JsonConvert.DeserializeObject<CommonVars.NewLeaderboardResult>(rank);
+        playerRank.SetPanel(jsonResult.rank, jsonResult.playerName, jsonResult.score);
+    }
+
     private void ShowLeaderboard(string result)
     {
         ShowLoading(false);
@@ -401,7 +433,7 @@ public class ResultScene : MonoBehaviour
         //Debug.Log(jsonResult.results.Length);
         foreach (var fill in jsonResult.results)
         {
-            panelsLeaderboard[num].SetPanel(fill.rank, fill.playerName, fill.score);
+            panelsLeaderboard[num].SetPanel(fill.rank, fill.playerName, fill.score, num);
             panelsLeaderboard[num].gameObject.SetActive(true);
             num++;
         }
@@ -433,6 +465,33 @@ public class ResultScene : MonoBehaviour
         gameSetting.curScore = 0f;
         
         gameSetting.SaveData();
+
+        if (CommonVars.resultWithoutAd == 0)
+        {
+            InterstitialAdController.Instance.dShowInterstitialAdFinish += ContinueLoadToGame;
+            InterstitialAdController.Instance.ShowInterstitialAd();
+        }
+
+        AddResultWithoutAd();
+    }
+
+    private void AddResultWithoutAd()
+    {
+        CommonVars.resultWithoutAd++;
+        if (CommonVars.resultWithoutAd == 3) CommonVars.resultWithoutAd = 0;
+    }
+
+    private void ContinueLoadToTitle()
+    {
+        Debug.Log("Load to title");
+        InterstitialAdController.Instance.dShowInterstitialAdFinish -= ContinueLoadToTitle;
+        SceneManager.LoadSceneAsync("TitleScene");
+    }
+
+    private void ContinueLoadToGame()
+    {
+        Debug.Log("Load to game");
+        InterstitialAdController.Instance.dShowInterstitialAdFinish -= ContinueLoadToGame;
         SceneManager.LoadSceneAsync("GameScene");
     }
 }

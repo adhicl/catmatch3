@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
@@ -19,7 +20,8 @@ public class LoadingScene : MonoBehaviour
 
     public AssetReference[] locations;
         
-    [SerializeField] private Slider m_LoadingSlider;
+    [SerializeField] private Image m_LoadingSlider;
+    [SerializeField] private TextMeshProUGUI tLoadingText;
 
     void Start()
     {
@@ -28,6 +30,8 @@ public class LoadingScene : MonoBehaviour
         
         gameSetting.LoadData();
         UnityServiceController.Instance.dUserSignedIn += OnUserSignedIn;
+
+        StartCoroutine(AnimateLoadingText());
     }
 
     private void OnSceneLoaded(AsyncOperationHandle obj)
@@ -40,7 +44,7 @@ public class LoadingScene : MonoBehaviour
 
     private void StoneFactory_Ready()
     {
-        Debug.Log("Sign up anonymously");
+        //Debug.Log("Sign up anonymously");
         UnityServiceController.Instance.SignUpAnonymouslyAsync();
     }
 
@@ -63,6 +67,23 @@ public class LoadingScene : MonoBehaviour
 
     private void Update()
     {
-        m_LoadingSlider.value = StoneFactory.Instance.GetLoadPercentage();
+        m_LoadingSlider.fillAmount = StoneFactory.Instance.GetLoadPercentage();
+    }
+    
+    private IEnumerator AnimateLoadingText()
+    {
+        int dotCount = 0;
+        string baseText = "Loading"; 
+        while (true)
+        {
+            // Update the text with the current number of dots
+            tLoadingText.text = baseText + new string('.', dotCount);
+
+            // Increment the dot count and reset if it exceeds 3
+            dotCount = (dotCount + 1) % 4;
+
+            // Wait for the specified animation speed
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

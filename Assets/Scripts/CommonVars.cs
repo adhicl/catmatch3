@@ -20,6 +20,8 @@ public static class CommonVars
     
     public static Vector3 shakeStrength = new Vector3(.5f, .5f, 0f);
 
+    public static int resultWithoutAd = 0;
+
     public static float[] AccumulatedScore =
     {
         100000, 300000, 500000, 500000, 600000, 700000, 800000, 900000, 1000000

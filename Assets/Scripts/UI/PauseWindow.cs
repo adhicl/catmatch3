@@ -1,4 +1,5 @@
 using System;
+using Game.Ads;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -62,12 +63,14 @@ public class PauseWindow : MonoBehaviour
 
     private void RestartButtonListener()
     {
+        NativeAdController.Instance.HideAd();
         SoundController.Instance.PlayButtonClip();
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void ContinueButtonListener()
     {
+        NativeAdController.Instance.HideAd();
         this.gameObject.SetActive(false);
         SoundController.Instance.PlayButtonClip();
         GameController.Instance.BackFromMenu();

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -29,17 +30,31 @@ public class CustomWindow : MonoBehaviour
 
     public void RedrawUI()
     {
+        int num = 0;
         if (catPickButtons == null)
         {
             catPickButtons = new List<CatPickButton>();
-            for (int i = 0; i < gameSetting.unlockCats.Length; i++)
+
+            int totalRow = Mathf.CeilToInt((float) gameSetting.unlockCats.Length / 3f);
+            
+            for (int i = 0; i < totalRow; i++)
             {
                 GameObject obj = Instantiate(prefabUnlockCat, rectContent);
-                CatPickButton cat  = obj.GetComponent<CatPickButton>();
-                cat.Init(gameSetting.unlockCats[i], gameSetting.unlockCats[i].hasUnlocked);
-                var i1 = i;
-                cat.GetComponent<Button>().onClick.AddListener(() => onPickCatListener(i1) );
-                catPickButtons.Add(cat);
+                CatPickButton[] buttons = obj.GetComponent<RowCatPickButtons>().GetCatPickButtons();
+                foreach (var cat in buttons)
+                {
+                    bool isShow = num < gameSetting.unlockCats.Length;
+                    
+                    cat.gameObject.SetActive(isShow);
+                    if (isShow)
+                    {
+                        cat.Init(gameSetting.unlockCats[num], gameSetting.unlockCats[num].hasUnlocked);
+                        var i1 = num;
+                        cat.GetComponent<Button>().onClick.AddListener(() => onPickCatListener(i1) );
+                        catPickButtons.Add(cat);
+                    }
+                    num++;
+                }
             }
         }
         

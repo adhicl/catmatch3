@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 37618f96ef02dbb488a0cae63df910ff
+guid: 1beb2207f93b91f45b325f717191fd88
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6665159642134509688
-    second: lemon_idle_0
+      213: -3001980598132984475
+    second: Sprite_Cat5_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,17 +122,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lemon_idle_0
+      name: Sprite_Cat5_0
       rect:
         serializedVersion: 2
-        x: 36
-        y: 51
-        width: 192
-        height: 151
+        x: 8
+        y: 27
+        width: 241
+        height: 202
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8878d477e989083a0800000000000000
-      internalID: -6665159642134509688
+      spriteID: 5653ba91d82d656d0800000000000000
+      internalID: -3001980598132984475
       vertices: []
       indices: 
       edges: []
@@ -161,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      lemon_idle_0: -6665159642134509688
+      Sprite_Cat5_0: -3001980598132984475
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
