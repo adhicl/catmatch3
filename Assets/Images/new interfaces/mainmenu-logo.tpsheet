@@ -1,0 +1,19 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:41097d17b64e75f4e173d4faa218a8e4:2ec2456b1e737e75dc30ca3666f270c0:383bd4be87f25d27ab2c0c334ef3036b$
+#
+:format=40300
+:texture=mainmenu-logo.png
+:size=1024x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+blast-1024;1;1814;615;233; 0.47317073170731705;1.145922746781116; 0;0;0;0
+logo_bg-1024;1;1159;871;653; 0.4833524684270953;0.4808575803981623; 0;0;0;0
+match-1024;1;1056;336;101; 0.4791666666666667;0.7029702970297029; 0;0;0;0
+neko-1024;1;728;760;326; 0.47368421052631576;0.16871165644171782; 0;0;0;0

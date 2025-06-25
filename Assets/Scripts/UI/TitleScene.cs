@@ -12,15 +12,24 @@ using UnityEngine.UI;
 public class TitleScene : MonoBehaviour
 {
     public GameSetting gameSetting;
+
+    [Header("Title Logo")]
     [SerializeField] private GameObject objTitle;
+    [SerializeField] private Transform tNeko;
+    [SerializeField] private Transform tMatch;
+    [SerializeField] private Transform tBlast;
+    [SerializeField] private GameObject objNekoCat1;
+    [SerializeField] private GameObject objNekoCat2;
     
     [Header("Main Menu")]
+    [SerializeField] private GameObject objHighscorePnl;
     [SerializeField] private GameObject objHighscore;
     [SerializeField] private TextMeshProUGUI txtHighscore;
     
     [SerializeField] private Button btnPlay;
     [SerializeField] private Button btnShop;
     [SerializeField] private Button btnLeaderboard;
+    [SerializeField] private Button btnNoAd;
 
     [SerializeField] private Button btnReset;
 
@@ -43,10 +52,15 @@ public class TitleScene : MonoBehaviour
     private void Start()
     {
         objTitle.SetActive(false);
+        objNekoCat1.SetActive(false);
+        objNekoCat2.SetActive(false);
+        
+        objHighscorePnl.SetActive(false);
         objHighscore.SetActive(false);
         btnPlay.gameObject.SetActive(false);
         btnShop.gameObject.SetActive(false);
         btnLeaderboard.gameObject.SetActive(false);
+        btnNoAd.gameObject.SetActive(false);
         customWindow.gameObject.SetActive(false);
         
         objLeaderboard.gameObject.SetActive(false);
@@ -57,6 +71,7 @@ public class TitleScene : MonoBehaviour
         btnShop.onClick.AddListener(GoToShop);
         btnLeaderboard.onClick.AddListener(GoToLeaderboard);
         btnNextLeaderboard.onClick.AddListener(CloseLeaderboard);
+        btnNoAd.onClick.AddListener(OnNoAdButtonClicked);
         
         if (CommonVars.AnimateStart)
         {
@@ -91,18 +106,38 @@ public class TitleScene : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
 
         objTitle.SetActive(true);
+        objTitle.transform.position = objTitle.transform.position + new Vector3(0f, 2f, 0f);
+        tNeko.localScale = Vector3.zero;
+        tMatch.localScale = Vector3.zero;
+        tBlast.localScale = Vector3.zero;
+
+        objNekoCat1.transform.position = objNekoCat1.transform.position - new Vector3(0f, 3f, 0f);
+        objNekoCat2.transform.position = objNekoCat2.transform.position - new Vector3(0f, 3f, 0f);
+        objNekoCat1.SetActive(true);
+        objNekoCat2.SetActive(true);
         
         Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(objTitle.transform.DOScale(Vector3.one * 1.5f, 0.2f));
-        mySequence.Append(objTitle.transform.DOScale(Vector3.one, 0.2f));
-
-        yield return new WaitForSeconds(1f);
+        mySequence.Append(objTitle.transform.DOMoveY(3.15f, 0.5f).SetEase(Ease.OutBounce));
+        //mySequence.Append(objTitle.transform.DOScale(Vector3.one * 1.5f, 0.2f));
+        //mySequence.Append(objTitle.transform.DOScale(Vector3.one, 0.2f));
+        mySequence.Append(tNeko.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce));
+        mySequence.Append(tMatch.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce));
+        mySequence.Append(tBlast.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce));
+        mySequence.Append(objNekoCat1.transform.DOMoveY(-4.875f, 1f).SetEase(Ease.OutElastic));
+        mySequence.Append(objNekoCat2.transform.DOMoveY(-4.57f, 1f).SetEase(Ease.OutElastic));
+        
+        yield return new WaitForSeconds(4.5f);
 
         btnPlay.gameObject.SetActive(true);
+#if (UNITY_ANDROID || UNITY_IOS)
+        btnNoAd.gameObject.SetActive(true);
+#else
         btnShop.gameObject.SetActive(true);
+#endif
         btnLeaderboard.gameObject.SetActive(true);
+        objHighscorePnl.SetActive(true);
         
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
 
         objHighscore.SetActive(true);
         txtHighscore.text = gameSetting.curHighScore.ToString("N0");
@@ -113,8 +148,16 @@ public class TitleScene : MonoBehaviour
         objTitle.SetActive(true);
         
         btnPlay.gameObject.SetActive(true);
+        #if (UNITY_ANDROID || UNITY_IOS)
+        btnNoAd.gameObject.SetActive(true);
+        #else
         btnShop.gameObject.SetActive(true);
+        #endif
         btnLeaderboard.gameObject.SetActive(true);
+        objHighscorePnl.SetActive(true);
+
+        objNekoCat1.SetActive(true);
+        objNekoCat2.SetActive(true);
         
         yield return new WaitForSeconds(1f);
 
@@ -186,5 +229,11 @@ public class TitleScene : MonoBehaviour
     {
         gameSetting.Reset();
         gameSetting.SaveData();
+    }
+
+    private void OnNoAdButtonClicked()
+    {
+        SoundController.Instance.PlayButtonClip();
+        
     }
 }

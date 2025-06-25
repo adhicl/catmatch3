@@ -11,8 +11,12 @@ tpsheetFileNames:
 - Assets/Images/interfaces/text_popup.tpsheet
 - Assets/Images/new interfaces/gameplay_interface.tpsheet
 - Assets/Images/new interfaces/interface_cat_pick.tpsheet
+- Assets/Images/new interfaces/interface_mainmenu.tpsheet
 - Assets/Images/new interfaces/interface_message.tpsheet
 - Assets/Images/new interfaces/interface_score.tpsheet
+- Assets/Images/new interfaces/loading-circle.tpsheet
+- Assets/Images/new interfaces/mainmenu-cat.tpsheet
+- Assets/Images/new interfaces/mainmenu-logo.tpsheet
 - Assets/Images/sprites/cats.tpsheet
 - Assets/Images/sprites/cats/new_bomb.tpsheet
 - Assets/Images/sprites/cats/new_cat_01.tpsheet
@@ -28,13 +32,21 @@ textureFileNames:
 - Assets/Images/interfaces/text_popup.png
 - Assets/Images/new interfaces/gameplay_interface.png
 - Assets/Images/new interfaces/interface_cat_pick.png
+- Assets/Images/new interfaces/interface_mainmenu.png
 - Assets/Images/new interfaces/interface_message.png
 - Assets/Images/new interfaces/interface_score.png
+- Assets/Images/new interfaces/loading-circle.png
+- Assets/Images/new interfaces/mainmenu-cat.png
+- Assets/Images/new interfaces/mainmenu-logo.png
 - Assets/Images/sprites/cats.png
 - Assets/Images/sprites/cats/new_bomb.png
 - Assets/Images/sprites/cats/new_cat_01.png
 normalmapFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
+- 
+- 
+- 
+- 
 - 
 - 
 - 
