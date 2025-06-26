@@ -121,7 +121,6 @@ public class ResultScene : MonoBehaviour
         UnityServiceController.Instance.dLeaderboardResult -= ShowLeaderboard;
         UnityServiceController.Instance.dLeaderboardRankResult -= ShowLeaderboardRank;
         UnityServiceController.Instance.dLeaderboardSentResult -= ShowRank;
-        InterstitialAdController.Instance.dShowInterstitialAdFinish -= ContinueLoadToGame;
     }
 
     private void Update()
@@ -375,6 +374,7 @@ public class ResultScene : MonoBehaviour
         
         gameSetting.SaveData();
 
+#if (UNITY_ANDROID || UNITY_IOS)
         if (CommonVars.resultWithoutAd == 0)
         {
             InterstitialAdController.Instance.dShowInterstitialAdFinish += ContinueLoadToTitle;
@@ -382,6 +382,7 @@ public class ResultScene : MonoBehaviour
         }
         
         AddResultWithoutAd();
+#endif
     }
 
     private void GoToLeaderboard()
@@ -465,7 +466,8 @@ public class ResultScene : MonoBehaviour
         gameSetting.curScore = 0f;
         
         gameSetting.SaveData();
-
+        
+#if (UNITY_ANDROID || UNITY_IOS)
         if (CommonVars.resultWithoutAd == 0)
         {
             InterstitialAdController.Instance.dShowInterstitialAdFinish += ContinueLoadToGame;
@@ -473,8 +475,10 @@ public class ResultScene : MonoBehaviour
         }
 
         AddResultWithoutAd();
+#endif
     }
 
+#if (UNITY_ANDROID || UNITY_IOS)
     private void AddResultWithoutAd()
     {
         CommonVars.resultWithoutAd++;
@@ -494,4 +498,6 @@ public class ResultScene : MonoBehaviour
         InterstitialAdController.Instance.dShowInterstitialAdFinish -= ContinueLoadToGame;
         SceneManager.LoadSceneAsync("GameScene");
     }
+#endif
+    
 }

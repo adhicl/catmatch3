@@ -276,7 +276,10 @@ public class UIController : MonoBehaviour
     public void ShowPauseWindow()
     {
         pauseWindow.SetActive(true);
+        
+#if (UNITY_ANDROID || UNITY_IOS)
         NativeAdController.Instance.ShowAd();
+#endif
     }
 
     private void PlayButtonListener()
