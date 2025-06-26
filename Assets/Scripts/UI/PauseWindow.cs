@@ -58,15 +58,18 @@ public class PauseWindow : MonoBehaviour
     private void HomeButtonListener()
     {
         SoundController.Instance.PlayButtonClip();
+#if (UNITY_ANDROID || UNITY_IOS)
+        NativeAdController.Instance.HideAd();
+#endif
         SceneManager.LoadSceneAsync("TitleScene");
     }
 
     private void RestartButtonListener()
     {
+        SoundController.Instance.PlayButtonClip();
 #if (UNITY_ANDROID || UNITY_IOS)
         NativeAdController.Instance.HideAd();
 #endif
-        SoundController.Instance.PlayButtonClip();
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 

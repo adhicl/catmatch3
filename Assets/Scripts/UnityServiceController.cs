@@ -44,6 +44,7 @@ public class UnityServiceController : MonoBehaviour
     public delegate void mDelegate();
 
     public mDelegate dUserSignedIn;
+    public mDelegate dUserCannotSignIn;
 
     public delegate void mJSONReturn(string result);
 
@@ -99,19 +100,6 @@ public class UnityServiceController : MonoBehaviour
     
     public async void SignUpAnonymouslyAsync()
     {
-        /*
-        // Check if a cached player already exists by checking if the session token exists
-        if (!AuthenticationService.Instance.SessionTokenExists)
-        {
-            // if not, then do nothing
-            Debug.Log("session token exist");
-        
-            //turn on user analytic now
-            AnalyticsService.Instance.StartDataCollection();
-            if (dUserSignedIn != null) dUserSignedIn.Invoke();
-            return;
-        }
-        //*/
         try
         {
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
@@ -124,10 +112,12 @@ public class UnityServiceController : MonoBehaviour
         catch (AuthenticationException ex)
         {
             Debug.LogException(ex);
+            if (dUserCannotSignIn != null) dUserCannotSignIn.Invoke();
         }
         catch (RequestFailedException ex)
         {
             Debug.LogException(ex);
+            if (dUserCannotSignIn != null) dUserCannotSignIn.Invoke();
         }
     }
 
