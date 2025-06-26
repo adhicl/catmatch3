@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 0549982ba5fb5c3499fe3ebe34aba024
+guid: fb987211e0b60934ca830f9817a84242
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6344073411073266544
+    second: Game_Main_Icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -136,111 +139,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cat_gallery_icon
+      name: Game_Main_Icon_0
       rect:
         serializedVersion: 2
-        x: 1697
-        y: 253
-        width: 350
-        height: 384
-      alignment: 9
-      pivot: {x: 0.5, y: 0.49739584}
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 46a44a8ffdb2903419c556f7eced185c
-      internalID: 1332443912
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: leaderboard_icon_2
-      rect:
-        serializedVersion: 2
-        x: 764
-        y: 252
-        width: 346
-        height: 385
-      alignment: 9
-      pivot: {x: 0.50578034, y: 0.4987013}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ff5757fa669eb34aa043cc8fc503f73
-      internalID: -1664980646
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: play_big
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 172
-        width: 761
-        height: 851
-      alignment: 9
-      pivot: {x: 0.49934298, y: 0.4853114}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a341b17c75c937c4cb9803c0b1a626c4
-      internalID: 724663074
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: store_icon
-      rect:
-        serializedVersion: 2
-        x: 764
-        y: 639
-        width: 350
-        height: 384
-      alignment: 9
-      pivot: {x: 0.5, y: 0.49739584}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dec233e5d254bdf43a54e392b77ff8e8
-      internalID: 1826220912
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: no_ads_icon
-      rect:
-        serializedVersion: 2
-        x: 1697
-        y: 639
-        width: 350
-        height: 384
-      alignment: 9
-      pivot: {x: 0.5, y: 0.49739584}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d33f5520515a7484c8d307498e25c562
-      internalID: -1718046280
+      spriteID: 09c2aff48d255f7a0800000000000000
+      internalID: -6344073411073266544
       vertices: []
       indices: 
       edges: []
@@ -249,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e24e96574e9e7cd4d8a4c1f53b8f330d
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -259,11 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cat_gallery_icon: 1332443912
-      leaderboard_icon_2: -1664980646
-      no_ads_icon: -1718046280
-      play_big: 724663074
-      store_icon: 1826220912
+      Game_Main_Icon_0: -6344073411073266544
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
