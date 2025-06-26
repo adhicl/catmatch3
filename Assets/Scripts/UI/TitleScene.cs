@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Game.Ads;
 using Newtonsoft.Json;
 using TMPro;
 using UI;

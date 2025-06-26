@@ -379,6 +379,8 @@ public class ResultScene : MonoBehaviour
         {
             InterstitialAdController.Instance.dShowInterstitialAdFinish += ContinueLoadToTitle;
             InterstitialAdController.Instance.ShowInterstitialAd();
+            
+            objLoading.gameObject.SetActive(true);
         }
         
         AddResultWithoutAd();
@@ -472,6 +474,8 @@ public class ResultScene : MonoBehaviour
         {
             InterstitialAdController.Instance.dShowInterstitialAdFinish += ContinueLoadToGame;
             InterstitialAdController.Instance.ShowInterstitialAd();
+            
+            objLoading.gameObject.SetActive(true);
         }
 
         AddResultWithoutAd();

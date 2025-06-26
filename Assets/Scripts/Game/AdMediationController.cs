@@ -1,5 +1,5 @@
 using System;
-//using GoogleMobileAds.Api;
+using GoogleMobileAds.Api;
 using UnityEngine;
 
 namespace Game
@@ -28,9 +28,8 @@ namespace Game
         public delegate void mDelegate();
         public mDelegate dMobileAdInitialized;
         
-        private void Start()
+        public void StartInitGoogleAd()
         {
-            /*
             MobileAds.Initialize((InitializationStatus initstatus) =>
             {
                 if (initstatus == null)
@@ -42,7 +41,6 @@ namespace Game
                 if (dMobileAdInitialized != null) dMobileAdInitialized();
                 Debug.Log("Google Mobile Ads initialization complete.");
             });
-            //*/
         }
     }
 }

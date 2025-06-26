@@ -1,4 +1,5 @@
 using System.Collections;
+using Game;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -49,6 +50,7 @@ public class LoadingScene : MonoBehaviour
 
     private void GoToNextLevel()
     {
+        AdMediationController.Instance.StartInitGoogleAd();
         if (gameSetting.hasShowTutorial)
         {
             SceneManager.LoadSceneAsync("TitleScene");

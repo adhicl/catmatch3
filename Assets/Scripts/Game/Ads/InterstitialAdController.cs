@@ -1,5 +1,5 @@
 using System;
-//using GoogleMobileAds.Api;
+using GoogleMobileAds.Api;
 using UnityEngine;
 
 namespace Game.Ads
@@ -32,7 +32,6 @@ namespace Game.Ads
   private string _adUnitId = "unused";
 #endif
 
-        /*
         private InterstitialAd _interstitialAd;
         
         public delegate void mDelegate();
@@ -46,8 +45,6 @@ namespace Game.Ads
         private void SetupAd()
         {
             LoadAd();
-            RegisterEventHandlers();
-            RegisterReloadHandler();
         }
 
         /// <summary>
@@ -83,6 +80,9 @@ namespace Game.Ads
                               + ad.GetResponseInfo());
 
                     _interstitialAd = ad;
+                    
+                    RegisterEventHandlers();
+                    RegisterReloadHandler();
                 });
         }
         
@@ -131,6 +131,7 @@ namespace Game.Ads
         
         private void RegisterReloadHandler()
         {
+            Debug.Log("Interstitial Ad RegisterReloadHandler");
             // Raised when the ad closed full screen content.
             _interstitialAd.OnAdFullScreenContentClosed += () =>
             {
@@ -150,6 +151,5 @@ namespace Game.Ads
                 if (dShowInterstitialAdFinish != null) dShowInterstitialAdFinish();
             };
         }
-        //*/
     }
 }

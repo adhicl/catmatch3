@@ -1,5 +1,5 @@
 using System;
-//using GoogleMobileAds.Api;
+using GoogleMobileAds.Api;
 using UnityEngine;
 
 namespace Game.Ads
@@ -33,7 +33,6 @@ namespace Game.Ads
   private string _adUnitId = "unused";
 #endif
 
-        /*
         BannerView _bannerView;
 
         private void Start()
@@ -56,12 +55,13 @@ namespace Game.Ads
 
             // Create a 320x50 banner at top of the screen
             _bannerView = new BannerView(_adUnitId, AdSize.IABBanner, AdPosition.Bottom);
+            ListenToAdEvents();
         }
         
         /// <summary>
         /// Creates the banner view and loads a banner ad.
         /// </summary>
-        private void LoadAd()
+        public void LoadAd()
         {
             // create an instance of a banner view first.
             if(_bannerView == null)
@@ -75,8 +75,10 @@ namespace Game.Ads
             // send the request to load the ad.
             Debug.Log("Loading banner ad.");
             _bannerView.LoadAd(adRequest);
-            ListenToAdEvents();
+            _bannerView.Show();
         }
+
+        private bool isAdLoaded = false;
         
         /// <summary>
         /// listen to events the banner view may raise.
@@ -136,6 +138,5 @@ namespace Game.Ads
                 _bannerView = null;
             }
         }
-        //*/
     }
 }

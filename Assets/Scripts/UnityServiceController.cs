@@ -177,6 +177,7 @@ public class UnityServiceController : MonoBehaviour
     private void StartPlayGoogle()
     {
 #if  UNITY_ANDROID
+        Debug.Log("Play Games Platform activate");
         PlayGamesPlatform.Activate();
         PlayGamesPlatform.Instance.Authenticate((success) =>
         {

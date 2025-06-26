@@ -1,5 +1,5 @@
 using System;
-//using GoogleMobileAds.Api;
+using GoogleMobileAds.Api;
 using UnityEngine;
 
 namespace Game.Ads
@@ -33,7 +33,6 @@ namespace Game.Ads
   private string _adUnitId = "unused";
 #endif
 
-        /*
         private NativeOverlayAd _nativeOverlayAd;
 
         private void Start()
@@ -52,7 +51,7 @@ namespace Game.Ads
                 DestroyAd();
             }
 
-            Debug.Log("Loading native overlay ad.");
+            Debug.Log("Loading Native overlay ad.");
 
             // Create a request used to load the ad.
             var adRequest = new AdRequest();
@@ -91,7 +90,6 @@ namespace Game.Ads
 
                     // Register to ad events to extend functionality.
                     RegisterEventHandlers();
-                    RenderAd();
                 });
         }
         
@@ -167,6 +165,7 @@ namespace Game.Ads
             {
                 Debug.Log("Showing Native Overlay ad.");
                 _nativeOverlayAd.Show();
+                RenderAd();
             }
         }
         
@@ -194,7 +193,5 @@ namespace Game.Ads
                 _nativeOverlayAd = null;
             }
         }
-        
-        //*/
     }
 }
