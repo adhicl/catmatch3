@@ -1,7 +1,5 @@
 using System;
-#if (UNITY_ANDROID || UNITY_IOS || UNITY_IPHONE)
-using GoogleMobileAds.Api;
-#endif
+//using GoogleMobileAds.Api;
 using UnityEngine;
 
 namespace Game.Ads
@@ -35,7 +33,7 @@ namespace Game.Ads
   private string _adUnitId = "unused";
 #endif
 
-#if (UNITY_ANDROID || UNITY_IOS || UNITY_IPHONE)
+        /*
         BannerView _bannerView;
 
         private void Start()
@@ -138,6 +136,6 @@ namespace Game.Ads
                 _bannerView = null;
             }
         }
-#endif
+        //*/
     }
 }
