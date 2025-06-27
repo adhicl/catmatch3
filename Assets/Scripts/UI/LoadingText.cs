@@ -25,7 +25,6 @@ namespace UI
             string baseText = "Loading"; 
             while (true)
             {
-                Debug.Log("Loading "+dotCount);
                 // Update the text with the current number of dots
                 tLoadingText.text = baseText + new string('.', dotCount);
 

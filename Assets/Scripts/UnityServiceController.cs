@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -8,8 +9,10 @@ using Unity.Services.Authentication;
 using Unity.Services.Authentication.PlayerAccounts;
 using Unity.Services.Core;
 using Unity.Services.Leaderboards;
+using UnityEditor.Searcher;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Event = Unity.Services.Analytics.Event;
 
 public class UnityServiceController : MonoBehaviour
 {
@@ -42,6 +45,9 @@ public class UnityServiceController : MonoBehaviour
     public delegate void mDelegate();
 
     public mDelegate dUserSignedIn;
+    public mDelegate dUserCannotSignIn;
+
+    public mDelegate dLeaderboardError;
 
     public delegate void mJSONReturn(string result);
 
@@ -97,19 +103,6 @@ public class UnityServiceController : MonoBehaviour
     
     public async void SignUpAnonymouslyAsync()
     {
-        /*
-        // Check if a cached player already exists by checking if the session token exists
-        if (!AuthenticationService.Instance.SessionTokenExists)
-        {
-            // if not, then do nothing
-            Debug.Log("session token exist");
-        
-            //turn on user analytic now
-            AnalyticsService.Instance.StartDataCollection();
-            if (dUserSignedIn != null) dUserSignedIn.Invoke();
-            return;
-        }
-        //*/
         try
         {
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
@@ -118,10 +111,12 @@ public class UnityServiceController : MonoBehaviour
         catch (AuthenticationException ex)
         {
             Debug.LogException(ex);
+            if (dUserCannotSignIn != null) dUserCannotSignIn.Invoke();
         }
         catch (RequestFailedException ex)
         {
             Debug.LogException(ex);
+            if (dUserCannotSignIn != null) dUserCannotSignIn.Invoke();
         }
     }
 
@@ -130,7 +125,7 @@ public class UnityServiceController : MonoBehaviour
         //Debug.Log(@"Rename player $newPlayerName");
         await AuthenticationService.Instance.UpdatePlayerNameAsync(newPlayerName);
         
-        //Debug.Log("Get player name "+AuthenticationService.Instance.PlayerName);
+        Debug.Log("Get player name "+AuthenticationService.Instance.PlayerName);
         gameSetting.curPlayerName = AuthenticationService.Instance.PlayerName;
         
         GetPlayerName();
@@ -139,31 +134,53 @@ public class UnityServiceController : MonoBehaviour
 
     public async void AddScore(float score)
     {
-        var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(Leaderboard_id, score);
-        //Debug.Log(JsonConvert.SerializeObject(scoreResponse));
-        if (dLeaderboardSentResult != null) dLeaderboardSentResult.Invoke(JsonConvert.SerializeObject(scoreResponse));
+        try
+        {
+            var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(Leaderboard_id, score);
+            //Debug.Log(JsonConvert.SerializeObject(scoreResponse));
+            if (dLeaderboardSentResult != null)
+                dLeaderboardSentResult.Invoke(JsonConvert.SerializeObject(scoreResponse));
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+            if (dLeaderboardError != null) dLeaderboardError.Invoke();
+        }
     }
 
     private async void GetPlayerHighScore()
     {
-        var curScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(Leaderboard_id);
-        gameSetting.curPlayerName = curScore.PlayerName;
-        gameSetting.curHighScore = (float) curScore.Score;
-
-        Debug.Log("Get Player Data");
+        try
+        {
+            var curScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(Leaderboard_id);
+            gameSetting.curPlayerName = curScore.PlayerName;
+            gameSetting.curHighScore = (float) curScore.Score;
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
     }
 
     public async void GetPaginatedScores()
     {
-        var curScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(Leaderboard_id);
-        if (dLeaderboardRankResult != null) dLeaderboardRankResult.Invoke(JsonConvert.SerializeObject(curScore));
+        try
+        {
+            var curScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(Leaderboard_id);
+            if (dLeaderboardRankResult != null) dLeaderboardRankResult.Invoke(JsonConvert.SerializeObject(curScore));
         
-        var rangeLimit = 20;
-        var scoresResponse = await LeaderboardsService.Instance.GetPlayerRangeAsync(
-            Leaderboard_id,
-            new GetPlayerRangeOptions{ RangeLimit = rangeLimit }
-        );
-        //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
-        if (dLeaderboardResult != null) dLeaderboardResult.Invoke(JsonConvert.SerializeObject(scoresResponse));
+            var rangeLimit = 20;
+            var scoresResponse = await LeaderboardsService.Instance.GetPlayerRangeAsync(
+                Leaderboard_id,
+                new GetPlayerRangeOptions{ RangeLimit = rangeLimit }
+            );
+            //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+            if (dLeaderboardResult != null) dLeaderboardResult.Invoke(JsonConvert.SerializeObject(scoresResponse));
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+            if (dLeaderboardError != null) dLeaderboardError.Invoke();
+        }
     }
 }

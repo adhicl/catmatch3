@@ -36,6 +36,12 @@ public static class CommonVars
         470000, 480000, 490000, 500000
     };
 
+    //here
+    public static string[] ErrorMessage =
+    {
+        "Something went wrong. Please make sure you have internet connection before continuing",        
+    };
+
     public enum GameMode: byte
     {
         Menu,
@@ -88,6 +94,4 @@ public static class CommonVars
     public class LeaderboardResult
     {
         public NewLeaderboardResult[] results;
-    }
-
-}
+    } }
