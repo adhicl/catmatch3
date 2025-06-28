@@ -44,6 +44,12 @@ public class TitleScene : MonoBehaviour
     [SerializeField] CustomWindow customWindow;
     
     [Header("Loading")] [SerializeField] private GameObject objLoading;
+    
+    [Header("Error Message")]
+    [SerializeField] private GameObject objError;
+    [SerializeField] private TextMeshProUGUI txtMessageError;
+    [SerializeField] private TextMeshProUGUI txtButtonMessage;
+    [SerializeField] private Button btnNextError;
 
     [Header("Data")]
     [SerializeField] private AudioSource bgmMusic;
@@ -67,6 +73,8 @@ public class TitleScene : MonoBehaviour
         objLeaderboard.gameObject.SetActive(false);
         ShowLoading(false);
         
+        objError.SetActive(false);
+        
         //listener
         btnPlay.onClick.AddListener(GoToPlay);
         btnShop.onClick.AddListener(GoToShop);
@@ -88,13 +96,17 @@ public class TitleScene : MonoBehaviour
 
         UnityServiceController.Instance.dLeaderboardResult += ShowLeaderboard;
         UnityServiceController.Instance.dLeaderboardRankResult += ShowLeaderboardRank;
+        UnityServiceController.Instance.dLeaderboardError += ShowErrorMessage;
         
         btnReset.onClick.AddListener(ResetSaveData);
+        btnNextError.onClick.AddListener(CloseErrorMessage);
     }
 
     private void OnDestroy()
     {
         UnityServiceController.Instance.dLeaderboardResult -= ShowLeaderboard;
+        UnityServiceController.Instance.dLeaderboardRankResult -= ShowLeaderboardRank;
+        UnityServiceController.Instance.dLeaderboardError -= ShowErrorMessage;
     }
 
     private void ChangeBGM()
@@ -235,6 +247,20 @@ public class TitleScene : MonoBehaviour
     private void OnNoAdButtonClicked()
     {
         SoundController.Instance.PlayButtonClip();
+    }
+
+    private void ShowErrorMessage()
+    {
+        objError.SetActive(true);
+        objLoading.SetActive(false);
+
+        txtMessageError.text = CommonVars.ErrorMessage[0];
+        txtButtonMessage.text = "Ok";
         
+    }
+
+    private void CloseErrorMessage()
+    {
+        objError.SetActive(false);
     }
 }

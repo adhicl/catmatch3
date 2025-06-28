@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +36,7 @@ public class StoneFactory : MonoBehaviour
     private Dictionary<string, AsyncOperationHandle<Sprite>> spriteDictionary;
     public UnityEvent Ready;
     public UnityEvent StoneBuilt;
+    public UnityEvent StoneErrorDownload;
     
     [SerializeField] Material spriteMaterial;
     
@@ -73,32 +75,52 @@ public class StoneFactory : MonoBehaviour
 
         yield return locations;
 
+        if (locations.Status == AsyncOperationStatus.Failed)
+        {
+            StoneErrorDownload.Invoke();
+            yield break;
+        }
+
         var loadOps = new List<AsyncOperationHandle>(locations.Result.Count);
 
-        foreach (IResourceLocation location in locations.Result) {
+        foreach (IResourceLocation location in locations.Result)
+        {
             AsyncOperationHandle<GameObject> handle =
                 Addressables.LoadAssetAsync<GameObject>(location);
             handle.Completed += obj => loadingDictionary.Add(location.PrimaryKey, obj);
             loadOps.Add(handle);
         }
 
-        yield return Addressables.ResourceManager.CreateGenericGroupOperation(loadOps, true);
-        
+        var loadOp = Addressables.ResourceManager.CreateGenericGroupOperation(loadOps, true);
+        yield return loadOp;
+        if (loadOp.Status == AsyncOperationStatus.Failed)
+        {
+            StoneErrorDownload.Invoke();
+            yield break;
+        }
+
         //Sprite dictionary
-        
+
         if (spriteDictionary == null)
             spriteDictionary = new Dictionary<string, AsyncOperationHandle<Sprite>>();
 
-        foreach (string location in gameSetting.spriteTypes) {
+        foreach (string location in gameSetting.spriteTypes)
+        {
             AsyncOperationHandle<Sprite> handle =
                 Addressables.LoadAssetAsync<Sprite>(location);
             handle.Completed += obj => spriteDictionary.Add(location, obj);
             loadOps.Add(handle);
         }
 
-        yield return Addressables.ResourceManager.CreateGenericGroupOperation(loadOps, true);
+        var loadOp2 = Addressables.ResourceManager.CreateGenericGroupOperation(loadOps, true);
+        yield return loadOp2;
+        if (loadOp.Status == AsyncOperationStatus.Failed)
+        {
+            StoneErrorDownload.Invoke();
+            yield break;
+        }
 
-        Debug.Log("Finish loading");
+        //Debug.Log("Finish loading");
 
         isReady = true;
         Ready.Invoke();
@@ -108,7 +130,7 @@ public class StoneFactory : MonoBehaviour
     {
         if (!isReady) return;
         
-        Debug.Log("Building Stones");
+        //Debug.Log("Building Stones");
         
         int total = CommonVars.GRID_HEIGHT * CommonVars.GRID_WIDTH;
         stoneLists = new List<Transform>[gameSetting.pickTypes.Length];

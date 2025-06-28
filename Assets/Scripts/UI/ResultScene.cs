@@ -52,6 +52,12 @@ public class ResultScene : MonoBehaviour
     [SerializeField] private Image imgUnlockCat;
     [SerializeField] private GameObject lblUnlock;
     [SerializeField] private Button btnNextUnlock;
+    
+    [Header("Error Message")]
+    [SerializeField] private GameObject objError;
+    [SerializeField] private TextMeshProUGUI txtMessageError;
+    [SerializeField] private TextMeshProUGUI txtButtonMessage;
+    [SerializeField] private Button btnNextError;
 
     [Header("VFX")]
     [SerializeField] private ParticleSystem confettiL;
@@ -103,6 +109,9 @@ public class ResultScene : MonoBehaviour
         //loading
         objLoading.gameObject.SetActive(false);
         
+        //error
+        objError.SetActive(false);
+        
         //on click listener
         btnHome.onClick.AddListener(GoToTitle);
         btnLeaderboard.onClick.AddListener(GoToLeaderboard);
@@ -110,10 +119,12 @@ public class ResultScene : MonoBehaviour
         btnNextUnlock.onClick.AddListener(GoToNextUnlock);
         btnRank.onClick.AddListener(ShowLeaderboardNext);
         btnNextLeaderboard.onClick.AddListener(ContinueToReward);
+        btnNextError.onClick.AddListener(CloseErrorMessage);
 
         UnityServiceController.Instance.dLeaderboardResult += ShowLeaderboard;
         UnityServiceController.Instance.dLeaderboardRankResult += ShowLeaderboardRank;
         UnityServiceController.Instance.dLeaderboardSentResult += ShowRank;
+        UnityServiceController.Instance.dLeaderboardError += ShowErrorMessage;
     }
 
     private void OnDestroy()
@@ -121,6 +132,7 @@ public class ResultScene : MonoBehaviour
         UnityServiceController.Instance.dLeaderboardResult -= ShowLeaderboard;
         UnityServiceController.Instance.dLeaderboardRankResult -= ShowLeaderboardRank;
         UnityServiceController.Instance.dLeaderboardSentResult -= ShowRank;
+        UnityServiceController.Instance.dLeaderboardError -= ShowErrorMessage;
     }
 
     private void Update()
@@ -377,10 +389,9 @@ public class ResultScene : MonoBehaviour
 #if (UNITY_ANDROID || UNITY_IOS)
         if (CommonVars.resultWithoutAd == 0)
         {
+            ShowLoading(true);
             InterstitialAdController.Instance.dShowInterstitialAdFinish += ContinueLoadToTitle;
             InterstitialAdController.Instance.ShowInterstitialAd();
-            
-            objLoading.gameObject.SetActive(true);
         }
         
         AddResultWithoutAd();
@@ -472,10 +483,9 @@ public class ResultScene : MonoBehaviour
 #if (UNITY_ANDROID || UNITY_IOS)
         if (CommonVars.resultWithoutAd == 0)
         {
+            ShowLoading(true);
             InterstitialAdController.Instance.dShowInterstitialAdFinish += ContinueLoadToGame;
             InterstitialAdController.Instance.ShowInterstitialAd();
-            
-            objLoading.gameObject.SetActive(true);
         }
 
         AddResultWithoutAd();
@@ -486,7 +496,7 @@ public class ResultScene : MonoBehaviour
     private void AddResultWithoutAd()
     {
         CommonVars.resultWithoutAd++;
-        if (CommonVars.resultWithoutAd == 3) CommonVars.resultWithoutAd = 0;
+        if (CommonVars.resultWithoutAd == 2) CommonVars.resultWithoutAd = 0;
     }
 
     private void ContinueLoadToTitle()
@@ -504,4 +514,17 @@ public class ResultScene : MonoBehaviour
     }
 #endif
     
+    private void ShowErrorMessage()
+    {
+        ShowLoading(false);
+        objError.SetActive(true);
+
+        txtMessageError.text = CommonVars.ErrorMessage[0];
+        txtButtonMessage.text = "Ok";
+    }
+
+    private void CloseErrorMessage()
+    {
+        objError.SetActive(false);
+    }
 }

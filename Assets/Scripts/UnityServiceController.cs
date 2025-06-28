@@ -1,13 +1,9 @@
 using System;
-using System.Collections;
-using System.Text;
-using System.Threading.Tasks;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using Newtonsoft.Json;
 using Unity.Services.Analytics;
 using Unity.Services.Authentication;
-using Unity.Services.Authentication.PlayerAccounts;
 using Unity.Services.Core;
 using Unity.Services.Leaderboards;
 using UnityEngine;
@@ -15,7 +11,7 @@ using UnityEngine.SceneManagement;
 
 public class UnityServiceController : MonoBehaviour
 {
-
+//here
     #region singleton
 
     public static UnityServiceController Instance { get; set; }
@@ -45,6 +41,8 @@ public class UnityServiceController : MonoBehaviour
 
     public mDelegate dUserSignedIn;
     public mDelegate dUserCannotSignIn;
+
+    public mDelegate dLeaderboardError;
 
     public delegate void mJSONReturn(string result);
 
@@ -135,32 +133,54 @@ public class UnityServiceController : MonoBehaviour
 
     public async void AddScore(float score)
     {
-        var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(Leaderboard_id, score);
-        //Debug.Log(JsonConvert.SerializeObject(scoreResponse));
-        if (dLeaderboardSentResult != null) dLeaderboardSentResult.Invoke(JsonConvert.SerializeObject(scoreResponse));
+        try
+        {
+            var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(Leaderboard_id, score);
+            //Debug.Log(JsonConvert.SerializeObject(scoreResponse));
+            if (dLeaderboardSentResult != null)
+                dLeaderboardSentResult.Invoke(JsonConvert.SerializeObject(scoreResponse));
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+            if (dLeaderboardError != null) dLeaderboardError.Invoke();
+        }
     }
 
     private async void GetPlayerHighScore()
     {
-        var curScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(Leaderboard_id);
-        gameSetting.curPlayerName = curScore.PlayerName;
-        gameSetting.curHighScore = (float) curScore.Score;
-
-        Debug.Log("Get Player Data");
+        try
+        {
+            var curScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(Leaderboard_id);
+            gameSetting.curPlayerName = curScore.PlayerName;
+            gameSetting.curHighScore = (float) curScore.Score;
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
     }
 
     public async void GetPaginatedScores()
     {
-        var curScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(Leaderboard_id);
-        if (dLeaderboardRankResult != null) dLeaderboardRankResult.Invoke(JsonConvert.SerializeObject(curScore));
+        try
+        {
+            var curScore = await LeaderboardsService.Instance.GetPlayerScoreAsync(Leaderboard_id);
+            if (dLeaderboardRankResult != null) dLeaderboardRankResult.Invoke(JsonConvert.SerializeObject(curScore));
         
-        var rangeLimit = 20;
-        var scoresResponse = await LeaderboardsService.Instance.GetPlayerRangeAsync(
-            Leaderboard_id,
-            new GetPlayerRangeOptions{ RangeLimit = rangeLimit }
-        );
-        //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
-        if (dLeaderboardResult != null) dLeaderboardResult.Invoke(JsonConvert.SerializeObject(scoresResponse));
+            var rangeLimit = 20;
+            var scoresResponse = await LeaderboardsService.Instance.GetPlayerRangeAsync(
+                Leaderboard_id,
+                new GetPlayerRangeOptions{ RangeLimit = rangeLimit }
+            );
+            //Debug.Log(JsonConvert.SerializeObject(scoresResponse));
+            if (dLeaderboardResult != null) dLeaderboardResult.Invoke(JsonConvert.SerializeObject(scoresResponse));
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+            if (dLeaderboardError != null) dLeaderboardError.Invoke();
+        }
     }
 
     private string googlePlayToken;
