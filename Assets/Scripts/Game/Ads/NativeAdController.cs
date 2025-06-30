@@ -26,7 +26,7 @@ namespace Game.Ads
         
         // These ad units are configured to always serve test ads.
 #if UNITY_ANDROID
-        private string _adUnitId = "ca-app-pub-3940256099942544/2247696110";    //ca-app-pub-8590881680208951/9382425139
+        private string _adUnitId = "a-app-pub-8590881680208951/9382425139"; //"ca-app-pub-3940256099942544/2247696110";    //
 #elif UNITY_IPHONE
   private string _adUnitId = "ca-app-pub-3940256099942544/3986624511";
 #else

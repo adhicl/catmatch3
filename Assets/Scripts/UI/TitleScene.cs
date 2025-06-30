@@ -143,7 +143,7 @@ public class TitleScene : MonoBehaviour
 
         btnPlay.gameObject.SetActive(true);
 #if (UNITY_ANDROID || UNITY_IOS)
-        btnNoAd.gameObject.SetActive(true);
+        //btnNoAd.gameObject.SetActive(true);
 #else
         btnShop.gameObject.SetActive(true);
 #endif
@@ -162,7 +162,7 @@ public class TitleScene : MonoBehaviour
         
         btnPlay.gameObject.SetActive(true);
         #if (UNITY_ANDROID || UNITY_IOS)
-        btnNoAd.gameObject.SetActive(true);
+        //btnNoAd.gameObject.SetActive(true);
         #else
         btnShop.gameObject.SetActive(true);
         #endif

@@ -1,0 +1,34 @@
+-keep class com.unity3d.** { *; }
+-keep class com.unity.** { *; }
+-keep class com.unityplayer.** { *; }
+-keep class com.unity.purchasing.** { *; }
+-keep class com.google.android.gms.** { *; }
+-keep class com.google.ads.** { *; }
+-keep class com.google.android.gms.ads.** { *; }
+-keep class com.google.android.gms.common.** { *; }
+-keep class com.google.android.gms.tasks.** { *; }
+-keep class com.google.android.gms.measurement.** { *; }
+-keep class com.google.android.gms.analytics.** { *; }
+-keepattributes *Annotation*
+-keepattributes InnerClasses
+-dontwarn com.google.android.gms.**
+-keep class com.google.games.** { *; }
+-keep class com.google.android.gms.games.** { *; }
+-keep class com.google.android.gms.common.api.** { *; }
+-keep class com.google.android.gms.auth.api.signin.** { *; }
+-dontwarn com.google.android.gms.**
+-keep class DG.Tweening.** { *; }
+-keep class DG.Tweening.Plugins.** { *; }
+-keep class DG.Tweening.Core.** { *; }
+-keep class DG.Tweening.Core.Enums.** { *; }
+-keep class DG.Tweening.Core.Easing.** { *; }
+-keep class com.unity.adaptiveperformance.** { *; }
+-keep class com.unity.android.** { *; }
+-keep class com.unity.addressables.** { *; }
+-keep class com.unity.resourceManager.** { *; }
+-keep class com.google.** { *; }
+-keep class com.android.** { *; }
+-dontwarn com.google.**
+-dontwarn com.android.**
+-keep class com.unity.androidnotifications.** { *; }
+-keep class com.unity.notifications.** { *; }
