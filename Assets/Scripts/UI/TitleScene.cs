@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
-using Game.Ads;
+using Game;
+using Google.Play.Review;
 using Newtonsoft.Json;
 using TMPro;
 using UI;
@@ -103,6 +102,10 @@ public class TitleScene : MonoBehaviour
         
         btnReset.onClick.AddListener(ResetSaveData);
         btnNextError.onClick.AddListener(CloseErrorMessage);
+        
+        #if UNITY_ANDROID
+        _reviewManager = new ReviewManager();
+        #endif
     }
 
     private void OnDestroy()
@@ -146,7 +149,7 @@ public class TitleScene : MonoBehaviour
 
         btnPlay.gameObject.SetActive(true);
 #if (UNITY_ANDROID || UNITY_IOS)
-        btnNoAd.gameObject.SetActive(true);
+        //btnNoAd.gameObject.SetActive(true);
         btnRateMe.gameObject.SetActive(true);
 #else
         btnShop.gameObject.SetActive(true);
@@ -166,7 +169,7 @@ public class TitleScene : MonoBehaviour
         
         btnPlay.gameObject.SetActive(true);
         #if (UNITY_ANDROID || UNITY_IOS)
-        btnNoAd.gameObject.SetActive(true);
+        //btnNoAd.gameObject.SetActive(true);
         btnRateMe.gameObject.SetActive(true);
         #else
         btnShop.gameObject.SetActive(true);
@@ -269,8 +272,36 @@ public class TitleScene : MonoBehaviour
         objError.SetActive(false);
     }
 
+    private ReviewManager _reviewManager;
+    private PlayReviewInfo _playReviewInfo;
+    
     private void OnRateMeButtonClicked()
     {
         SoundController.Instance.PlayButtonClip();
+        StartCoroutine(RequestReview());
+    }
+
+    public IEnumerator RequestReview()
+    {
+        var requestFlowOperation = _reviewManager.RequestReviewFlow();
+        yield return requestFlowOperation;
+        if (requestFlowOperation.Error != ReviewErrorCode.NoError)
+        {
+            // Log error. For example, using requestFlowOperation.Error.ToString().
+            yield break;
+        }
+        _playReviewInfo = requestFlowOperation.GetResult();
+            
+        var launchFlowOperation = _reviewManager.LaunchReviewFlow(_playReviewInfo);
+        yield return launchFlowOperation;
+        _playReviewInfo = null; // Reset the object
+        if (launchFlowOperation.Error != ReviewErrorCode.NoError)
+        {
+            // Log error. For example, using launchFlowOperation.Error.ToString().
+            yield break;
+        }
+        // The flow has finished. The API does not indicate whether the user
+        // reviewed or not, or even whether the review dialog was shown. Thus, no
+        // matter the result, we continue our app flow.
     }
 }
