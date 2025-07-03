@@ -139,7 +139,7 @@ TextureImporter:
       name: cat_gallery_icon
       rect:
         serializedVersion: 2
-        x: 1697
+        x: 764
         y: 253
         width: 350
         height: 384
@@ -161,8 +161,8 @@ TextureImporter:
       name: leaderboard_icon_2
       rect:
         serializedVersion: 2
-        x: 764
-        y: 252
+        x: 1349
+        y: 638
         width: 346
         height: 385
       alignment: 9
@@ -228,7 +228,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1697
-        y: 639
+        y: 253
         width: 350
         height: 384
       alignment: 9
@@ -241,6 +241,28 @@ TextureImporter:
       bones: []
       spriteID: d33f5520515a7484c8d307498e25c562
       internalID: -1718046280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rate_me_icon
+      rect:
+        serializedVersion: 2
+        x: 1697
+        y: 639
+        width: 350
+        height: 384
+      alignment: 9
+      pivot: {x: 0.49142858, y: 0.5104167}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa04710ea528c8440a87f9c3846908e8
+      internalID: -91553591
       vertices: []
       indices: 
       edges: []
@@ -263,6 +285,7 @@ TextureImporter:
       leaderboard_icon_2: -1664980646
       no_ads_icon: -1718046280
       play_big: 724663074
+      rate_me_icon: -91553591
       store_icon: 1826220912
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

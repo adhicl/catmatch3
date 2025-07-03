@@ -31,6 +31,7 @@ public class TitleScene : MonoBehaviour
     [SerializeField] private Button btnShop;
     [SerializeField] private Button btnLeaderboard;
     [SerializeField] private Button btnNoAd;
+    [SerializeField] private Button btnRateMe;
 
     [SerializeField] private Button btnReset;
 
@@ -68,6 +69,7 @@ public class TitleScene : MonoBehaviour
         btnShop.gameObject.SetActive(false);
         btnLeaderboard.gameObject.SetActive(false);
         btnNoAd.gameObject.SetActive(false);
+        btnRateMe.gameObject.SetActive(false);
         customWindow.gameObject.SetActive(false);
         
         objLeaderboard.gameObject.SetActive(false);
@@ -81,6 +83,7 @@ public class TitleScene : MonoBehaviour
         btnLeaderboard.onClick.AddListener(GoToLeaderboard);
         btnNextLeaderboard.onClick.AddListener(CloseLeaderboard);
         btnNoAd.onClick.AddListener(OnNoAdButtonClicked);
+        btnRateMe.onClick.AddListener(OnRateMeButtonClicked);
         
         if (CommonVars.AnimateStart)
         {
@@ -144,6 +147,7 @@ public class TitleScene : MonoBehaviour
         btnPlay.gameObject.SetActive(true);
 #if (UNITY_ANDROID || UNITY_IOS)
         btnNoAd.gameObject.SetActive(true);
+        btnRateMe.gameObject.SetActive(true);
 #else
         btnShop.gameObject.SetActive(true);
 #endif
@@ -163,6 +167,7 @@ public class TitleScene : MonoBehaviour
         btnPlay.gameObject.SetActive(true);
         #if (UNITY_ANDROID || UNITY_IOS)
         btnNoAd.gameObject.SetActive(true);
+        btnRateMe.gameObject.SetActive(true);
         #else
         btnShop.gameObject.SetActive(true);
         #endif
@@ -262,5 +267,10 @@ public class TitleScene : MonoBehaviour
     private void CloseErrorMessage()
     {
         objError.SetActive(false);
+    }
+
+    private void OnRateMeButtonClicked()
+    {
+        SoundController.Instance.PlayButtonClip();
     }
 }
