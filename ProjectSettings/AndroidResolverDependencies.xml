@@ -1,5 +1,6 @@
 <dependencies>
   <packages>
+    <package>androidx.appcompat:appcompat:1.1.0</package>
     <package>androidx.constraintlayout:constraintlayout:2.1.4</package>
     <package>com.google.android.gms:play-services-ads:24.3.0</package>
     <package>com.google.android.ump:user-messaging-platform:3.2.0</package>

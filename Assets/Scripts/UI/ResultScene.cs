@@ -1,12 +1,16 @@
 using System.Collections;
+using System.IO;
 using DG.Tweening;
 using Game.Ads;
 using Newtonsoft.Json;
 using TMPro;
 using UI;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityNative.Sharing;
+using UnityNative.Sharing.Example;
 
 public class ResultScene : MonoBehaviour
 {
@@ -67,6 +71,8 @@ public class ResultScene : MonoBehaviour
 
     [Header("Loading")] [SerializeField] private GameObject objLoading;
 
+    private IUnityNativeSharing unityNativeSharing;
+    
     private void Start()
     {
         InitUI();
@@ -112,6 +118,8 @@ public class ResultScene : MonoBehaviour
         
         //error
         objError.SetActive(false);
+        
+        unityNativeSharing = UnityNativeSharing.Create();
         
         //on click listener
         btnHome.onClick.AddListener(GoToTitle);
@@ -529,9 +537,35 @@ public class ResultScene : MonoBehaviour
     {
         objError.SetActive(false);
     }
+    
+    [SerializeField] private string screenshotName = "neko-match-blast-screenshot.png";
+    [SerializeField] private string shareText = "I just ranked up on Neko Match Blast";
+    [Range(1, 4)]
+    [SerializeField] private int upscaleAmount = 1;
 
     private void ShareRank()
     {
+        ShowLoading(true);
+
+        var screenShotPath = Application.persistentDataPath + "/" + screenshotName;
+
+        ScreenCapture.CaptureScreenshot(screenshotName, upscaleAmount);
+            
+        StartCoroutine(WaitForScreenshotToSaveThenShare(screenShotPath, shareText));
+    }
+
+    /// <summary>
+    /// CaptureScreenshot() runs async, so we check the screenshot path to see if there is a file there, once a file is found, then we share it 
+    /// </summary>
+    /// <param name="screenshotPath">Path the screenshot was saved to</param>
+    /// <param name="text">Text to share with the screenshot</param>
+    private IEnumerator WaitForScreenshotToSaveThenShare(string screenshotPath, string text)
+    {
+        while (!File.Exists(screenshotPath))
+            yield return new WaitForSecondsRealtime(0.05f);
+
+        ShowLoading(false);
         
+        unityNativeSharing.ShareScreenshotAndText(text, screenshotPath, false, "Select App To Share With");
     }
 }
