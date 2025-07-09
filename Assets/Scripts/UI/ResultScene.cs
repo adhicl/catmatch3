@@ -40,6 +40,7 @@ public class ResultScene : MonoBehaviour
     [SerializeField] private GameObject objRank;
     [SerializeField] private TextMeshProUGUI txtRank;
     [SerializeField] private Button btnRank;
+    [SerializeField] private Button btnShareRank;
 
     [Header("Leaderboard")]
     [SerializeField] private GameObject objLeaderboard;
@@ -120,6 +121,7 @@ public class ResultScene : MonoBehaviour
         btnRank.onClick.AddListener(ShowLeaderboardNext);
         btnNextLeaderboard.onClick.AddListener(ContinueToReward);
         btnNextError.onClick.AddListener(CloseErrorMessage);
+        btnShareRank.onClick.AddListener(ShareRank);
 
         UnityServiceController.Instance.dLeaderboardResult += ShowLeaderboard;
         UnityServiceController.Instance.dLeaderboardRankResult += ShowLeaderboardRank;
@@ -526,5 +528,10 @@ public class ResultScene : MonoBehaviour
     private void CloseErrorMessage()
     {
         objError.SetActive(false);
+    }
+
+    private void ShareRank()
+    {
+        
     }
 }
