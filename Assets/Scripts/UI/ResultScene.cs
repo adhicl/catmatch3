@@ -6,11 +6,8 @@ using Newtonsoft.Json;
 using TMPro;
 using UI;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityNative.Sharing;
-using UnityNative.Sharing.Example;
 
 public class ResultScene : MonoBehaviour
 {
@@ -70,8 +67,6 @@ public class ResultScene : MonoBehaviour
     [SerializeField] private AudioSource bgmMusic;
 
     [Header("Loading")] [SerializeField] private GameObject objLoading;
-
-    private IUnityNativeSharing unityNativeSharing;
     
     private void Start()
     {
@@ -118,8 +113,6 @@ public class ResultScene : MonoBehaviour
         
         //error
         objError.SetActive(false);
-        
-        unityNativeSharing = UnityNativeSharing.Create();
         
         //on click listener
         btnHome.onClick.AddListener(GoToTitle);
@@ -545,6 +538,13 @@ public class ResultScene : MonoBehaviour
 
     private void ShareRank()
     {
+        /*
+        if (!Share.IsPlatformSupported)
+        {
+            Debug.LogError("Share: platform not supported");
+            return;
+        }
+        //*/
         ShowLoading(true);
 
         var screenShotPath = Application.persistentDataPath + "/" + screenshotName;
@@ -564,8 +564,25 @@ public class ResultScene : MonoBehaviour
         while (!File.Exists(screenshotPath))
             yield return new WaitForSecondsRealtime(0.05f);
 
-        ShowLoading(false);
-        
-        unityNativeSharing.ShareScreenshotAndText(text, screenshotPath, false, "Select App To Share With");
+        /*
+        Share.Items(
+            new List<string>
+            {
+                text,
+                screenshotPath
+            }, success =>
+            {
+                if (success)
+                {
+                    ShowLoading(false);
+                    Debug.Log("Share operation completed (window was opened and returned)");
+                }
+                else
+                {
+                    ShowLoading(false);
+                    Debug.LogWarning("Failed to open share window");
+                }
+            });
+            //*/
     }
 }
