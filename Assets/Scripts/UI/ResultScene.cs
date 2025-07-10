@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using DG.Tweening;
 using Game.Ads;
 using Newtonsoft.Json;
@@ -40,6 +41,7 @@ public class ResultScene : MonoBehaviour
     [SerializeField] private GameObject objRank;
     [SerializeField] private TextMeshProUGUI txtRank;
     [SerializeField] private Button btnRank;
+    [SerializeField] private Button btnShareRank;
 
     [Header("Leaderboard")]
     [SerializeField] private GameObject objLeaderboard;
@@ -65,7 +67,7 @@ public class ResultScene : MonoBehaviour
     [SerializeField] private AudioSource bgmMusic;
 
     [Header("Loading")] [SerializeField] private GameObject objLoading;
-
+    
     private void Start()
     {
         InitUI();
@@ -120,6 +122,7 @@ public class ResultScene : MonoBehaviour
         btnRank.onClick.AddListener(ShowLeaderboardNext);
         btnNextLeaderboard.onClick.AddListener(ContinueToReward);
         btnNextError.onClick.AddListener(CloseErrorMessage);
+        btnShareRank.onClick.AddListener(ShareRank);
 
         UnityServiceController.Instance.dLeaderboardResult += ShowLeaderboard;
         UnityServiceController.Instance.dLeaderboardRankResult += ShowLeaderboardRank;
@@ -526,5 +529,60 @@ public class ResultScene : MonoBehaviour
     private void CloseErrorMessage()
     {
         objError.SetActive(false);
+    }
+    
+    [SerializeField] private string screenshotName = "neko-match-blast-screenshot.png";
+    [SerializeField] private string shareText = "I just ranked up on Neko Match Blast";
+    [Range(1, 4)]
+    [SerializeField] private int upscaleAmount = 1;
+
+    private void ShareRank()
+    {
+        /*
+        if (!Share.IsPlatformSupported)
+        {
+            Debug.LogError("Share: platform not supported");
+            return;
+        }
+        //*/
+        ShowLoading(true);
+
+        var screenShotPath = Application.persistentDataPath + "/" + screenshotName;
+
+        ScreenCapture.CaptureScreenshot(screenshotName, upscaleAmount);
+            
+        StartCoroutine(WaitForScreenshotToSaveThenShare(screenShotPath, shareText));
+    }
+
+    /// <summary>
+    /// CaptureScreenshot() runs async, so we check the screenshot path to see if there is a file there, once a file is found, then we share it 
+    /// </summary>
+    /// <param name="screenshotPath">Path the screenshot was saved to</param>
+    /// <param name="text">Text to share with the screenshot</param>
+    private IEnumerator WaitForScreenshotToSaveThenShare(string screenshotPath, string text)
+    {
+        while (!File.Exists(screenshotPath))
+            yield return new WaitForSecondsRealtime(0.05f);
+
+        /*
+        Share.Items(
+            new List<string>
+            {
+                text,
+                screenshotPath
+            }, success =>
+            {
+                if (success)
+                {
+                    ShowLoading(false);
+                    Debug.Log("Share operation completed (window was opened and returned)");
+                }
+                else
+                {
+                    ShowLoading(false);
+                    Debug.LogWarning("Failed to open share window");
+                }
+            });
+            //*/
     }
 }
