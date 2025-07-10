@@ -141,8 +141,11 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.0.3
-  preloadedAssets: []
+  bundleVersion: 0.0.4
+  preloadedAssets:
+  - {fileID: -652460918314985221, guid: e1557e0fec9892d46a315040c5369354, type: 2}
+  - {fileID: 11400000, guid: 2266b6208b17cd142a471a9ea8afebb0, type: 2}
+  - {fileID: 11400000, guid: 6c2349a3a1acc614aa324404be38421d, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -175,7 +178,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 3
+  AndroidBundleVersionCode: 4
   AndroidMinSdkVersion: 23
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -269,7 +272,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: F:/Project/Neko Match/user.keystore
+  AndroidKeystoreName: F:/Project/CatPuzzle/user.keystore
   AndroidKeyaliasName: nekocrushsaga
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidEnableArm64MTE: 0
