@@ -1,8 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using DG.Tweening;
 using Game.Ads;
 using Newtonsoft.Json;
+using Sych.ShareAssets.Runtime;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -538,13 +540,12 @@ public class ResultScene : MonoBehaviour
 
     private void ShareRank()
     {
-        /*
         if (!Share.IsPlatformSupported)
         {
             Debug.LogError("Share: platform not supported");
             return;
         }
-        //*/
+        
         ShowLoading(true);
 
         var screenShotPath = Application.persistentDataPath + "/" + screenshotName;
@@ -564,7 +565,6 @@ public class ResultScene : MonoBehaviour
         while (!File.Exists(screenshotPath))
             yield return new WaitForSecondsRealtime(0.05f);
 
-        /*
         Share.Items(
             new List<string>
             {
@@ -583,6 +583,5 @@ public class ResultScene : MonoBehaviour
                     Debug.LogWarning("Failed to open share window");
                 }
             });
-            //*/
     }
 }
