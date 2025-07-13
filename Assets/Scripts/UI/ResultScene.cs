@@ -540,19 +540,11 @@ public class ResultScene : MonoBehaviour
 
     private void ShareRank()
     {
-        if (!Share.IsPlatformSupported)
-        {
-            Debug.LogError("Share: platform not supported");
-            return;
-        }
-        
-        ShowLoading(true);
+        Debug.Log("Share Rank ");
 
-        var screenShotPath = Application.persistentDataPath + "/" + screenshotName;
-
-        ScreenCapture.CaptureScreenshot(screenshotName, upscaleAmount);
+        //ScreenCapture.CaptureScreenshot(screenshotName, upscaleAmount);
             
-        StartCoroutine(WaitForScreenshotToSaveThenShare(screenShotPath, shareText));
+        StartCoroutine(WaitForScreenshotToSaveThenShare(shareText));
     }
 
     /// <summary>
@@ -560,11 +552,40 @@ public class ResultScene : MonoBehaviour
     /// </summary>
     /// <param name="screenshotPath">Path the screenshot was saved to</param>
     /// <param name="text">Text to share with the screenshot</param>
-    private IEnumerator WaitForScreenshotToSaveThenShare(string screenshotPath, string text)
+    private IEnumerator WaitForScreenshotToSaveThenShare(string text)
     {
-        while (!File.Exists(screenshotPath))
-            yield return new WaitForSecondsRealtime(0.05f);
+        yield return new WaitForEndOfFrame();
 
+        string screenshotPath = Application.persistentDataPath + "/" + screenshotName;
+        
+        Texture2D screenImage = new Texture2D(Screen.width, Screen.height);
+        //Get Image from screen
+        screenImage.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        screenImage.Apply();
+        //Convert to png
+        byte[] imageBytes = screenImage.EncodeToPNG();
+        
+        ShowLoading(true);
+
+        //Save image to file
+        System.IO.File.WriteAllBytes(screenshotPath, imageBytes);
+
+        Debug.Log(screenshotPath);
+        
+        while (!File.Exists(screenshotPath))
+        {
+            Debug.Log("Wait ");
+            yield return new WaitForSecondsRealtime(0.05f);
+        }
+
+        Debug.Log("Wait for screenshot to share");
+        
+        if (!Share.IsPlatformSupported)
+        {
+            Debug.LogError("Share: platform not supported");
+            yield break;
+        }
+        
         Share.Items(
             new List<string>
             {

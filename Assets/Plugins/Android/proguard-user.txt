@@ -32,3 +32,4 @@
 -dontwarn com.android.**
 -keep class com.unity.androidnotifications.** { *; }
 -keep class com.unity.notifications.** { *; }
+-keep class com.sych.share.** { *; }
