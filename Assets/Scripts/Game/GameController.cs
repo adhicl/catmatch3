@@ -42,6 +42,8 @@ public class GameController : MonoBehaviour
 
     public AudioSource gameBGM;
 
+    public bool isLockedAnimation = false;
+
     private void Start()
     {
         Initialization();
@@ -49,6 +51,8 @@ public class GameController : MonoBehaviour
 
     private void Initialization()
     {
+        isLockedAnimation = false;
+        
         timePlayLeft = 50f;
         scorePlay = 0f;
         levelScore = 1;
@@ -67,7 +71,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (_gameMode == CommonVars.GameMode.Play || _gameMode == CommonVars.GameMode.Pause)
+        if ((_gameMode == CommonVars.GameMode.Play || _gameMode == CommonVars.GameMode.Pause) && !isLockedAnimation)
         {
             //update time
             if (timePlayLeft > 0)

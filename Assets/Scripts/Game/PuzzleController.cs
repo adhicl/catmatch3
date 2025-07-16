@@ -590,6 +590,7 @@ public class PuzzleController : MonoBehaviour
         if (!isLocked)
         {
             isLocked = true;
+            GameController.Instance.isLockedAnimation = true;
         
             Stone curStone = _puzzleBlocks[curPosY][curPosX];
             Stone nexStone = _puzzleBlocks[nexPosY][nexPosX];
@@ -686,6 +687,7 @@ public class PuzzleController : MonoBehaviour
             }
 
             isLocked = false;
+            GameController.Instance.isLockedAnimation = false;
         }
     }
 
