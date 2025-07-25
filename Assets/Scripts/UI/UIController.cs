@@ -336,6 +336,8 @@ public class UIController : MonoBehaviour
     {
         objEnterName.gameObject.SetActive(true);
         inputEnterName.text = "";
+        inputEnterName.onFocusSelectAll = true;
+        inputEnterName.Select();
         btnEnterName.interactable = false;
     }
 
